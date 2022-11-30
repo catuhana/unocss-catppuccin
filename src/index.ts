@@ -4,6 +4,8 @@ import {
   labels as ctpLabels,
 } from '@catppuccin/palette';
 
+import { hexToRGBA } from './utils';
+
 import type { Preset } from '@unocss/core';
 
 interface PresetOptions {
@@ -24,20 +26,30 @@ export function presetCatppuccin(options?: PresetOptions): Preset {
     name: 'unocss-preset-catppuccin-colors',
     rules: [
       [
-        new RegExp(`^${prefix}${variantsCaptureGroup}-${labelsCaptureGroup}$`),
-        ([, variant, label]) => {
+        new RegExp(
+          `^${prefix}${variantsCaptureGroup}-${labelsCaptureGroup}\/?(\\d*)?$`
+        ),
+        ([, variant, label, opacity]) => {
+          const hexColor = ctpVariants[variant][label].hex;
+
           return {
-            color: ctpVariants[variant][label].hex,
+            color: opacity
+              ? `rgba(${hexToRGBA(hexColor, Number(opacity)).join(', ')})`
+              : hexColor,
           };
         },
       ],
       [
         new RegExp(
-          `^${prefix}bg-${variantsCaptureGroup}-${labelsCaptureGroup}$`
+          `^${prefix}bg-${variantsCaptureGroup}-${labelsCaptureGroup}\/?(\\d*)?$`
         ),
-        ([, variant, label]) => {
+        ([, variant, label, opacity]) => {
+          const hexColor = ctpVariants[variant][label].hex;
+
           return {
-            'background-color': ctpVariants[variant][label].hex,
+            'background-color': opacity
+              ? `rgba(${hexToRGBA(hexColor, Number(opacity)).join(', ')})`
+              : hexColor,
           };
         },
       ],
