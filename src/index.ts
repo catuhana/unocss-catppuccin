@@ -55,7 +55,7 @@ export function presetCatppuccin(options?: PresetOptions): Preset {
       ],
       [
         new RegExp(
-          `^${prefix}bg-${variantsCaptureGroup}-${labelsCaptureGroup}(?:\/(\\d*))?$`
+          `^${prefix}(?:bg|background)-${variantsCaptureGroup}-${labelsCaptureGroup}(?:\/(\\d*))?$`
         ),
         ([, variant, label, opacity]) => {
           const hexColor = ctpVariants[variant][label].hex;
@@ -69,7 +69,7 @@ export function presetCatppuccin(options?: PresetOptions): Preset {
       ],
       [
         new RegExp(
-          `^${prefix}bg-${labelsCaptureGroup}-${variantsCaptureGroup}(?:\/(\\d*))?$`
+          `^${prefix}(?:bg|background)-${labelsCaptureGroup}-${variantsCaptureGroup}(?:\/(\\d*))?$`
         ),
         ([, label, variant, opacity]) => {
           const hexColor = ctpLabels[label][variant].hex;
