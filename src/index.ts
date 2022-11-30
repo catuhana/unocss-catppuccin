@@ -10,7 +10,7 @@ import type { Preset } from '@unocss/core';
 
 interface PresetOptions {
   /**
-   * Class prefix for matching Catppuccin colors.
+   * Class prefix for matching Catppuccin colours.
    * @default `ctp-`
    */
   prefix: string;
@@ -30,12 +30,12 @@ export function presetCatppuccin(options?: PresetOptions): Preset {
           `^${prefix}(?:text-)?${variantsCaptureGroup}-${labelsCaptureGroup}(?:\/(\\d*))?$`
         ),
         ([, variant, label, opacity]) => {
-          const hexColor = ctpVariants[variant][label].hex;
+          const hexColour = ctpVariants[variant][label].hex;
 
           return {
             color: opacity
-              ? `rgba(${hexToRGBA(hexColor, Number(opacity)).join(', ')})`
-              : hexColor,
+              ? `rgba(${hexToRGBA(hexColour, Number(opacity)).join(', ')})`
+              : hexColour,
           };
         },
       ],
@@ -44,12 +44,12 @@ export function presetCatppuccin(options?: PresetOptions): Preset {
           `^${prefix}(?:text-)?${labelsCaptureGroup}-${variantsCaptureGroup}(?:\/(\\d*))?$`
         ),
         ([, label, variant, opacity]) => {
-          const hexColor = ctpLabels[label][variant].hex;
+          const hexColour = ctpLabels[label][variant].hex;
 
           return {
             color: opacity
-              ? `rgba(${hexToRGBA(hexColor, Number(opacity)).join(', ')})`
-              : hexColor,
+              ? `rgba(${hexToRGBA(hexColour, Number(opacity)).join(', ')})`
+              : hexColour,
           };
         },
       ],
@@ -58,12 +58,12 @@ export function presetCatppuccin(options?: PresetOptions): Preset {
           `^${prefix}(?:bg|background)-${variantsCaptureGroup}-${labelsCaptureGroup}(?:\/(\\d*))?$`
         ),
         ([, variant, label, opacity]) => {
-          const hexColor = ctpVariants[variant][label].hex;
+          const hexColour = ctpVariants[variant][label].hex;
 
           return {
             'background-color': opacity
-              ? `rgba(${hexToRGBA(hexColor, Number(opacity)).join(', ')})`
-              : hexColor,
+              ? `rgba(${hexToRGBA(hexColour, Number(opacity)).join(', ')})`
+              : hexColour,
           };
         },
       ],
@@ -72,12 +72,12 @@ export function presetCatppuccin(options?: PresetOptions): Preset {
           `^${prefix}(?:bg|background)-${labelsCaptureGroup}-${variantsCaptureGroup}(?:\/(\\d*))?$`
         ),
         ([, label, variant, opacity]) => {
-          const hexColor = ctpLabels[label][variant].hex;
+          const hexColour = ctpLabels[label][variant].hex;
 
           return {
             'background-color': opacity
-              ? `rgba(${hexToRGBA(hexColor, Number(opacity)).join(', ')})`
-              : hexColor,
+              ? `rgba(${hexToRGBA(hexColour, Number(opacity)).join(', ')})`
+              : hexColour,
           };
         },
       ],
