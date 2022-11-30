@@ -3,7 +3,7 @@ import { defineConfig } from 'tsup';
 export default defineConfig({
   format: 'esm',
   target: 'esnext',
-  bundle: false,
+  skipNodeModulesBundle: true,
   clean: true,
   dts: true,
 });
