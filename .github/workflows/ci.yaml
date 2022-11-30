@@ -17,14 +17,15 @@ jobs:
 
       - name: Install pnpm
         uses: pnpm/action-setup@v2
-        with:
-          run_install: true
 
       - name: Install Node ${{ matrix.node }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
           cache: pnpm
+
+      - name: Install packages
+        run: pnpm i
 
       - name: Build
         run: pnpm build
@@ -38,14 +39,15 @@ jobs:
 
       - name: Install pnpm
         uses: pnpm/action-setup@v2
-        with:
-          run_install: true
 
       - name: Install Node
         uses: actions/setup-node@v3
         with:
           node-version: 18
           cache: pnpm
+
+      - name: Install packages
+        run: pnpm i
 
       - name: Run Prettier
         run: pnpm lint:prettier
@@ -63,14 +65,15 @@ jobs:
 
       - name: Install pnpm
         uses: pnpm/action-setup@v2
-        with:
-          run_install: true
 
       - name: Install Node ${{ matrix.node_version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node_version }}
           cache: pnpm
+
+      - name: Install packages
+        run: pnpm i
 
       - name: Run tests
         run: pnpm test

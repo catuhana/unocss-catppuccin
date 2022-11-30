@@ -17,8 +17,6 @@ jobs:
 
       - name: Install pnpm
         uses: pnpm/action-setup@v2
-        with:
-          run_install: true
 
       - name: Install Node
         uses: actions/setup-node@v3
@@ -26,6 +24,9 @@ jobs:
           node-version: 18
           registry-url: 'https://registry.npmjs.org'
           cache: pnpm
+
+      - name: Install packages
+        run: pnpm i
 
       - name: Generate changelog and create release
         run: pnpx changelogithub
