@@ -10,7 +10,9 @@
   ],
   "scripts": {
     "prepare": "husky install",
-    "build": "tsup src/index.ts --format esm --target esnext --clean --dts",
+    "prepack": "tsup src/index.ts",
+    "build": "tsup src/index.ts",
+    "build:watch": "tsup src/index.ts --watch",
     "lint:prettier": "prettier -c ."
   },
   "keywords": [
