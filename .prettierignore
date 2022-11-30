@@ -1,0 +1,5 @@
+.husky/
+assets/
+dist/
+
+pnpm-lock.yaml

@@ -1,14 +1,14 @@
 <h3 align="center">
 	<img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/logos/exports/1544x1544_circle.png" width="100" alt="Logo"/><br/>
 	<img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/misc/transparent.png" height="30" width="0px"/>
-	Catppuccin for <a href="https://github.com/tuhanayim/unocss-catppuccin-colors-plugin">UnoCSS</a>
+	Catppuccin for <a href="https://github.com/tuhanayim/unocss-preset-catppuccin-colors">UnoCSS</a>
 	<img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/misc/transparent.png" height="30" width="0px"/>
 </h3>
 
 <p align="center">
-	<a href="https://github.com/tuhanayim/unocss-catppuccin-colors-plugin/stargazers"><img src="https://img.shields.io/github/stars/tuhanayim/unocss-catppuccin-colors-plugin?colorA=363a4f&colorB=b7bdf8&style=for-the-badge"></a>
-	<a href="https://github.com/tuhanayim/unocss-catppuccin-colors-plugin/issues"><img src="https://img.shields.io/github/issues/tuhanayim/unocss-catppuccin-colors-plugin?colorA=363a4f&colorB=f5a97f&style=for-the-badge"></a>
-	<a href="https://github.com/tuhanayim/unocss-catppuccin-colors-plugin/contributors"><img src="https://img.shields.io/github/contributors/tuhanayim/unocss-catppuccin-colors-plugin?colorA=363a4f&colorB=a6da95&style=for-the-badge"></a>
+	<a href="https://github.com/tuhanayim/unocss-preset-catppuccin-colors/stargazers"><img src="https://img.shields.io/github/stars/tuhanayim/unocss-preset-catppuccin-colors?colorA=363a4f&colorB=b7bdf8&style=for-the-badge"></a>
+	<a href="https://github.com/tuhanayim/unocss-preset-catppuccin-colors/issues"><img src="https://img.shields.io/github/issues/tuhanayim/unocss-preset-catppuccin-colors?colorA=363a4f&colorB=f5a97f&style=for-the-badge"></a>
+	<a href="https://github.com/tuhanayim/unocss-preset-catppuccin-colors/contributors"><img src="https://img.shields.io/github/contributors/tuhanayim/unocss-preset-catppuccin-colors?colorA=363a4f&colorB=a6da95&style=for-the-badge"></a>
 </p>
 
 <p align="center">
@@ -17,11 +17,11 @@
 
 ## Previews
 
-*Todo*
+_Todo_
 
 ## Usage
 
-*Todo*
+_Todo_
 
 ## 💝 Thanks to
 

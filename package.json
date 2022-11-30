@@ -1,0 +1,46 @@
+{
+  "name": "unocss-preset-catppuccin-colors",
+  "version": "0.0.0",
+  "description": "🔥 Soothing pastel theme for UnoCSS.",
+  "type": "module",
+  "types": "./dist/index.d.ts",
+  "exports": "./dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prepare": "husky install",
+    "build": "tsup src/index.ts --format esm --target esnext --clean --dts",
+    "lint:prettier": "prettier -c ."
+  },
+  "keywords": [
+    "unocss",
+    "catppuccin",
+    "colors",
+    "theme"
+  ],
+  "author": "Tuhana GAYRETLİ <npm@tuhana.me>",
+  "license": "MIT",
+  "devDependencies": {
+    "@commitlint/cli": "^17.3.0",
+    "@commitlint/config-conventional": "^17.3.0",
+    "@unocss/core": "^0.47.3",
+    "husky": "^8.0.2",
+    "lint-staged": "^13.0.4",
+    "prettier": "^2.8.0",
+    "tsup": "^6.5.0",
+    "typescript": "^4.9.3"
+  },
+  "packageManager": "pnpm@7.17.1",
+  "engines": {
+    "node": ">=14.18"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "*": "pnpm lint:prettier"
+  }
+}

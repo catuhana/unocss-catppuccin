@@ -1,0 +1,9 @@
+{
+  "editor.formatOnSave": true,
+  "[typescript][markdown][json][jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[ignore][properties]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  }
+}
