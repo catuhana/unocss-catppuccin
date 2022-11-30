@@ -1,0 +1,15 @@
+// Vitest Snapshot v1
+
+exports[`Text colour with complex custom prefix 1`] = `
+"/* layer: default */
+.\\\\(\\\\?\\\\:ctp-\\\\)\\\\$latte-mauve{color:#8839ef;}
+.\\\\(\\\\?\\\\:ctp-\\\\)\\\\$mocha-pink{color:#f5c2e7;}
+.\\\\(\\\\?\\\\:ctp-\\\\)\\\\$text-frappe-teal{color:#81c8be;}"
+`;
+
+exports[`Text colour with custom prefix 1`] = `
+"/* layer: default */
+.catppuccin-latte-mauve{color:#8839ef;}
+.catppuccin-mocha-pink{color:#f5c2e7;}
+.catppuccin-text-frappe-teal{color:#81c8be;}"
+`;

@@ -1,0 +1,15 @@
+// Vitest Snapshot v1
+
+exports[`Background colour with opacity (label -> variant) 1`] = `
+"/* layer: default */
+.ctp-blue-frappe\\\\/50{color:rgba(140, 170, 238, 0.5);}
+.ctp-lavender-macchiato\\\\/699{color:rgba(183, 189, 248, 1);}
+.ctp-text-text-mocha\\\\/99{color:rgba(205, 214, 244, 0.99);}"
+`;
+
+exports[`Background colour with opacity (variant -> label) 1`] = `
+"/* layer: default */
+.ctp-frappe-blue\\\\/50{color:rgba(140, 170, 238, 0.5);}
+.ctp-macchiato-lavender\\\\/699{color:rgba(183, 189, 248, 1);}
+.ctp-text-mocha-text\\\\/99{color:rgba(205, 214, 244, 0.99);}"
+`;
