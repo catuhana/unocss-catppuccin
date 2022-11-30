@@ -41,10 +41,38 @@ export function presetCatppuccin(options?: PresetOptions): Preset {
       ],
       [
         new RegExp(
+          `^${prefix}${labelsCaptureGroup}-${variantsCaptureGroup}\/?(\\d*)?$`
+        ),
+        ([, label, variant, opacity]) => {
+          const hexColor = ctpLabels[label][variant].hex;
+
+          return {
+            color: opacity
+              ? `rgba(${hexToRGBA(hexColor, Number(opacity)).join(', ')})`
+              : hexColor,
+          };
+        },
+      ],
+      [
+        new RegExp(
           `^${prefix}bg-${variantsCaptureGroup}-${labelsCaptureGroup}\/?(\\d*)?$`
         ),
         ([, variant, label, opacity]) => {
           const hexColor = ctpVariants[variant][label].hex;
+
+          return {
+            'background-color': opacity
+              ? `rgba(${hexToRGBA(hexColor, Number(opacity)).join(', ')})`
+              : hexColor,
+          };
+        },
+      ],
+      [
+        new RegExp(
+          `^${prefix}bg-${labelsCaptureGroup}-${variantsCaptureGroup}\/?(\\d*)?$`
+        ),
+        ([, label, variant, opacity]) => {
+          const hexColor = ctpLabels[label][variant].hex;
 
           return {
             'background-color': opacity
