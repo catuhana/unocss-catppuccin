@@ -1,7 +1,7 @@
 import type { Preset } from '@unocss/core';
 
-export function presetCatppuccin(options = {}): Preset {
+export function presetCatppuccin(): Preset {
   return {
-    name: 'unocss-catppuccin-colors-plugin',
+    name: 'unocss-preset-catppuccin-colors',
   };
 }
