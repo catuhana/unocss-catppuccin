@@ -1,6 +1,6 @@
 {
   "editor.formatOnSave": true,
-  "[typescript][markdown][json][jsonc]": {
+  "[typescript][markdown][json][jsonc][yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[ignore][properties]": {
