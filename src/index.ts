@@ -4,17 +4,10 @@ import {
   labels as ctpLabels,
 } from '@catppuccin/palette';
 
-import type { Preset } from '@unocss/core';
-
 import { hexToRGBA } from './utils';
 
-interface PresetOptions {
-  /**
-   * Class prefix for matching Catppuccin colours.
-   * @default `ctp-`
-   */
-  prefix?: string;
-}
+import type { Preset } from '@unocss/core';
+import type { PresetOptions } from './types';
 
 export function presetCatppuccin(options?: PresetOptions): Preset {
   const prefix = options?.prefix ? escapeRegExp(options.prefix) : 'ctp-';
