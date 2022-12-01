@@ -4,16 +4,16 @@ import {
   labels as ctpLabels,
 } from '@catppuccin/palette';
 
-import { hexToRGBA } from './utils';
-
 import type { Preset } from '@unocss/core';
+
+import { hexToRGBA } from './utils';
 
 interface PresetOptions {
   /**
    * Class prefix for matching Catppuccin colours.
    * @default `ctp-`
    */
-  prefix: string;
+  prefix?: string;
 }
 
 export function presetCatppuccin(options?: PresetOptions): Preset {
@@ -27,7 +27,7 @@ export function presetCatppuccin(options?: PresetOptions): Preset {
     rules: [
       [
         new RegExp(
-          `^${prefix}(?:text-)?${variantsCaptureGroup}-${labelsCaptureGroup}(?:\/(\\d*))?$`
+          `^${prefix}(?:text-)?${variantsCaptureGroup}-${labelsCaptureGroup}(?:\/(\\d+))?$`
         ),
         ([, variant, label, opacity]) => {
           const hexColour = ctpVariants[variant][label].hex;
@@ -41,7 +41,7 @@ export function presetCatppuccin(options?: PresetOptions): Preset {
       ],
       [
         new RegExp(
-          `^${prefix}(?:text-)?${labelsCaptureGroup}-${variantsCaptureGroup}(?:\/(\\d*))?$`
+          `^${prefix}(?:text-)?${labelsCaptureGroup}-${variantsCaptureGroup}(?:\/(\\d+))?$`
         ),
         ([, label, variant, opacity]) => {
           const hexColour = ctpLabels[label][variant].hex;
@@ -55,7 +55,7 @@ export function presetCatppuccin(options?: PresetOptions): Preset {
       ],
       [
         new RegExp(
-          `^${prefix}(?:bg|background)-${variantsCaptureGroup}-${labelsCaptureGroup}(?:\/(\\d*))?$`
+          `^${prefix}(?:bg|background)-${variantsCaptureGroup}-${labelsCaptureGroup}(?:\/(\\d+))?$`
         ),
         ([, variant, label, opacity]) => {
           const hexColour = ctpVariants[variant][label].hex;
@@ -69,7 +69,7 @@ export function presetCatppuccin(options?: PresetOptions): Preset {
       ],
       [
         new RegExp(
-          `^${prefix}(?:bg|background)-${labelsCaptureGroup}-${variantsCaptureGroup}(?:\/(\\d*))?$`
+          `^${prefix}(?:bg|background)-${labelsCaptureGroup}-${variantsCaptureGroup}(?:\/(\\d+))?$`
         ),
         ([, label, variant, opacity]) => {
           const hexColour = ctpLabels[label][variant].hex;
