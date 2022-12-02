@@ -1,0 +1,15 @@
+// Vitest Snapshot v1
+
+exports[`presetMini + presetTagify with default latte variant 1`] = `
+"/* layer: default */
+text-base{--un-text-opacity:1;color:rgba(239,241,245,var(--un-text-opacity));}
+text-flamingo{--un-text-opacity:1;color:rgba(221,120,120,var(--un-text-opacity));}
+text-pink{--un-text-opacity:1;color:rgba(234,118,203,var(--un-text-opacity));}"
+`;
+
+exports[`presetMini + presetTagify without setting variant 1`] = `
+"/* layer: default */
+text-frappe-pink{--un-text-opacity:1;color:rgba(244,184,228,var(--un-text-opacity));}
+text-macchiato-base{--un-text-opacity:1;color:rgba(36,39,58,var(--un-text-opacity));}
+text-mocha-flamingo{--un-text-opacity:1;color:rgba(242,205,205,var(--un-text-opacity));}"
+`;

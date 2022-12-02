@@ -1,0 +1,37 @@
+// Vitest Snapshot v1
+
+exports[`presetMini with default macchiato variant 1`] = `
+"/* layer: default */
+.disabled\\\\:bg-red\\\\/25:disabled{background-color:rgba(237,135,150,0.25);}
+.not-disabled\\\\:bg-red:not(:disabled){--un-bg-opacity:1;background-color:rgba(237,135,150,var(--un-bg-opacity));}
+.not-visited\\\\:bg-blue:not(:visited){--un-bg-opacity:1;background-color:rgba(138,173,244,var(--un-bg-opacity));}
+.visited\\\\:bg-flamingo:visited{--un-bg-opacity:1;background-color:rgba(240,198,198,var(--un-bg-opacity));}
+.border-pink\\\\/50{border-color:rgba(245,189,230,0.5);}
+.hover\\\\:border-pink:hover{--un-border-opacity:1;border-color:rgba(245,189,230,var(--un-border-opacity));}
+.text-text{--un-text-opacity:1;color:rgba(202,211,245,var(--un-text-opacity));}
+@media (prefers-color-scheme: dark){
+.dark\\\\:bg-base{--un-bg-opacity:1;background-color:rgba(36,39,58,var(--un-bg-opacity));}
+.dark\\\\:text-text{--un-text-opacity:1;color:rgba(202,211,245,var(--un-text-opacity));}
+}
+@media (prefers-color-scheme: light){
+.light\\\\:bg-base{--un-bg-opacity:1;background-color:rgba(36,39,58,var(--un-bg-opacity));}
+}"
+`;
+
+exports[`presetMini without setting variant 1`] = `
+"/* layer: default */
+.disabled\\\\:bg-macchiato-red\\\\/25:disabled{background-color:rgba(237,135,150,0.25);}
+.not-disabled\\\\:bg-macchiato-red:not(:disabled){--un-bg-opacity:1;background-color:rgba(237,135,150,var(--un-bg-opacity));}
+.not-visited\\\\:bg-mocha-blue:not(:visited){--un-bg-opacity:1;background-color:rgba(137,180,250,var(--un-bg-opacity));}
+.visited\\\\:bg-mocha-flamingo:visited{--un-bg-opacity:1;background-color:rgba(242,205,205,var(--un-bg-opacity));}
+.border-frappe-pink\\\\/50{border-color:rgba(244,184,228,0.5);}
+.hover\\\\:border-frappe-pink:hover{--un-border-opacity:1;border-color:rgba(244,184,228,var(--un-border-opacity));}
+.text-latte-text{--un-text-opacity:1;color:rgba(76,79,105,var(--un-text-opacity));}
+@media (prefers-color-scheme: dark){
+.dark\\\\:bg-mocha-base{--un-bg-opacity:1;background-color:rgba(30,30,46,var(--un-bg-opacity));}
+.dark\\\\:text-mocha-text{--un-text-opacity:1;color:rgba(205,214,244,var(--un-text-opacity));}
+}
+@media (prefers-color-scheme: light){
+.light\\\\:bg-latte-base{--un-bg-opacity:1;background-color:rgba(239,241,245,var(--un-bg-opacity));}
+}"
+`;
