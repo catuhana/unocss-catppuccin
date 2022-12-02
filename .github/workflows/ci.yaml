@@ -27,7 +27,7 @@ jobs:
       - name: Install packages
         run: pnpm i
 
-      - name: Build
+      - name: Build package
         run: pnpm build
 
   lint:
@@ -74,6 +74,9 @@ jobs:
 
       - name: Install packages
         run: pnpm i
+
+      - name: Build package
+        run: pnpm build
 
       - name: Run tests
         run: pnpm test
