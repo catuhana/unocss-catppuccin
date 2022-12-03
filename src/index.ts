@@ -6,26 +6,27 @@ import {
 import type { ExtenderOptions } from './types';
 
 export const extendCatppuccin = (options?: ExtenderOptions) => {
-  const variant = options?.variant;
+  const variantOption = options?.variant;
 
-  if (variant && ctpVariants[variant]) {
+  if (variantOption && ctpVariants[variantOption]) {
     const colorsExtendedObject = {};
     Object.keys(ctpLabels).forEach(
-      (label) => (colorsExtendedObject[label] = ctpLabels[label][variant].hex)
+      (label) =>
+        (colorsExtendedObject[label] = ctpLabels[label][variantOption].hex)
     );
 
     return colorsExtendedObject;
   } else {
     const colorsExtendedObject = {};
-    for (const variant of Object.keys(ctpVariants)) {
-      colorsExtendedObject[variant] = {};
+    Object.keys(ctpVariants).forEach((variant) =>
+      Object.keys(ctpLabels).forEach((label) => {
+        const key = `${variant}${
+          label.charAt(0).toUpperCase() + label.slice(1)
+        }`;
 
-      Object.keys(ctpLabels).forEach(
-        (label) =>
-          (colorsExtendedObject[variant][label] =
-            ctpVariants[variant][label].hex)
-      );
-    }
+        colorsExtendedObject[key] = ctpVariants[variant][label].hex;
+      })
+    );
 
     return colorsExtendedObject;
   }
