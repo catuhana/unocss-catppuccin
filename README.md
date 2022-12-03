@@ -6,9 +6,9 @@
 </h3>
 
 <p align="center">
-	<a href="https://github.com/tuhanayim/unocss-preset-catppuccin-colors/stargazers"><img src="https://img.shields.io/github/stars/tuhanayim/unocss-preset-catppuccin-colors?colorA=363a4f&colorB=b7bdf8&style=for-the-badge"></a>
-	<a href="https://github.com/tuhanayim/unocss-preset-catppuccin-colors/issues"><img src="https://img.shields.io/github/issues/tuhanayim/unocss-preset-catppuccin-colors?colorA=363a4f&colorB=f5a97f&style=for-the-badge"></a>
-	<a href="https://github.com/tuhanayim/unocss-preset-catppuccin-colors/contributors"><img src="https://img.shields.io/github/contributors/tuhanayim/unocss-preset-catppuccin-colors?colorA=363a4f&colorB=a6da95&style=for-the-badge"></a>
+	<a href="https://github.com/tuhanayim/unocss-catppuccin-colors/stargazers"><img src="https://img.shields.io/github/stars/tuhanayim/unocss-catppuccin-colors?colorA=363a4f&colorB=b7bdf8&style=for-the-badge"></a>
+	<a href="https://github.com/tuhanayim/unocss-catppuccin-colors/issues"><img src="https://img.shields.io/github/issues/tuhanayim/unocss-catppuccin-colors?colorA=363a4f&colorB=f5a97f&style=for-the-badge"></a>
+	<a href="https://github.com/tuhanayim/unocss-catppuccin-colors/contributors"><img src="https://img.shields.io/github/contributors/tuhanayim/unocss-catppuccin-colors?colorA=363a4f&colorB=a6da95&style=for-the-badge"></a>
 </p>
 
 <p align="center">
