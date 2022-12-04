@@ -1,6 +1,24 @@
 // Vitest Snapshot v1
 
-exports[`presetMini with default macchiato variant 1`] = `
+exports[`Catppuccin colours with theme extender using presetMini > and with custom prefix > without default variant 1`] = `
+"/* layer: default */
+.disabled\\\\:bg-ctp-macchiato-red\\\\/25:disabled{background-color:rgba(237,135,150,0.25);}
+.not-disabled\\\\:bg-ctp-macchiato-red:not(:disabled){--un-bg-opacity:1;background-color:rgba(237,135,150,var(--un-bg-opacity));}
+.not-visited\\\\:bg-ctp-mocha-blue:not(:visited){--un-bg-opacity:1;background-color:rgba(137,180,250,var(--un-bg-opacity));}
+.visited\\\\:bg-ctp-mocha-flamingo:visited{--un-bg-opacity:1;background-color:rgba(242,205,205,var(--un-bg-opacity));}
+.border-ctp-frappe-pink\\\\/50{border-color:rgba(244,184,228,0.5);}
+.hover\\\\:border-ctp-frappe-pink:hover{--un-border-opacity:1;border-color:rgba(244,184,228,var(--un-border-opacity));}
+.text-ctp-latte-text{--un-text-opacity:1;color:rgba(76,79,105,var(--un-text-opacity));}
+@media (prefers-color-scheme: dark){
+.dark\\\\:bg-ctp-mocha-base{--un-bg-opacity:1;background-color:rgba(30,30,46,var(--un-bg-opacity));}
+.dark\\\\:text-ctp-mocha-text{--un-text-opacity:1;color:rgba(205,214,244,var(--un-text-opacity));}
+}
+@media (prefers-color-scheme: light){
+.light\\\\:bg-ctp-latte-base{--un-bg-opacity:1;background-color:rgba(239,241,245,var(--un-bg-opacity));}
+}"
+`;
+
+exports[`Catppuccin colours with theme extender using presetMini > and with default macchiato variant 1`] = `
 "/* layer: default */
 .disabled\\\\:bg-red\\\\/25:disabled{background-color:rgba(237,135,150,0.25);}
 .not-disabled\\\\:bg-red:not(:disabled){--un-bg-opacity:1;background-color:rgba(237,135,150,var(--un-bg-opacity));}
@@ -18,7 +36,7 @@ exports[`presetMini with default macchiato variant 1`] = `
 }"
 `;
 
-exports[`presetMini without setting variant 1`] = `
+exports[`Catppuccin colours with theme extender using presetMini > and without default variant 1`] = `
 "/* layer: default */
 .disabled\\\\:bg-macchiato-red\\\\/25:disabled{background-color:rgba(237,135,150,0.25);}
 .not-disabled\\\\:bg-macchiato-red:not(:disabled){--un-bg-opacity:1;background-color:rgba(237,135,150,var(--un-bg-opacity));}
