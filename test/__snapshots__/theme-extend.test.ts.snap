@@ -1,5 +1,23 @@
 // Vitest Snapshot v1
 
+exports[`Catppuccin colours with theme extender using presetMini > and with custom prefix > with default macchiato variant 1`] = `
+"/* layer: default */
+.disabled\\\\:bg-ctp-red\\\\/25:disabled{background-color:rgba(237,135,150,0.25);}
+.not-disabled\\\\:bg-ctp-red:not(:disabled){--un-bg-opacity:1;background-color:rgba(237,135,150,var(--un-bg-opacity));}
+.not-visited\\\\:bg-ctp-blue:not(:visited){--un-bg-opacity:1;background-color:rgba(138,173,244,var(--un-bg-opacity));}
+.visited\\\\:bg-ctp-flamingo:visited{--un-bg-opacity:1;background-color:rgba(240,198,198,var(--un-bg-opacity));}
+.border-ctp-pink\\\\/50{border-color:rgba(245,189,230,0.5);}
+.hover\\\\:border-ctp-pink:hover{--un-border-opacity:1;border-color:rgba(245,189,230,var(--un-border-opacity));}
+.text-ctp-text{--un-text-opacity:1;color:rgba(202,211,245,var(--un-text-opacity));}
+@media (prefers-color-scheme: dark){
+.dark\\\\:bg-ctp-base{--un-bg-opacity:1;background-color:rgba(36,39,58,var(--un-bg-opacity));}
+.dark\\\\:text-ctp-text{--un-text-opacity:1;color:rgba(202,211,245,var(--un-text-opacity));}
+}
+@media (prefers-color-scheme: light){
+.light\\\\:bg-ctp-base{--un-bg-opacity:1;background-color:rgba(36,39,58,var(--un-bg-opacity));}
+}"
+`;
+
 exports[`Catppuccin colours with theme extender using presetMini > and with custom prefix > without default variant 1`] = `
 "/* layer: default */
 .disabled\\\\:bg-ctp-macchiato-red\\\\/25:disabled{background-color:rgba(237,135,150,0.25);}

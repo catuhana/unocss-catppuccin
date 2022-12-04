@@ -138,5 +138,54 @@ describe('Catppuccin colours with theme extender using presetMini', () => {
       expect(generatedCSS).toMatchSnapshot();
       expect(blankCSS).toBe('');
     });
+
+    test('with default macchiato variant', async () => {
+      const uno = createGenerator({
+        presets: [
+          presetMini({
+            dark: 'media',
+          }),
+        ],
+        theme: {
+          colors: extendCatppuccin({
+            prefix: 'ctp',
+            variant: 'macchiato',
+          }),
+        },
+      });
+
+      const { css: generatedCSS } = await uno.generate(
+          [
+            'text-ctp-text',
+            'dark:text-ctp-text',
+
+            'light:bg-ctp-base',
+            'dark:bg-ctp-base',
+
+            'border-ctp-pink/50',
+            'hover:border-ctp-pink',
+
+            'not-disabled:bg-ctp-red',
+            'disabled:bg-ctp-red/25',
+
+            'not-visited:bg-ctp-blue',
+            'visited:bg-ctp-flamingo',
+          ],
+          { preflights: false }
+        ),
+        { css: blankCSS } = await uno.generate(
+          [
+            'text-ctp-latte-text',
+            'dark:text-ctp-mocha-text',
+
+            'light:bg-ctp-latte-base',
+            'dark:bg-ctp-mocha-base',
+          ],
+          { preflights: false }
+        );
+
+      expect(generatedCSS).toMatchSnapshot();
+      expect(blankCSS).toBe('');
+    });
   });
 });
