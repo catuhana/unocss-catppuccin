@@ -6,9 +6,9 @@
 </h3>
 
 <p align="center">
-	<a href="https://github.com/tuhanayim/unocss-catppuccin-colors/stargazers"><img src="https://img.shields.io/github/stars/tuhanayim/unocss-catppuccin-colors?colorA=363a4f&colorB=b7bdf8&style=for-the-badge"></a>
-	<a href="https://github.com/tuhanayim/unocss-catppuccin-colors/issues"><img src="https://img.shields.io/github/issues/tuhanayim/unocss-catppuccin-colors?colorA=363a4f&colorB=f5a97f&style=for-the-badge"></a>
-	<a href="https://github.com/tuhanayim/unocss-catppuccin-colors/contributors"><img src="https://img.shields.io/github/contributors/tuhanayim/unocss-catppuccin-colors?colorA=363a4f&colorB=a6da95&style=for-the-badge"></a>
+	<a href="https://github.com/tuhanayim/unocss-catppuccin-colours/stargazers"><img src="https://img.shields.io/github/stars/tuhanayim/unocss-catppuccin-colours?colorA=363a4f&colorB=b7bdf8&style=for-the-badge"></a>
+	<a href="https://github.com/tuhanayim/unocss-catppuccin-colours/issues"><img src="https://img.shields.io/github/issues/tuhanayim/unocss-catppuccin-colours?colorA=363a4f&colorB=f5a97f&style=for-the-badge"></a>
+	<a href="https://github.com/tuhanayim/unocss-catppuccin-colours/contributors"><img src="https://img.shields.io/github/contributors/tuhanayim/unocss-catppuccin-colours?colorA=363a4f&colorB=a6da95&style=for-the-badge"></a>
 </p>
 
 <p align="center">
@@ -21,7 +21,28 @@ _Todo_
 
 ## Usage
 
-_Todo_
+1. Install package as development
+
+```sh
+npm/pnpm install unocss-catppuccin-colours -D
+yarn add unocss-catppuccin-colours -D
+```
+
+2. Add it to UnoCSS configuration's `theme.extend.colors` object.
+
+```ts
+import { presetMini, defineConfig } from 'unocss';
+import { extendCatppuccin } from 'unocss-catppuccin-colours';
+
+defineConfig({
+  presets: [presetMini()],
+  theme: {
+    colors: extendCatppuccin(/* options */),
+  },
+});
+```
+
+And you're good to go!
 
 ## 💝 Thanks to
 
