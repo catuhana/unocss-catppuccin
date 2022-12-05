@@ -11,7 +11,7 @@ export interface ExtenderOptions {
    * <p class='border-ctp-latte-base'>Hello world!</p>
    * ```
    *
-   * @defaultValue `''`
+   * @defaultValue *none*
    */
   prefix?: string;
   /**

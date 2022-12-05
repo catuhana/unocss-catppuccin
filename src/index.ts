@@ -1,1 +1,1 @@
-export { extendCatppuccin } from './themeExtend';
+export { extendCatppuccin } from './extendCatppuccin';

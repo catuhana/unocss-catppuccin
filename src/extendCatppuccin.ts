@@ -2,8 +2,8 @@ import {
   variants as ctpVariants,
   labels as ctpLabels,
 } from '@catppuccin/palette';
-
 import { capitalizeChar } from './utils';
+
 import type { ExtenderOptions } from './types';
 
 export const extendCatppuccin = (options?: ExtenderOptions) => {
