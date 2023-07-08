@@ -43,6 +43,11 @@
     "unbuild": "^1.2.1",
     "unocss": "^0.53.5"
   },
+  "pnpm": {
+    "patchedDependencies": {
+      "@catppuccin/palette@0.1.8": "patches/@catppuccin__palette@0.1.8.patch"
+    }
+  },
   "packageManager": "pnpm@8.6.6",
   "engines": {
     "node": ">=14"

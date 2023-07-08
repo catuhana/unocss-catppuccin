@@ -4,10 +4,15 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  '@catppuccin/palette@0.1.8':
+    hash: 6po3vrgfudm4gbprleqfjjatbu
+    path: patches/@catppuccin__palette@0.1.8.patch
+
 dependencies:
   '@catppuccin/palette':
     specifier: ^0.1.8
-    version: 0.1.8
+    version: 0.1.8(patch_hash=6po3vrgfudm4gbprleqfjjatbu)
 
 devDependencies:
   prettier:
@@ -244,9 +249,10 @@ packages:
       to-fast-properties: 2.0.0
     dev: true
 
-  /@catppuccin/palette@0.1.8:
+  /@catppuccin/palette@0.1.8(patch_hash=6po3vrgfudm4gbprleqfjjatbu):
     resolution: {integrity: sha512-41quIj08vgPMy8kQxQb0+VqxuTlo2xfNYGSgOuiJXNojWnGuhLxBc61jgu2jiZYGNXVqgVNGWwmWEUf6s32jiA==}
     dev: false
+    patched: true
 
   /@esbuild/android-arm64@0.17.19:
     resolution: {integrity: sha512-KBMWvEZooR7+kzY0BtbTQn0OAYY7CsiydT63pVEaPtVYF0hXbUaOyZog37DKxK7NF3XacBJOpYT4adIJh+avxA==}

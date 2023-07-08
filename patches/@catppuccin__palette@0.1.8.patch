@@ -1,0 +1,17 @@
+diff --git a/package.json b/package.json
+index 5f2d86eb4a4e4a209b2f53420ecc5b5a2a65533e..9409b2787131adda2a9973f9e6cef22b1f61fb33 100644
+--- a/package.json
++++ b/package.json
+@@ -7,7 +7,8 @@
+   "exports": {
+     ".": {
+       "require": "./dist/index.cjs",
+-      "import": "./dist/index.mjs"
++      "import": "./dist/index.mjs",
++      "types": "./index.d.ts"
+     },
+     "./style": "./css/catppuccin.css",
+     "./scss/*": "./scss/*",
+diff --git a/scss/README.md b/scss/README.md
+deleted file mode 100644
+index 94e677120f82a1259f523e976d909de9fc764c25..0000000000000000000000000000000000000000
