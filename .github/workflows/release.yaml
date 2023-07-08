@@ -1,0 +1,48 @@
+name: Release
+
+on:
+  push:
+    tags: v*
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+      id-token: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: latest
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
+
+      - name: Install packages
+        run: pnpm i
+
+      - name: Generate release notes
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const tag = context.ref.split('/').at(-1);
+            github.rest.repos.createRelease({
+              name: `Release ${tag}`,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              tag_name: tag,
+              generate_release_notes: true
+            })
+
+      - name: Publish to NPM
+        run: npm publish --access public --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
