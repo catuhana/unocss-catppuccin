@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "streetsidesoftware.code-spell-checker",
+    "streetsidesoftware.code-spell-checker-british-english",
+    "esbenp.prettier-vscode",
+    "foxundermoon.shell-format",
+    "gruntfuggly.todo-tree",
+    "zixuanchen.vitest-explorer"
+  ]
+}
