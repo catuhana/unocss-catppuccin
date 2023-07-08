@@ -1,0 +1,50 @@
+{
+  "name": "unocss-catppuccin-colours",
+  "author": "tuhana <npm@tuhana.me> (https://tuhana.me)",
+  "version": "0.2.0",
+  "license": "Apache-2.0",
+  "repository": "git+https://github.com/tuhanayim/unocss-catppuccin-colours",
+  "description": "🌸 Soothing pastel theme for UnoCSS!",
+  "keywords": [
+    "unocss",
+    "theme",
+    "catppuccin",
+    "colors",
+    "colours",
+    "pastel"
+  ],
+  "type": "module",
+  "module": "dist/index.mjs",
+  "main": "dist/index.cjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "build": "unbuild",
+    "stub": "unbuild --stub",
+    "lint:prettier": "prettier -c .",
+    "format:prettier": "prettier --write .",
+    "prepack": "pnpm build"
+  },
+  "dependencies": {
+    "@catppuccin/palette": "^0.1.8"
+  },
+  "devDependencies": {
+    "prettier": "^3.0.0",
+    "typescript": "^5.1.6",
+    "unbuild": "^1.2.1",
+    "unocss": "^0.53.5"
+  },
+  "packageManager": "pnpm@8.6.6",
+  "engines": {
+    "node": ">=14"
+  }
+}
