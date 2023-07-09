@@ -2,6 +2,7 @@ import {
   variants as catppuccinVariants,
   labels as catppuccinLabels,
 } from '@catppuccin/palette';
+
 import type { Preset } from 'unocss';
 import type {
   CatppuccinLabels,
@@ -9,9 +10,7 @@ import type {
   ExtenderOptions,
 } from './types.js';
 
-export const extendCatppuccin = <T extends keyof typeof catppuccinVariants>(
-  options?: ExtenderOptions<T>
-): Preset => {
+export const extendCatppuccin = (options?: ExtenderOptions): Preset => {
   const prefix = options?.prefix;
   const defaultVariant = options?.defaultVariant;
 

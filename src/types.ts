@@ -7,8 +7,7 @@ import type { PresetOptions } from 'unocss';
 export type CatppuccinVariants = keyof typeof catppuccinVariants;
 export type CatppuccinLabels = keyof typeof catppuccinLabels;
 
-export interface ExtenderOptions<T extends CatppuccinVariants>
-  extends PresetOptions {
+export interface ExtenderOptions extends PresetOptions {
   prefix?: string;
-  defaultVariant?: T;
+  defaultVariant?: CatppuccinVariants;
 }
