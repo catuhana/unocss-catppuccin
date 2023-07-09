@@ -3,7 +3,7 @@ import {
   labels as catppuccinLabels,
 } from '@catppuccin/palette';
 
-import type { Preset } from 'unocss';
+import type { Preset } from '@unocss/core';
 import type {
   CatppuccinLabels,
   CatppuccinVariants,
