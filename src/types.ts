@@ -12,8 +12,3 @@ export interface ExtenderOptions<T extends CatppuccinVariants>
   prefix?: string;
   defaultVariant?: T;
 }
-
-export type ThemeObject<T extends CatppuccinVariants | CatppuccinLabels> =
-  T extends CatppuccinVariants
-    ? Record<CatppuccinVariants, { [key in CatppuccinLabels]: string }>
-    : Record<CatppuccinLabels, string>;
