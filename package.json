@@ -35,18 +35,13 @@
     "prepack": "pnpm build"
   },
   "dependencies": {
-    "@catppuccin/palette": "^0.1.8"
+    "@catppuccin/palette": "^0.2.0"
   },
   "devDependencies": {
     "@unocss/core": "^0.53.5",
     "prettier": "^3.0.0",
     "typescript": "^5.1.6",
     "unbuild": "^1.2.1"
-  },
-  "pnpm": {
-    "patchedDependencies": {
-      "@catppuccin/palette@0.1.8": "patches/@catppuccin__palette@0.1.8.patch"
-    }
   },
   "packageManager": "pnpm@8.6.6",
   "engines": {
