@@ -13,9 +13,10 @@ import type {
 /**
  * Extend theme to UnoCSS by using `extendTheme` function.
  */
-export const extendCatppuccin = (options?: ExtenderOptions): Preset => {
-  const prefix = options?.prefix;
-  const defaultVariant = options?.defaultVariant;
+export const extendCatppuccin = (
+  options: ExtenderOptions = { prefix: 'ctp' }
+): Preset => {
+  const { prefix, defaultVariant } = options;
 
   return {
     name: 'unocss-catppuccin-colours',
