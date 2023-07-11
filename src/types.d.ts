@@ -18,26 +18,32 @@ export interface ExtenderOptions extends PresetOptions {
    * <p class='border-ctp-latte-base'>Hello world!</p>
    * ```
    *
-   * @defaultValue undefined
+   * @default 'ctp'
    */
   prefix?: string;
   /**
    * Default variant for using Catppuccin colours
    * directly with according labels.
    *
-   * Note: If the desired colour already exists in the current
-   * preset, the Catppuccin colour will be prefixed with `ctp`.
+   * Note: If {@link ExtenderOptions.prefix} is set to `undefined`,
+   * and the desired colour already exists in the current preset,
+   * the Catppuccin colour will be prefixed with `ctp`.
    *
    * @example
    * ```html
-   * <p class='text-flamingo'>Hello world!</p>
+   * <!-- Default prefix is `ctp` -->
+   * <p class='text-ctp-flamingo'>Hello world!</p>
+   * <!-- Let's make it `meow` -->
+   * <p class='text-meow-flamingo'>Hello world!</p>
+   *
+   * <!-- Lets make it `undefined` -->
    * <!-- This will use current preset's colour! -->
    * <p class='bg-red'>Hello world!</p>
    * <!-- To use Catppuccin's colour, add the `ctp` prefix  -->
    * <p class='bg-ctp-red'>Hello world!</p>
    * ```
    *
-   * @defaultValue undefined
+   * @default undefined
    */
   defaultVariant?: CatppuccinVariants;
 }

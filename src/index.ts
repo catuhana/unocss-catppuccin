@@ -17,7 +17,7 @@ export const extendCatppuccin = (options: ExtenderOptions = {}): Preset => {
   const { prefix = 'ctp', defaultVariant } = options;
 
   return {
-    name: 'unocss-catppuccin-colours',
+    name: 'unocss-catppuccin',
     extendTheme: (theme: any) => {
       theme['colors'] ??= {};
 
