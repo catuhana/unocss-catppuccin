@@ -13,10 +13,8 @@ import type {
 /**
  * Extend theme to UnoCSS by using `extendTheme` function.
  */
-export const extendCatppuccin = (
-  options: ExtenderOptions = { prefix: 'ctp' }
-): Preset => {
-  const { prefix, defaultVariant } = options;
+export const extendCatppuccin = (options: ExtenderOptions = {}): Preset => {
+  const { prefix = 'ctp', defaultVariant } = options;
 
   return {
     name: 'unocss-catppuccin-colours',
@@ -26,44 +24,49 @@ export const extendCatppuccin = (
       if (defaultVariant && catppuccinVariants[defaultVariant]) {
         type ThemeColours = { [label in CatppuccinLabels]: string };
 
-        const [prefixedColours, nonPrefixedColours] = Object.entries(
-          catppuccinLabels
-        ).reduce(
-          (acc, [label, colour]) => {
-            if (theme['colors']?.[label]) {
-              acc[0][label as CatppuccinLabels] = colour[defaultVariant].hex;
-            } else {
-              acc[1][label as CatppuccinLabels] = colour[defaultVariant].hex;
-            }
-            return acc;
-          },
-          [{}, {}] as [ThemeColours & { ctp?: ThemeColours }, ThemeColours]
-        );
+        const catppuccinLabelEntries = Object.entries(catppuccinLabels);
 
         if (prefix)
-          theme['colors'][prefix ?? 'ctp'] = {
-            ...prefixedColours,
-            ...nonPrefixedColours,
-          };
+          theme['colors'][prefix] = catppuccinLabelEntries.reduce(
+            (acc, [label, colour]) => {
+              acc[label as CatppuccinLabels] = colour[defaultVariant].hex;
+              return acc;
+            },
+            {} as ThemeColours
+          );
         else {
-          if (Object.keys(prefixedColours).length)
-            theme['colors']['ctp'] = prefixedColours;
+          theme['colors'] = catppuccinLabelEntries.reduce(
+            (acc, [label, colour]) => {
+              if (theme['colors']?.[label]) {
+                acc['ctp'] ??= {} as ThemeColours;
+                acc['ctp'][label as CatppuccinLabels] =
+                  colour[defaultVariant].hex;
+              } else
+                acc[label as CatppuccinLabels] = colour[defaultVariant].hex;
 
-          Object.assign(theme['colors'], nonPrefixedColours);
+              return acc;
+            },
+            {} as ThemeColours & { ctp?: ThemeColours }
+          );
         }
       } else {
         const target = prefix
           ? (theme['colors'][prefix] ??= {})
           : theme['colors'];
 
-        for (const [variant, colours] of Object.entries(catppuccinVariants)) {
-          target[variant as CatppuccinVariants] = {};
-
-          for (const [label, colour] of Object.entries(colours)) {
-            target[variant as CatppuccinVariants][label] = colour.hex;
-          }
-        }
+        Object.entries(catppuccinVariants).reduce((acc, [variant, colours]) => {
+          acc[variant as CatppuccinVariants] = Object.entries(colours).reduce(
+            (variantAcc, [label, colour]) => {
+              variantAcc[label as CatppuccinLabels] = colour.hex;
+              return variantAcc;
+            },
+            {} as { [label in CatppuccinLabels]: string }
+          );
+          return acc as {};
+        }, target);
       }
+
+      console.log(theme.colors);
     },
   };
 };
