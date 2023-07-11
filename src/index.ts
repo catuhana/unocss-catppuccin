@@ -10,6 +10,9 @@ import type {
   ExtenderOptions,
 } from './types.js';
 
+/**
+ * Extend theme to UnoCSS by using `extendTheme` function.
+ */
 export const extendCatppuccin = (options?: ExtenderOptions): Preset => {
   const prefix = options?.prefix;
   const defaultVariant = options?.defaultVariant;
