@@ -19,11 +19,11 @@ export const extendCatppuccin = (options: ExtenderOptions = {}): Preset => {
   return {
     name: 'unocss-catppuccin',
     extendTheme: (theme: any) => {
+      type ThemeColours = { [label in CatppuccinLabels]: string };
+
       theme['colors'] ??= {};
 
       if (defaultVariant && catppuccinVariants[defaultVariant]) {
-        type ThemeColours = { [label in CatppuccinLabels]: string };
-
         const catppuccinLabelEntries = Object.entries(catppuccinLabels);
 
         if (prefix)
@@ -60,7 +60,7 @@ export const extendCatppuccin = (options: ExtenderOptions = {}): Preset => {
               variantAcc[label as CatppuccinLabels] = colour.hex;
               return variantAcc;
             },
-            {} as { [label in CatppuccinLabels]: string }
+            {} as ThemeColours
           );
           return acc as {};
         }, target);
