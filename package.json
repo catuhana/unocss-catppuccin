@@ -1,5 +1,5 @@
 {
-  "name": "unocss-catppuccin-colours",
+  "name": "unocss-catppuccin",
   "author": "tuhana <npm@tuhana.me> (https://tuhana.me)",
   "version": "0.2.0",
   "license": "Apache-2.0",
@@ -11,7 +11,8 @@
     "catppuccin",
     "colors",
     "colours",
-    "pastel"
+    "pastel",
+    "soothing"
   ],
   "type": "module",
   "module": "dist/index.mjs",
