@@ -65,8 +65,6 @@ export const extendCatppuccin = (options: ExtenderOptions = {}): Preset => {
           return acc as {};
         }, target);
       }
-
-      console.log(theme.colors);
     },
   };
 };
