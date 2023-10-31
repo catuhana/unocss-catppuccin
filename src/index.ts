@@ -8,6 +8,7 @@ import type {
   CatppuccinLabels,
   CatppuccinVariants,
   ExtenderOptions,
+  ThemeColours,
 } from './types.ts';
 
 /**
@@ -19,8 +20,6 @@ export const extendCatppuccin = (options: ExtenderOptions = {}): Preset => {
   return {
     name: 'unocss-catppuccin',
     extendTheme: (theme: any) => {
-      type ThemeColours = { [label in CatppuccinLabels]: string };
-
       theme['colors'] ??= {};
 
       if (defaultVariant && catppuccinVariants[defaultVariant]) {

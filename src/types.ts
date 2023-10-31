@@ -6,6 +6,7 @@ import type { PresetOptions } from '@unocss/core';
 
 export type CatppuccinVariants = keyof typeof catppuccinVariants;
 export type CatppuccinLabels = keyof typeof catppuccinLabels;
+export type ThemeColours = { [label in CatppuccinLabels]: string };
 
 export interface ExtenderOptions extends PresetOptions {
   /**
