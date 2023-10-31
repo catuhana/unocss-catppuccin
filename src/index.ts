@@ -8,7 +8,7 @@ import type {
   CatppuccinLabels,
   CatppuccinVariants,
   ExtenderOptions,
-} from './types.js';
+} from './types.ts';
 
 /**
  * Extend theme to UnoCSS by using `extendTheme` function.
