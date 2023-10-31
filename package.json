@@ -39,9 +39,9 @@
     "@catppuccin/palette": "^0.2.0"
   },
   "devDependencies": {
-    "@unocss/core": "^0.53.5",
-    "prettier": "^3.0.0",
-    "typescript": "^5.1.6",
+    "@unocss/core": "^0.57.1",
+    "prettier": "^3.0.3",
+    "typescript": "^5.2.2",
     "unbuild": "^1.2.1"
   },
   "packageManager": "pnpm@8.6.7",
