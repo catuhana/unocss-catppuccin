@@ -30,7 +30,7 @@ jobs:
         run: pnpm i
 
       - name: Generate release notes
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         with:
           script: |
             const tag = context.ref.split('/').at(-1);
