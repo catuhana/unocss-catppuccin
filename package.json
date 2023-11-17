@@ -37,8 +37,8 @@
     "@catppuccin/palette": "^0.2.0"
   },
   "devDependencies": {
-    "@unocss/core": "^0.57.1",
-    "prettier": "^3.0.3",
+    "@unocss/core": "^0.57.5",
+    "prettier": "^3.1.0",
     "typescript": "^5.2.2",
     "unbuild": "^2.0.0"
   },
