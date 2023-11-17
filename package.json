@@ -2,7 +2,7 @@
   "name": "unocss-catppuccin",
   "author": "tuhana <npm@tuhana.me> (https://tuhana.me)",
   "version": "0.2.1",
-  "license": "Apache-2.0",
+  "license": "BSD-3-Clause",
   "repository": "git+https://github.com/tuhanayim/unocss-catppuccin",
   "description": "🌸 Soothing pastel theme preset for UnoCSS!",
   "keywords": [
