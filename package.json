@@ -5,7 +5,7 @@
   "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tuhanayim/unocss-catppuccin.git"
+    "url": "git+https://github.com/catuhana/unocss-catppuccin.git"
   },
   "description": "🌸 Soothing pastel theme preset for UnoCSS!",
   "keywords": [

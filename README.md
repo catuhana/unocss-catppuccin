@@ -4,9 +4,9 @@
 
 🌸 Soothing pastel theme preset for UnoCSS!
 
-[![CI Status](https://img.shields.io/github/actions/workflow/status/tuhanayim/unocss-catppuccin/ci.yaml?style=flat-square&logo=github-actions&label=CI&labelColor=%23eff1f5&color=%2340a02b)](https://github.com/tuhanayim/unocss-catppuccin/actions/workflows/ci.yaml)
+[![CI Status](https://img.shields.io/github/actions/workflow/status/catuhana/unocss-catppuccin/ci.yaml?style=flat-square&logo=github-actions&label=CI&labelColor=%23eff1f5&color=%2340a02b)](https://github.com/catuhana/unocss-catppuccin/actions/workflows/ci.yaml)
 [![npm Version](https://img.shields.io/npm/v/unocss-catppuccin?style=flat-square&logo=npm&labelColor=%23eff1f5&color=%2340a02b)](https://npmjs.com/package/unocss-catppuccin)
-[![GitHub Stars](https://img.shields.io/github/stars/tuhanayim/unocss-catppuccin?style=flat-square&labelColor=%23eff1f5&color=%2340a02b)](https://github.com/tuhanayim/unocss-catppuccin/stargazers)
+[![GitHub Stars](https://img.shields.io/github/stars/catuhana/unocss-catppuccin?style=flat-square&labelColor=%23eff1f5&color=%2340a02b)](https://github.com/catuhana/unocss-catppuccin/stargazers)
 
 </center>
 
