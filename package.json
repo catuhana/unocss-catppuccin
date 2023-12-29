@@ -37,7 +37,7 @@
     "prepack": "pnpm build"
   },
   "dependencies": {
-    "@catppuccin/palette": "^0.2.0"
+    "@catppuccin/palette": "^1.0.0"
   },
   "devDependencies": {
     "@unocss/core": "^0.58.0",
