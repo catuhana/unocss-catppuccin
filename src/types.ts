@@ -1,12 +1,5 @@
-import {
-  variants as catppuccinVariants,
-  labels as catppuccinLabels,
-} from '@catppuccin/palette';
+import { CatppuccinFlavors } from '@catppuccin/palette';
 import type { PresetOptions } from '@unocss/core';
-
-export type CatppuccinVariants = keyof typeof catppuccinVariants;
-export type CatppuccinLabels = keyof typeof catppuccinLabels;
-export type ThemeColours = { [label in CatppuccinLabels]: string };
 
 export interface ExtenderOptions extends PresetOptions {
   /**
@@ -23,11 +16,11 @@ export interface ExtenderOptions extends PresetOptions {
    */
   prefix?: string;
   /**
-   * Default variant for using Catppuccin colours
-   * directly with according labels.
+   * Default flavour for using Catppuccin colours
+   * directly with according colour labels.
    *
    * Note: If {@link ExtenderOptions.prefix} is set to `undefined`,
-   * and the desired colour already exists in the current preset,
+   * and the desired colour already exists on the current preset,
    * the Catppuccin colour will be prefixed with `ctp`.
    *
    * @example
@@ -37,7 +30,7 @@ export interface ExtenderOptions extends PresetOptions {
    * <!-- Let's make it `meow` -->
    * <p class='text-meow-flamingo'>Hello world!</p>
    *
-   * <!-- Lets make it `undefined` -->
+   * <!-- Lets make it a falsy value except `undefined`, for example `false` -->
    * <!-- This will use current preset's colour! -->
    * <p class='bg-red'>Hello world!</p>
    * <!-- To use Catppuccin's colour, add the `ctp` prefix  -->
@@ -46,5 +39,5 @@ export interface ExtenderOptions extends PresetOptions {
    *
    * @default undefined
    */
-  defaultVariant?: CatppuccinVariants;
+  defaultFlavour?: keyof CatppuccinFlavors;
 }
