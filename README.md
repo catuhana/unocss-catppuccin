@@ -10,6 +10,9 @@
 
 </center>
 
+> [!WARNING]
+> Since this preset is still being developed, there might be any kind of breaking changes.
+
 # Installation
 
 ```sh
