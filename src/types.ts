@@ -30,8 +30,9 @@ export interface ExtenderOptions extends PresetOptions {
    * <!-- Let's make it `meow` -->
    * <p class='text-meow-flamingo'>Hello world!</p>
    *
-   * <!-- Lets make it a falsy value except `undefined`, for example `false` -->
-   * <!-- This will use current preset's colour! -->
+   * <!-- Lets make it a falsy value except `undefined` -->
+   * <!-- This will use current preset's colour instead
+   *      to not override preset values. -->
    * <p class='bg-red'>Hello world!</p>
    * <!-- To use Catppuccin's colour, add the `ctp` prefix  -->
    * <p class='bg-ctp-red'>Hello world!</p>
@@ -40,4 +41,18 @@ export interface ExtenderOptions extends PresetOptions {
    * @default undefined
    */
   defaultFlavour?: keyof CatppuccinFlavors;
+  /**
+   * Generate dark and light shades for colours or not.
+   * 
+   * Note: This might affect the performance, so it's
+   * recommended to disable this if shades won't be used.
+   * 
+   * @example
+   * ```html
+   * <p class="bg-ctp-frappe-rose-300">Hello world!</p>
+   * ```
+   * 
+   * @default true
+   */
+  generateShades?: boolean
 }

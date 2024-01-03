@@ -37,9 +37,11 @@
     "prepack": "pnpm build"
   },
   "dependencies": {
-    "@catppuccin/palette": "^1.0.1"
+    "@catppuccin/palette": "^1.0.1",
+    "culori": "^3.3.0"
   },
   "devDependencies": {
+    "@types/culori": "^2.0.4",
     "@unocss/core": "^0.58.2",
     "prettier": "^3.1.1",
     "typescript": "^5.3.3",
@@ -48,5 +50,10 @@
   "packageManager": "pnpm@8.15.4",
   "engines": {
     "node": ">=16"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "culori@3.3.0": "patches/culori@3.3.0.patch"
+    }
   }
 }

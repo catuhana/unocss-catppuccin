@@ -4,12 +4,23 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  culori@3.3.0:
+    hash: 55dipatyr4d5ekgou3upegrhzi
+    path: patches/culori@3.3.0.patch
+
 dependencies:
   '@catppuccin/palette':
     specifier: ^1.0.1
     version: 1.1.0
+  culori:
+    specifier: ^3.3.0
+    version: 3.3.0(patch_hash=55dipatyr4d5ekgou3upegrhzi)
 
 devDependencies:
+  '@types/culori':
+    specifier: ^2.0.4
+    version: 2.0.4
   '@unocss/core':
     specifier: ^0.58.2
     version: 0.58.5
@@ -588,6 +599,10 @@ packages:
     engines: {node: '>=10.13.0'}
     dev: true
 
+  /@types/culori@2.0.4:
+    resolution: {integrity: sha512-GeLW8+KBRkwqIgeGrU8EnNbBE2D7waYbQHkx2xnI5exlzSGTMpjWtDaHzLWK1PTYmyJN9u6dPvMYumFevDe+VA==}
+    dev: true
+
   /@types/estree@1.0.5:
     resolution: {integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==}
     dev: true
@@ -657,7 +672,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001572
-      electron-to-chromium: 1.4.616
+      electron-to-chromium: 1.4.617
       node-releases: 2.0.14
       update-browserslist-db: 1.0.13(browserslist@4.22.2)
     dev: true
@@ -846,6 +861,12 @@ packages:
       css-tree: 2.2.1
     dev: true
 
+  /culori@3.3.0(patch_hash=55dipatyr4d5ekgou3upegrhzi):
+    resolution: {integrity: sha512-pHJg+jbuFsCjz9iclQBqyL3B2HLCBF71BwVNujUYEvCeQMvV97R59MNK3R2+jgJ3a1fcZgI9B3vYgz8lzr/BFQ==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    dev: false
+    patched: true
+
   /debug@4.3.4:
     resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}
     engines: {node: '>=6.0'}
@@ -901,8 +922,8 @@ packages:
       domhandler: 5.0.3
     dev: true
 
-  /electron-to-chromium@1.4.616:
-    resolution: {integrity: sha512-1n7zWYh8eS0L9Uy+GskE0lkBUNK83cXTVJI0pU3mGprFsbfSdAc15VTFbo+A+Bq4pwstmL30AVcEU3Fo463lNg==}
+  /electron-to-chromium@1.4.617:
+    resolution: {integrity: sha512-sYNE3QxcDS4ANW1k4S/wWYMXjCVcFSOX3Bg8jpuMFaXt/x8JCmp0R1Xe1ZXDX4WXnSRBf+GJ/3eGWicUuQq5cg==}
     dev: true
 
   /entities@4.5.0:
@@ -1603,7 +1624,7 @@ packages:
     dependencies:
       postcss: 8.4.32
       postcss-value-parser: 4.2.0
-      svgo: 3.1.0
+      svgo: 3.2.0
     dev: true
 
   /postcss-unique-selectors@6.0.1(postcss@8.4.32):
@@ -1729,8 +1750,8 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /svgo@3.1.0:
-    resolution: {integrity: sha512-R5SnNA89w1dYgNv570591F66v34b3eQShpIBcQtZtM5trJwm1VvxbIoMpRYY3ybTAutcKTLEmTsdnaknOHbiQA==}
+  /svgo@3.2.0:
+    resolution: {integrity: sha512-4PP6CMW/V7l/GmKRKzsLR8xxjdHTV4IMvhTnpuHwwBazSIlw5W/5SmPjN8Dwyt7lKbSJrRDgp4t9ph0HgChFBQ==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:

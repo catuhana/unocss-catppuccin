@@ -3,6 +3,8 @@ import {
   flavorEntries as flavourEntries,
 } from '@catppuccin/palette';
 
+import { generateShadePalette } from './shade.ts';
+
 import type { Preset } from '@unocss/core';
 import type { ExtenderOptions } from './types.ts';
 
@@ -10,7 +12,7 @@ import type { ExtenderOptions } from './types.ts';
  * Extend theme to UnoCSS by using `extendTheme` function.
  */
 export const extendCatppuccin = (options: ExtenderOptions = {}): Preset => {
-  const { prefix = 'ctp', defaultFlavour } = options;
+  const { prefix = 'ctp', defaultFlavour, generateShades = true } = options;
 
   return {
     name: 'unocss-catppuccin',
@@ -21,13 +23,25 @@ export const extendCatppuccin = (options: ExtenderOptions = {}): Preset => {
       if (defaultFlavour && flavours[defaultFlavour]) {
         for (let [colourName, colour] of flavours[defaultFlavour]
           .colorEntries) {
-          target[colourName] = colour.hex;
+          if (target[colourName]) continue;
+
+          if (generateShades) {
+            target[colourName] ??= generateShadePalette(colour);
+          } else {
+            target[colourName] = colour.hex;
+          }
         }
       } else {
         for (let [flavourName, flavour] of flavourEntries) {
-          target = target[flavourName] ??= {};
+          if (target[flavourName]) continue;
+
+          target[flavourName] ??= {};
           for (let [colourName, colour] of flavour.colorEntries) {
-            target[colourName] = colour.hex;
+            if (generateShades) {
+              target[flavourName][colourName] = generateShadePalette(colour);
+            } else {
+              target[flavourName][colourName] = colour.hex;
+            }
           }
         }
       }
