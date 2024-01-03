@@ -1,11 +1,4 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    ":dependencyDashboard",
-    ":label(dependencies)",
-    ":maintainLockFilesWeekly",
-    "schedule:daily",
-    "config:base",
-    "group:allNonMajor"
-  ]
+  "extends": ["config:base"]
 }
