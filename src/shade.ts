@@ -38,5 +38,7 @@ export const generateShadePalette = (colour: ColourFormat) => {
       ))
   );
 
+  resultObject['DEFAULT'] = colour.hex;
+
   return resultObject;
 };
