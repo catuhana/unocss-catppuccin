@@ -4,11 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-patchedDependencies:
-  culori@3.3.0:
-    hash: 55dipatyr4d5ekgou3upegrhzi
-    path: patches/culori@3.3.0.patch
-
 dependencies:
   '@catppuccin/palette':
     specifier: ^1.0.1
@@ -23,7 +18,10 @@ devDependencies:
     version: 2.0.4
   '@unocss/core':
     specifier: ^0.58.2
-    version: 0.58.5
+    version: 0.58.3
+  culori:
+    specifier: ^3.3.0
+    version: 3.3.0
   prettier:
     specifier: ^3.1.1
     version: 3.2.5
@@ -861,11 +859,10 @@ packages:
       css-tree: 2.2.1
     dev: true
 
-  /culori@3.3.0(patch_hash=55dipatyr4d5ekgou3upegrhzi):
+  /culori@3.3.0:
     resolution: {integrity: sha512-pHJg+jbuFsCjz9iclQBqyL3B2HLCBF71BwVNujUYEvCeQMvV97R59MNK3R2+jgJ3a1fcZgI9B3vYgz8lzr/BFQ==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
-    dev: false
-    patched: true
+    dev: true
 
   /debug@4.3.4:
     resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}

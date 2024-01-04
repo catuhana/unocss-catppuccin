@@ -1,8 +1,11 @@
-import { formatHex, interpolate } from 'culori/export';
+import { useMode, modeHsl, modeRgb, formatHex, interpolate } from 'culori/fn';
 
 import { SHADE_RANGE } from './constants.ts';
 
 import type { ColorFormat } from '@catppuccin/palette';
+
+useMode(modeHsl);
+useMode(modeRgb);
 
 export const generateShadePalette = (colour: ColorFormat) => {
   let resultObject = {} as Record<keyof typeof SHADE_RANGE | 'DEFAULT', string>;
