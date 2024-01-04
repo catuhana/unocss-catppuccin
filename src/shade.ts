@@ -2,12 +2,12 @@ import { useMode, modeHsl, modeRgb, formatHex, interpolate } from 'culori/fn';
 
 import { SHADE_RANGE } from './constants.ts';
 
-import type { ColorFormat } from '@catppuccin/palette';
+import type { ColorFormat as ColourFormat } from '@catppuccin/palette';
 
 useMode(modeHsl);
 useMode(modeRgb);
 
-export const generateShadePalette = (colour: ColorFormat) => {
+export const generateShadePalette = (colour: ColourFormat) => {
   let resultObject = {} as Record<keyof typeof SHADE_RANGE | 'DEFAULT', string>;
 
   const colourShade = mapLightnessToShadeRange(colour.hsl.l * 100);
