@@ -4,8 +4,8 @@ import type { ColorFormat as ColourFormat } from '@catppuccin/palette';
 
 const INTERPOLATION_MAP = {
   50: 0.85,
-  100: 0.6,
-  200: 0.5,
+  100: 0.7,
+  200: 0.55,
   300: 0.35,
   400: 0.25,
   500: 0.15,
