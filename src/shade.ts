@@ -1,53 +1,42 @@
-import { useMode, modeHsl, modeRgb, formatHex, interpolate } from 'culori/fn';
-
-import { SHADE_RANGE } from './constants.ts';
+import { useMode, modeLch, modeRgb, formatHex, interpolate } from 'culori/fn';
 
 import type { ColorFormat as ColourFormat } from '@catppuccin/palette';
 
-useMode(modeHsl);
+const INTERPOLATION_MAP = {
+  50: 0.85,
+  100: 0.6,
+  200: 0.5,
+  300: 0.35,
+  400: 0.25,
+  500: 0.15,
+  600: 0.2,
+  700: 0.3,
+  800: 0.45,
+  900: 0.55,
+  950: 0.7,
+} as const;
+
+useMode(modeLch);
 useMode(modeRgb);
 
 export const generateShadePalette = (colour: ColourFormat) => {
-  let resultObject = {} as Record<keyof typeof SHADE_RANGE | 'DEFAULT', string>;
+  const resultObject = {} as Record<
+    keyof typeof INTERPOLATION_MAP | 'DEFAULT',
+    string
+  >;
 
-  const colourShade = mapLightnessToShadeRange(colour.hsl.l * 100);
+  ([50, 100, 200, 300, 400, 500] as const).forEach((level) => {
+    resultObject[level] ??= formatHex(
+      interpolate([colour.hex, 'white'], 'lch')(INTERPOLATION_MAP[level])
+    );
+  });
 
-  const [lighten, darken] = SHADE_RANGE.reduce(
-    ([lighten, darken], shade) => {
-      if (shade < colourShade) {
-        return [[...lighten, shade], darken];
-      } else if (shade > colourShade) {
-        return [lighten, [...darken, shade]];
-      }
-      return [lighten, darken];
-    },
-    [[], []] as number[][]
+  ([600, 700, 800, 900, 950] as const).forEach(
+    (level) =>
+      (resultObject[level] = formatHex(
+        interpolate([colour.hex, 'black'], 'lch')(INTERPOLATION_MAP[level])
+      ))
   );
-
-  lighten.reverse().map((shade, i) => {
-    resultObject[shade] ??= formatHex(
-      interpolate(
-        [colour.hex, 'white'],
-        'hsl'
-      )((i + 1) / (SHADE_RANGE.length - 1))
-    );
-  });
-  darken.map((shade, i) => {
-    resultObject[shade] ??= formatHex(
-      interpolate(
-        [colour.hex, 'black'],
-        'hsl'
-      )((i + 1) / (SHADE_RANGE.length - 1))
-    );
-  });
-
-  resultObject['DEFAULT'] = resultObject[colourShade] = colour.hex;
 
   return resultObject;
 };
-
-function mapLightnessToShadeRange(lightness: number) {
-  return SHADE_RANGE[
-    Math.floor((100 - lightness) / (100 / SHADE_RANGE.length))
-  ];
-}
