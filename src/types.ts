@@ -43,16 +43,16 @@ export interface ExtenderOptions extends PresetOptions {
   defaultFlavour?: keyof CatppuccinFlavors;
   /**
    * Generate dark and light shades for colours or not.
-   * 
+   *
    * Note: This might affect the performance, so it's
    * recommended to disable this if shades won't be used.
-   * 
+   *
    * @example
    * ```html
    * <p class="bg-ctp-frappe-rose-300">Hello world!</p>
    * ```
-   * 
+   *
    * @default true
    */
-  generateShades?: boolean
+  generateShades?: boolean;
 }
