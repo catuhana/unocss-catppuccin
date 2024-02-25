@@ -7,7 +7,7 @@ settings:
 dependencies:
   '@catppuccin/palette':
     specifier: ^1.0.1
-    version: 1.0.1
+    version: 1.1.0
 
 devDependencies:
   '@unocss/core':
@@ -230,8 +230,8 @@ packages:
       to-fast-properties: 2.0.0
     dev: true
 
-  /@catppuccin/palette@1.0.1:
-    resolution: {integrity: sha512-aCVFn6j2HnN6M/yk4co67rF/EWrXhZO2qpJUJd6Xsz8t1BF6PbmftM8Gz3wFHPfUdTogU0dUiKs+YsW19hJ8mQ==}
+  /@catppuccin/palette@1.1.0:
+    resolution: {integrity: sha512-ef3q3/MfdKc2EmUWiLrBrBKLFMGbukC1mzJh+QPINP7ovmUQycImSRjf/LMD4ti9lcu9NrYv4++zeoO2Z5lPxQ==}
     dev: false
 
   /@esbuild/aix-ppc64@0.19.11:
