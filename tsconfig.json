@@ -1,13 +1,12 @@
 {
   "compilerOptions": {
-    "lib": ["ES2020", "DOM"],
-    "module": "Node16",
-    "target": "ES2020",
-    "moduleResolution": "node16",
+    "lib": ["ESNext", "DOM"],
+    "module": "NodeNext",
+    "target": "ESNext",
+    "moduleResolution": "NodeNext",
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true
+    "esModuleInterop": true
   }
 }
