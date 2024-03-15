@@ -1,36 +1,27 @@
-import {
-  flavors as flavours,
-  flavorEntries as flavourEntries,
-} from '@catppuccin/palette';
+import { extendTheme } from './extend.js';
 
 import type { Preset } from '@unocss/core';
-import type { ExtenderOptions } from './types.ts';
+
+import type { UnoCSSCatppuccinOptions } from './types.js';
 
 /**
  * Extend theme to UnoCSS by using `extendTheme` function.
  */
-export const extendCatppuccin = (options: ExtenderOptions = {}): Preset => {
-  const { prefix = 'ctp', defaultFlavour } = options;
-
-  return {
+export const presetCatppuccin = (
+  options: UnoCSSCatppuccinOptions = { mode: 'extend' }
+): Preset => {
+  const preset: Preset = {
     name: 'unocss-catppuccin',
-    extendTheme: (theme: any) => {
-      theme['colors'] ??= {};
-
-      let target = prefix ? (theme['colors'][prefix] ??= {}) : theme['colors'];
-      if (defaultFlavour && flavours[defaultFlavour]) {
-        for (let [colourName, colour] of flavours[defaultFlavour]
-          .colorEntries) {
-          target[colourName] = colour.hex;
-        }
-      } else {
-        for (let [flavourName, flavour] of flavourEntries) {
-          target = target[flavourName] ??= {};
-          for (let [colourName, colour] of flavour.colorEntries) {
-            target[colourName] = colour.hex;
-          }
-        }
-      }
-    },
   };
+
+  const { mode, prefix = 'ctp', defaultFlavour } = options;
+
+  if (mode === 'extend') {
+    preset.extendTheme = extendTheme({ prefix, defaultFlavour });
+  } else {
+    // TODO: Custom logging?
+    throw new Error(`Unsupported mode provided: \`${mode}\``);
+  }
+
+  return preset;
 };

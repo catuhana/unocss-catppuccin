@@ -1,7 +1,19 @@
 import { CatppuccinFlavors } from '@catppuccin/palette';
+
 import type { PresetOptions } from '@unocss/core';
 
-export interface ExtenderOptions extends PresetOptions {
+type Modes = 'extend';
+
+export interface UnoCSSCatppuccinOptions extends PresetOptions {
+  /**
+   * Mode for using Catppuccin colours.
+   *
+   * `extend` mode will create new colours for current preset by using `extendTheme` function from UnoCSS.
+   *
+   * @default 'extend'
+   */
+  mode: Modes;
+
   /**
    * Prefix for matching Catppuccin colours.
    *
@@ -15,6 +27,7 @@ export interface ExtenderOptions extends PresetOptions {
    * @default 'ctp'
    */
   prefix?: string;
+
   /**
    * Default flavour for using Catppuccin colours
    * directly with according colour labels.
@@ -41,3 +54,8 @@ export interface ExtenderOptions extends PresetOptions {
    */
   defaultFlavour?: keyof CatppuccinFlavors;
 }
+
+export type ExtendOptions = Pick<
+  UnoCSSCatppuccinOptions,
+  'prefix' | 'defaultFlavour'
+>;
