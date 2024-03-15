@@ -2,13 +2,29 @@ name: CI
 
 on:
   push:
+    paths:
+      - .github/workflows/ci.yaml
+      - src/**
+      - .prettierrc
+      - build.config.ts
+      - package.json
+      - pnpm-lock.yaml
+      - tsconfig.json
   pull_request:
     branches:
       - main
+    paths:
+      - .github/workflows/ci.yaml
+      - src/**
+      - .prettierrc
+      - build.config.ts
+      - package.json
+      - pnpm-lock.yaml
+      - tsconfig.json
 
 jobs:
   build_and_lint:
-    name: Build and lint
+    name: Build and Lint
     runs-on: ubuntu-latest
     strategy:
       matrix:
