@@ -1,10 +1,5 @@
 {
-  "editor.formatOnSave": true,
   "[typescript][markdown][json][jsonc][yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[ignore][properties]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format"
-  },
-  "cSpell.words": ["catppuccin", "colour", "colours", "unocss"]
+  }
 }
