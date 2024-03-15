@@ -2,7 +2,7 @@
   "name": "unocss-catppuccin",
   "author": "tuhana <npm@tuhana.me> (https://tuhana.me)",
   "version": "0.2.5",
-  "license": "BSD-3-Clause",
+  "license": "MPL-2.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/catuhana/unocss-catppuccin.git"
