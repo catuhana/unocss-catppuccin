@@ -14,16 +14,28 @@ export const extendTheme = (options: ExtendOptions = {}) => {
   const extendTheme = (theme: any) => {
     theme['colors'] ??= {};
 
-    let target = prefix ? (theme['colors'][prefix] ??= {}) : theme['colors'];
+    // Determine the target object where the colours will be added
+    const target = prefix ? (theme['colors'][prefix] ??= {}) : theme['colors'];
+
+    // If `defaultFlavour` is set, and if it exists:
     if (defaultFlavour && flavours[defaultFlavour]) {
+      // Iterate through the colours of the flavours and add them to the target
       for (let [colourName, colour] of flavours[defaultFlavour].colorEntries) {
         target[colourName] = colour.hex;
       }
-    } else {
+    }
+    // If `defaultFlavour` is not set, or if it doesn't exist:
+    else {
+      // Iterate through all the flavours,
       for (let [flavourName, flavour] of flavourEntries) {
+        // create an empty object for that flavour
+        //! We have to create a new variable to prevent
+        //! accidentally nesting flavours inside each other
         const newTarget = (target[flavourName] ??= {});
 
+        // Iterate through the colours of the flavour
         for (let [colourName, colour] of flavour.colorEntries) {
+          // and add them to the new target
           newTarget[colourName] = colour.hex;
         }
       }
