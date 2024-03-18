@@ -2,11 +2,16 @@ import { CatppuccinFlavors } from '@catppuccin/palette';
 
 import type { PresetOptions } from '@unocss/core';
 
-type Modes = 'extend';
+/**
+ * Which mode to use the preset with.
+ *
+ * `extend` mode will create new colours for current preset by using `extendTheme` function from UnoCSS.
+ */
+export type Modes = 'extend';
 
 export interface UnoCSSCatppuccinOptions extends PresetOptions {
   /**
-   * Mode for using Catppuccin colours.
+   * Which mode to use the preset with.
    *
    * `extend` mode will create new colours for current preset by using `extendTheme` function from UnoCSS.
    *
