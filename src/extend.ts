@@ -21,7 +21,12 @@ export const extendTheme = (options: ExtendOptions = {}) => {
     if (defaultFlavour && flavours[defaultFlavour]) {
       // Iterate through the colours of the flavours and add them to the target
       for (let [colourName, colour] of flavours[defaultFlavour].colorEntries) {
-        target[colourName] = colour.hex;
+        if (!prefix && target[colourName]) {
+          target['ctp'] ??= {};
+          target['ctp'][colourName] = colour.hex;
+        } else {
+          target[colourName] = colour.hex;
+        }
       }
     }
     // If `defaultFlavour` is not set, or if it doesn't exist:
