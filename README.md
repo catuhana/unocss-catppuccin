@@ -10,9 +10,6 @@
 
 </center>
 
-> [!WARNING]
-> Since this preset is still being developed, there might be any kind of breaking changes.
-
 # Installation
 
 ```sh
@@ -25,22 +22,22 @@ yarn add unocss-catppuccin -D
 
 # Usage
 
-To use Catppuccin, simply include the `extendCatppuccin` preset in your UnoCSS configuration.
+To use Catppuccin, simply include the `presetCatppuccin` preset in your UnoCSS configuration.
 
 ```ts
 // unocss.config.ts
 import { defineConfig, presetUno } from 'unocss';
-import { extendCatppuccin } from 'unocss-catppuccin';
+import { presetCatppuccin } from 'unocss-catppuccin';
 
 export default defineConfig({
-  presets: [presetUno(), extendCatppuccin(/* options */)],
+  presets: [presetUno(), presetCatppuccin(/* options */)],
 });
 ```
 
 # Options
 
-Please refer to [src/types.d.ts](src/types.d.ts).
+Please refer to [src/types.ts](src/types.ts).
 
 # License
 
-This project is licensed under Apache License Version 2.0
+This project is licenced under [Mozilla Public License Version 2.0](LICENCE).
