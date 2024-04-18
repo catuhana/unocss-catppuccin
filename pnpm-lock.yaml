@@ -1,4 +1,4 @@
-lockfileVersion: '6.0'
+lockfileVersion: '9.0'
 
 settings:
   autoInstallPeers: true
@@ -14,7 +14,7 @@ importers:
     devDependencies:
       '@unocss/core':
         specifier: ^0.59.0
-        version: 0.59.3
+        version: 0.59.4
       prettier:
         specifier: ^3.2.5
         version: 3.2.5
@@ -436,8 +436,8 @@ packages:
   '@types/resolve@1.20.2':
     resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
 
-  '@unocss/core@0.59.3':
-    resolution: {integrity: sha512-G9+1pmQB65KnGj2tvshcMGYs1aqiaw9FWb8cxMRLvQyquuOU/JdULD9vuuchXQ+DLYPTZ4vgDmMJefBJT6JDVw==}
+  '@unocss/core@0.59.4':
+    resolution: {integrity: sha512-bBZ1sgcAtezQVZ1BST9IS3jqcsTLyqKNjiIf7FTnX3DHpfpYuMDFzSOtmkZDzBleOLO/CtcRWjT0HwTSQAmV0A==}
 
   acorn@8.11.3:
     resolution: {integrity: sha512-Y9rRfJG5jcKOE0CLisYbojUjIrIEE7AGMzA/Sm4BslANhbS+cDMpgBdcPT91oJ7OuJ9hYJBx59RjbhxVnrF8Xg==}
@@ -1386,8 +1386,9 @@ snapshots:
 
   '@rollup/plugin-alias@5.1.0(rollup@4.14.1)':
     dependencies:
-      rollup: 4.14.1
       slash: 4.0.0
+    optionalDependencies:
+      rollup: 4.14.1
 
   '@rollup/plugin-commonjs@25.0.7(rollup@4.14.1)':
     dependencies:
@@ -1397,11 +1398,13 @@ snapshots:
       glob: 8.1.0
       is-reference: 1.2.1
       magic-string: 0.30.9
+    optionalDependencies:
       rollup: 4.14.1
 
   '@rollup/plugin-json@6.1.0(rollup@4.14.1)':
     dependencies:
       '@rollup/pluginutils': 5.1.0(rollup@4.14.1)
+    optionalDependencies:
       rollup: 4.14.1
 
   '@rollup/plugin-node-resolve@15.2.3(rollup@4.14.1)':
@@ -1412,12 +1415,14 @@ snapshots:
       is-builtin-module: 3.2.1
       is-module: 1.0.0
       resolve: 1.22.8
+    optionalDependencies:
       rollup: 4.14.1
 
   '@rollup/plugin-replace@5.0.5(rollup@4.14.1)':
     dependencies:
       '@rollup/pluginutils': 5.1.0(rollup@4.14.1)
       magic-string: 0.30.9
+    optionalDependencies:
       rollup: 4.14.1
 
   '@rollup/pluginutils@5.1.0(rollup@4.14.1)':
@@ -1425,6 +1430,7 @@ snapshots:
       '@types/estree': 1.0.5
       estree-walker: 2.0.2
       picomatch: 2.3.1
+    optionalDependencies:
       rollup: 4.14.1
 
   '@rollup/rollup-android-arm-eabi@4.14.1':
@@ -1480,7 +1486,7 @@ snapshots:
 
   '@types/resolve@1.20.2': {}
 
-  '@unocss/core@0.59.3': {}
+  '@unocss/core@0.59.4': {}
 
   acorn@8.11.3: {}
 
@@ -1861,6 +1867,7 @@ snapshots:
       pathe: 1.1.2
       postcss: 8.4.38
       postcss-nested: 6.0.1(postcss@8.4.38)
+    optionalDependencies:
       typescript: 5.4.5
 
   mlly@1.6.1:
@@ -2185,9 +2192,10 @@ snapshots:
       rollup: 4.14.1
       rollup-plugin-dts: 6.1.0(rollup@4.14.1)(typescript@5.4.5)
       scule: 1.3.0
-      typescript: 5.4.5
       ufo: 1.5.3
       untyped: 1.4.2
+    optionalDependencies:
+      typescript: 5.4.5
     transitivePeerDependencies:
       - sass
       - supports-color
