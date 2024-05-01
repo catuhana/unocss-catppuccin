@@ -1,8 +1,8 @@
-import { extendTheme } from './extend.js';
+import { extendTheme } from './extend.ts';
 
 import type { Preset } from '@unocss/core';
 
-import type { UnoCSSCatppuccinOptions } from './types.js';
+import type { UnoCSSCatppuccinOptions } from './types.ts';
 
 /**
  * Extend theme to UnoCSS by using `extendTheme` function.

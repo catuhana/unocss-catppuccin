@@ -3,15 +3,17 @@ import {
   flavorEntries as flavourEntries,
 } from '@catppuccin/palette';
 
-import type { ExtendOptions } from './types.js';
+import type { ExtendOptions } from './types.ts';
 
 /**
  * Extend theme to UnoCSS by using `extendTheme` function.
  */
-export const extendTheme = (options: ExtendOptions = {}) => {
+export const extendTheme = (
+  options: ExtendOptions = {}
+): ((theme: any) => void) => {
   const { prefix = 'ctp', defaultFlavour } = options;
 
-  const extendTheme = (theme: any) => {
+  const extendTheme = (theme: any): void => {
     theme['colors'] ??= {};
 
     // Determine the target object where the colours will be added
