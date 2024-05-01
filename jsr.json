@@ -1,5 +1,9 @@
 {
   "name": "@tuhana/unocss-catppuccin",
   "version": "1.0.0",
-  "exports": "./src/index.ts"
+  "exports": {
+    ".": "./src/index.ts",
+    "./extend": "./src/extend.ts",
+    "./types": "./src/types.ts"
+  }
 }
