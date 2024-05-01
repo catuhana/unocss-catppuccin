@@ -6,6 +6,7 @@
 
 [![CI Status](https://img.shields.io/github/actions/workflow/status/catuhana/unocss-catppuccin/ci.yaml?style=flat-square&logo=github-actions&label=CI&labelColor=%23eff1f5&color=%2340a02b)](https://github.com/catuhana/unocss-catppuccin/actions/workflows/ci.yaml)
 [![npm Version](https://img.shields.io/npm/v/unocss-catppuccin?style=flat-square&logo=npm&labelColor=%23eff1f5&color=%2340a02b)](https://npmjs.com/package/unocss-catppuccin)
+[![JSR](https://jsr.io/badges/@tuhana/unocss-catppuccin)](https://jsr.io/@tuhana/unocss-catppuccin)
 [![GitHub Stars](https://img.shields.io/github/stars/catuhana/unocss-catppuccin?style=flat-square&labelColor=%23eff1f5&color=%2340a02b)](https://github.com/catuhana/unocss-catppuccin/stargazers)
 
 </center>
@@ -13,11 +14,9 @@
 # Installation
 
 ```sh
-npm install unocss-catppuccin -D
+npm/pnpm/yarn install unocss-catppuccin -D
 # or
-pnpm install unocss-catppuccin -D
-# or
-yarn add unocss-catppuccin -D
+deno add unocss-catppuccin
 ```
 
 # Usage
