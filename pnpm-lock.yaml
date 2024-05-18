@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@catppuccin/palette':
         specifier: ^1.1.0
-        version: 1.1.1
+        version: 1.2.0
     devDependencies:
       '@unocss/core':
         specifier: ^0.60.0
@@ -122,8 +122,8 @@ packages:
     resolution: {integrity: sha512-+j7a5c253RfKh8iABBhywc8NSfP5LURe7Uh4qpsh6jc+aLJguvmIUBdjSdEMQv2bENrCR5MfRdjGo7vzS/ob7w==}
     engines: {node: '>=6.9.0'}
 
-  '@catppuccin/palette@1.1.1':
-    resolution: {integrity: sha512-wgITbl3OEIUnv8WPTdG2BGjepSMZtJW9V4XpxNDJjCvel0Q5+BxRmKH3XYN0vVjohHR+APCyZCpzSnO+GdsTLg==}
+  '@catppuccin/palette@1.2.0':
+    resolution: {integrity: sha512-R5fxLcU47mRcsdQkXZBNfxt7SdEqLGWb1qhEKBrnYfEB4ZWOQRBEow4e78PKxaFUECBNOs6uEkwvwxFL9FmQqQ==}
 
   '@esbuild/aix-ppc64@0.19.12':
     resolution: {integrity: sha512-bmoCYyWdEL3wDQIVbcyzRyeKLgk2WtWLTWz1ZIAZF/EGbNOwSA6ew3PftJ1PqMiOOGu0OyFMzG53L0zqIpPeNA==}
@@ -1284,7 +1284,7 @@ snapshots:
       '@babel/helper-validator-identifier': 7.22.20
       to-fast-properties: 2.0.0
 
-  '@catppuccin/palette@1.1.1': {}
+  '@catppuccin/palette@1.2.0': {}
 
   '@esbuild/aix-ppc64@0.19.12':
     optional: true
