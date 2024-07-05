@@ -14,7 +14,7 @@ importers:
     devDependencies:
       '@unocss/core':
         specifier: ^0.61.0
-        version: 0.61.0
+        version: 0.61.2
       prettier:
         specifier: ^3.2.5
         version: 3.3.2
@@ -593,8 +593,8 @@ packages:
   '@types/resolve@1.20.2':
     resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
 
-  '@unocss/core@0.61.0':
-    resolution: {integrity: sha512-Y/Ly3LPIAzOBlWCdKBVzVzIaaWDsf+oWPIUZlaW7DL++WWypVBCghmxXIT5dyuMGXE560Hj92st4AkXfuVdxGQ==}
+  '@unocss/core@0.61.2':
+    resolution: {integrity: sha512-CbETiw3vPs9xlKumBhwjSA3I7fkQjx/nTEN2UjFZSxBrlh+7MrTOCKwbEdGB7AjM3Ef6vO30sredq4t1usWoNA==}
 
   acorn@8.12.0:
     resolution: {integrity: sha512-RTvkC4w+KNXrM39/lWCUaG0IbRkWdCv7W/IOW9oU6SawyxulvkQy5HQPVTKxEjczcUvapcrw3cFx/60VN/NRNw==}
@@ -1835,7 +1835,7 @@ snapshots:
 
   '@types/resolve@1.20.2': {}
 
-  '@unocss/core@0.61.0': {}
+  '@unocss/core@0.61.2': {}
 
   acorn@8.12.0: {}
 
