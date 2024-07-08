@@ -43,7 +43,7 @@
     "typescript": "^5.4.2",
     "unbuild": "^3.0.0-rc.1"
   },
-  "packageManager": "pnpm@9.4.0",
+  "packageManager": "pnpm@9.5.0",
   "engines": {
     "node": ">=18"
   }
