@@ -30,6 +30,7 @@
   "scripts": {
     "build": "unbuild",
     "stub": "unbuild --stub",
+    "test": "vitest",
     "lint:prettier": "prettier -c .",
     "format:prettier": "prettier --write .",
     "prepack": "pnpm build"
@@ -41,7 +42,8 @@
     "@unocss/core": "^0.61.3",
     "prettier": "^3.3.3",
     "typescript": "^5.5.3",
-    "unbuild": "^3.0.0-rc.6"
+    "unbuild": "^3.0.0-rc.6",
+    "vitest": "^2.0.2"
   },
   "packageManager": "pnpm@9.5.0",
   "engines": {
