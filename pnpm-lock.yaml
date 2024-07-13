@@ -9,21 +9,21 @@ importers:
   .:
     dependencies:
       '@catppuccin/palette':
-        specifier: ^1.1.0
+        specifier: ^1.2.0
         version: 1.2.0
     devDependencies:
       '@unocss/core':
-        specifier: ^0.61.0
-        version: 0.61.2
+        specifier: ^0.61.3
+        version: 0.61.3
       prettier:
-        specifier: ^3.2.5
-        version: 3.3.2
+        specifier: ^3.3.3
+        version: 3.3.3
       typescript:
-        specifier: ^5.4.2
+        specifier: ^5.5.3
         version: 5.5.3
       unbuild:
-        specifier: ^3.0.0-rc.1
-        version: 3.0.0-rc.5(typescript@5.5.3)
+        specifier: ^3.0.0-rc.6
+        version: 3.0.0-rc.6(typescript@5.5.3)
 
 packages:
 
@@ -593,8 +593,8 @@ packages:
   '@types/resolve@1.20.2':
     resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
 
-  '@unocss/core@0.61.2':
-    resolution: {integrity: sha512-CbETiw3vPs9xlKumBhwjSA3I7fkQjx/nTEN2UjFZSxBrlh+7MrTOCKwbEdGB7AjM3Ef6vO30sredq4t1usWoNA==}
+  '@unocss/core@0.61.3':
+    resolution: {integrity: sha512-9vixY1i5E0DQFtHJz/pHyFlFsiXJgL1bKHuocbl+GUi09lY/gE9TRm2qr2JOJx/BF720tMv9VxYI8Zq3EyPOXA==}
 
   acorn@8.12.0:
     resolution: {integrity: sha512-RTvkC4w+KNXrM39/lWCUaG0IbRkWdCv7W/IOW9oU6SawyxulvkQy5HQPVTKxEjczcUvapcrw3cFx/60VN/NRNw==}
@@ -1236,8 +1236,8 @@ packages:
     resolution: {integrity: sha512-0vzE+lAiG7hZl1/9I8yzKLx3aR9Xbof3fBHKunvMfOCYAtMhrsnccJY2iTURb9EZd5+pLuiNV9/c/GZJOHsgIw==}
     engines: {node: ^10 || ^12 || >=14}
 
-  prettier@3.3.2:
-    resolution: {integrity: sha512-rAVeHYMcv8ATV5d508CFdn+8/pHPpXeIid1DdrPwXnaAdH7cqjVbpJaT5eq4yRAFU/lsbwYwSF/n5iNrdJHPQA==}
+  prettier@3.3.3:
+    resolution: {integrity: sha512-i2tDNA0O5IrMO757lfrdQZCc2jPNDVntV0m/+4whiDfWaTKfMNgR7Qz0NAeGz/nRqF4m5/6CLzbP4/liHt12Ew==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -1358,8 +1358,8 @@ packages:
   ufo@1.5.3:
     resolution: {integrity: sha512-Y7HYmWaFwPUmkoQCUIAYpKqkOf+SbVj/2fJJZ4RJMCfZp0rTGwRbzQD+HghfnhKOjL9E01okqz+ncJskGYfBNw==}
 
-  unbuild@3.0.0-rc.5:
-    resolution: {integrity: sha512-JraRltgzIqUCwTRaZBT2pbkT7wXylz217X6HZBm6LDlr8tdsrGgWp4T/PANwPtHaaFRKNi8TySReUNaJ8vgApw==}
+  unbuild@3.0.0-rc.6:
+    resolution: {integrity: sha512-mkCsqiFfKt0loPewuoKQiU0wDR8V/I/AIbMJJOqZc2HTJ5MabJQCvz4YmBXRiW3F8MzY/Fqk7jS0WwJNHoQtjA==}
     hasBin: true
     peerDependencies:
       typescript: ^5.5.3
@@ -1835,7 +1835,7 @@ snapshots:
 
   '@types/resolve@1.20.2': {}
 
-  '@unocss/core@0.61.2': {}
+  '@unocss/core@0.61.3': {}
 
   acorn@8.12.0: {}
 
@@ -2488,7 +2488,7 @@ snapshots:
       picocolors: 1.0.1
       source-map-js: 1.2.0
 
-  prettier@3.3.2: {}
+  prettier@3.3.3: {}
 
   pretty-bytes@6.1.1: {}
 
@@ -2608,7 +2608,7 @@ snapshots:
 
   ufo@1.5.3: {}
 
-  unbuild@3.0.0-rc.5(typescript@5.5.3):
+  unbuild@3.0.0-rc.6(typescript@5.5.3):
     dependencies:
       '@rollup/plugin-alias': 5.1.0(rollup@4.18.0)
       '@rollup/plugin-commonjs': 26.0.1(rollup@4.18.0)
