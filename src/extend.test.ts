@@ -8,6 +8,8 @@ import {
   flavors as flavours,
 } from '@catppuccin/palette';
 
+const CUSTOM_PREFIX = 'meow';
+
 describe('extending theme with defaults results an object in required format', () => {
   const expectedFlavours = flavourEntries.map(([flavourName]) => flavourName);
   const expectedColours = flavours[expectedFlavours[0]].colorEntries.map(
@@ -59,11 +61,10 @@ describe('extending theme with defaults results an object in required format', (
   });
 
   test('with custom prefix', () => {
-    const prefix = 'meow';
     const theme = {} as Record<
       'colors',
       {
-        [prefix]: {
+        [CUSTOM_PREFIX]: {
           [flavour in keyof CatppuccinFlavors]: {
             [colour in keyof CatppuccinColors]: string;
           };
@@ -71,17 +72,110 @@ describe('extending theme with defaults results an object in required format', (
       }
     >;
 
-    _extendTheme({ prefix })(theme);
+    _extendTheme({ prefix: CUSTOM_PREFIX })(theme);
 
     expect(theme).toBeTypeOf('object');
 
     expect(Object.keys(theme)).toEqual(['colors']);
-    expect(Object.keys(theme.colors)).toEqual([prefix]);
-    expect(Object.keys(theme.colors[prefix])).toEqual(expectedFlavours);
+    expect(Object.keys(theme.colors)).toEqual([CUSTOM_PREFIX]);
+    expect(Object.keys(theme.colors[CUSTOM_PREFIX])).toEqual(expectedFlavours);
     for (const flavour of expectedFlavours) {
-      expect(Object.keys(theme.colors[prefix][flavour])).toEqual(
+      expect(Object.keys(theme.colors[CUSTOM_PREFIX][flavour])).toEqual(
         expectedColours
       );
     }
   });
+});
+
+describe("extending theme with 'defaultFlavour'", () => {
+  const expectedFlavours = flavourEntries.map(([flavourName]) => flavourName);
+
+  describe('results an object in required format', () => {
+    for (const flavour of expectedFlavours) {
+      const expectedColours = flavours[flavour].colorEntries.map(
+        ([colourName]) => colourName
+      );
+
+      describe(`with ${flavour} flavour`, () => {
+        test('using default prefix', () => {
+          const theme = {} as Record<
+            'colors',
+            {
+              ctp: {
+                [colour in keyof CatppuccinColors]: string;
+              };
+            }
+          >;
+
+          _extendTheme({ defaultFlavour: flavour })(theme);
+
+          expect(theme).toBeTypeOf('object');
+
+          expect(Object.keys(theme)).toEqual(['colors']);
+          expect(Object.keys(theme.colors)).toEqual(['ctp']);
+          expect(Object.keys(theme.colors.ctp)).toEqual(expectedColours);
+        });
+
+        test(`without a prefix`, () => {
+          const theme = {} as Record<
+            'colors',
+            {
+              [colour in keyof CatppuccinColors]: string;
+            }
+          >;
+
+          _extendTheme({ prefix: false, defaultFlavour: flavour })(theme);
+
+          expect(theme).toBeTypeOf('object');
+
+          expect(Object.keys(theme)).toEqual(['colors']);
+          expect(Object.keys(theme.colors)).toEqual(expectedColours);
+        });
+
+        test(`with custom prefix`, () => {
+          const theme = {} as Record<
+            'colors',
+            {
+              [CUSTOM_PREFIX]: {
+                [colour in keyof CatppuccinColors]: string;
+              };
+            }
+          >;
+
+          _extendTheme({ prefix: CUSTOM_PREFIX, defaultFlavour: flavour })(
+            theme
+          );
+
+          expect(theme).toBeTypeOf('object');
+
+          expect(Object.keys(theme)).toEqual(['colors']);
+          expect(Object.keys(theme.colors)).toEqual([CUSTOM_PREFIX]);
+          expect(Object.keys(theme.colors[CUSTOM_PREFIX])).toEqual(
+            expectedColours
+          );
+        });
+      });
+    }
+  });
+});
+
+test('generated colours are accurate to Catppuccin', () => {
+  const theme = {} as Record<
+    'colors',
+    {
+      ctp: {
+        [flavour in keyof CatppuccinFlavors]: {
+          [colour in keyof CatppuccinColors]: string;
+        };
+      };
+    }
+  >;
+
+  _extendTheme()(theme);
+
+  for (const [flavourName, flavour] of flavourEntries) {
+    for (const [colourName, colour] of flavour.colorEntries) {
+      expect(theme.colors.ctp[flavourName][colourName]).toBe(colour.hex);
+    }
+  }
 });
