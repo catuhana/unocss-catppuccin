@@ -174,6 +174,8 @@ test('generated colours are accurate to Catppuccin', () => {
   _extendTheme()(theme);
 
   for (const [flavourName, flavour] of flavourEntries) {
+    expect(theme.colors.ctp[flavourName]).toBeTypeOf('object');
+
     for (const [colourName, colour] of flavour.colorEntries) {
       expect(theme.colors.ctp[flavourName][colourName]).toBe(colour.hex);
     }
