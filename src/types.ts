@@ -3,6 +3,14 @@ import { CatppuccinFlavors } from '@catppuccin/palette';
 import type { PresetOptions } from '@unocss/core';
 
 /**
+ * Falsy values except `undefined`.
+ *
+ * `undefined` *is* considered as a falsy value, but if `prefix` option is
+ * `undefined`, it will default to `ctp`.
+ */
+export type Falsy = false | 0 | '' | null;
+
+/**
  * Which mode to use the preset with.
  *
  * `extend` mode will create new colours for current preset by using `extendTheme` function from UnoCSS.
@@ -31,7 +39,7 @@ export interface UnoCSSCatppuccinOptions extends PresetOptions {
    *
    * @default 'ctp'
    */
-  prefix?: string;
+  prefix?: string | Falsy;
 
   /**
    * Default flavour for using Catppuccin colours
