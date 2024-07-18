@@ -181,3 +181,25 @@ test('generated colours are accurate to Catppuccin', () => {
     }
   }
 });
+
+test("conflicting keys don't override existing keys", () => {
+  const theme = {
+    colors: {
+      red: 'meow',
+    },
+  } as Record<
+    'colors',
+    {
+      [colour in keyof CatppuccinColors]: string;
+    } & {
+      ctp: {
+        [colour in keyof CatppuccinColors]: string;
+      };
+    }
+  >;
+
+  _extendTheme({ defaultFlavour: 'frappe', prefix: false })(theme);
+
+  expect(theme.colors.red).toBe('meow');
+  expect(theme.colors.ctp.red);
+});
