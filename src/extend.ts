@@ -31,7 +31,7 @@ export const _extendTheme = (
         }
       }
     }
-    // If `defaultFlavour` is not set, or specificed flavour doesn't exist:
+    // If `defaultFlavour` is not set, or specified flavour doesn't exist:
     else {
       // Iterate through all the flavours,
       for (let [flavourName, flavour] of flavourEntries) {
