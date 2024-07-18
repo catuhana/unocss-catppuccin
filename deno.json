@@ -2,9 +2,7 @@
   "name": "@tuhana/unocss-catppuccin",
   "version": "1.0.2",
   "tasks": {
-    "build:npm": "deno run -A scripts/build_npm.ts",
-    "lint": "deno lint",
-    "lint:fmt": "deno fmt --check"
+    "build:npm": "deno run -A scripts/build_npm.ts"
   },
   "imports": {
     "@catppuccin/palette": "npm:@catppuccin/palette@^1.2.0",
@@ -19,8 +17,12 @@
     "./types": "./src/types.ts"
   },
   "fmt": {
+    "exclude": ["npm/"],
     "indentWidth": 2,
     "semiColons": true,
     "singleQuote": true
+  },
+  "lint": {
+    "exclude": ["npm/"]
   }
 }

@@ -2,7 +2,7 @@
 
 import { build, emptyDir } from '@deno/dnt';
 
-import denoConfig from '../deno.json' assert { type: 'json' };
+import denoConfig from '../deno.json' with { type: 'json' };
 
 await emptyDir('npm/');
 
