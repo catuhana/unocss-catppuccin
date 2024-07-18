@@ -16,18 +16,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v3
+      - name: Set-up Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: pnpm
+          node-version: 18
+          cache: npm
           registry-url: https://registry.npmjs.org
-
-      - name: Install packages
-        run: pnpm i
 
       - name: Generate release notes
         uses: actions/github-script@v7
@@ -42,10 +41,10 @@ jobs:
               generate_release_notes: true
             })
 
-      - name: Publish to NPM
-        run: npm publish --access public --provenance
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
       - name: Publish to JSR
         run: npx jsr publish
+
+      - name: Publish to npm
+        run: cd npm && npm publish --access public --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -1,5 +1,3 @@
-import { _extendTheme } from './extend.ts';
-
 import type { CatppuccinFlavors } from '@catppuccin/palette';
 
 import type { PresetOptions } from '@unocss/core';
@@ -74,7 +72,7 @@ export interface UnoCSSCatppuccinOptions extends PresetOptions {
 }
 
 /**
- * Options for the `{@link _extendTheme}` function.
+ * Options for the `_extendTheme` function.
  *
  * Picks `prefix` and `defaultFlavour` from {@link UnoCSSCatppuccinOptions}.
  */

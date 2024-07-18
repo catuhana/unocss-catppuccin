@@ -2,54 +2,47 @@ name: CI
 
 on:
   push:
-    paths:
-      - .github/workflows/ci.yaml
-      - src/**
-      - .prettierrc
-      - build.config.ts
-      - package.json
-      - pnpm-lock.yaml
-      - tsconfig.json
+    paths-ignore:
+      - .github/FUNDING.yml
+      - .vscode/**
+      - LICENCE
+      - README.md
   pull_request:
+    paths-ignore:
+      - .github/FUNDING.yml
+      - .vscode/**
+      - LICENCE
+      - README.md
     branches:
       - main
-    paths:
-      - .github/workflows/ci.yaml
-      - src/**
-      - .prettierrc
-      - build.config.ts
-      - package.json
-      - pnpm-lock.yaml
-      - tsconfig.json
 
 jobs:
   build_and_lint:
     name: Build and Lint
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node_version: [18, 20, latest]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v3
+      - name: Set-up Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
 
-      - name: Install Node ${{ matrix.node_version }}
+      - name: Set-up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node_version }}
-          cache: pnpm
+          node-version: 18
+          cache: npm
 
-      - name: Install packages
-        run: pnpm i
+      - name: Check linting
+        run: deno task lint
 
       - name: Check formatting
-        run: pnpm lint:prettier
+        run: deno task lint:fmt
 
       - name: Run tests
-        run: pnpm test
+        run: deno test
 
-      - name: Build package
-        run: pnpm build
+      - name: Build npm package
+        run: deno task build:npm

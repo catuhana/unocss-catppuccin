@@ -1,5 +1,8 @@
 {
-  "[typescript][markdown][json][jsonc][yaml]": {
+  "[typescript][json][jsonc]": {
+    "editor.defaultFormatter": "denoland.vscode-deno"
+  },
+  "[markdown][yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }

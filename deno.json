@@ -1,0 +1,26 @@
+{
+  "name": "@tuhana/unocss-catppuccin",
+  "version": "1.0.2",
+  "tasks": {
+    "build:npm": "deno run -A scripts/build_npm.ts",
+    "lint": "deno lint",
+    "lint:fmt": "deno fmt --check"
+  },
+  "imports": {
+    "@catppuccin/palette": "npm:@catppuccin/palette@^1.2.0",
+    "@deno/dnt": "jsr:@deno/dnt@^0.41.2",
+    "@std/assert": "jsr:@std/assert@^1.0.0",
+    "@std/testing": "jsr:@std/testing@^0.225.3",
+    "@unocss/core": "npm:@unocss/core@^0.61.5"
+  },
+  "exports": {
+    ".": "./src/index.ts",
+    "./extend": "./src/extend.ts",
+    "./types": "./src/types.ts"
+  },
+  "fmt": {
+    "indentWidth": 2,
+    "semiColons": true,
+    "singleQuote": true
+  }
+}
