@@ -1,4 +1,6 @@
-import { CatppuccinFlavors } from '@catppuccin/palette';
+import { _extendTheme } from './extend.ts';
+
+import type { CatppuccinFlavors } from '@catppuccin/palette';
 
 import type { PresetOptions } from '@unocss/core';
 
@@ -17,6 +19,9 @@ export type Falsy = false | 0 | '' | null;
  */
 export type Modes = 'extend';
 
+/**
+ * Preset options for `unocss-catppuccin`.
+ */
 export interface UnoCSSCatppuccinOptions extends PresetOptions {
   /**
    * Which mode to use the preset with.
@@ -56,7 +61,7 @@ export interface UnoCSSCatppuccinOptions extends PresetOptions {
    * <!-- Let's make it `meow` -->
    * <p class='text-meow-flamingo'>Hello world!</p>
    *
-   * <!-- Lets make it a falsy value except `undefined`, for example `false` -->
+   * <!-- Let's make it a falsy value except `undefined`, for example `false` -->
    * <!-- This will use current preset's colour! -->
    * <p class='bg-red'>Hello world!</p>
    * <!-- To use Catppuccin's colour, add the `ctp` prefix  -->
@@ -68,6 +73,11 @@ export interface UnoCSSCatppuccinOptions extends PresetOptions {
   defaultFlavour?: keyof CatppuccinFlavors;
 }
 
+/**
+ * Options for the `{@link _extendTheme}` function.
+ *
+ * Picks `prefix` and `defaultFlavour` from {@link UnoCSSCatppuccinOptions}.
+ */
 export type ExtendOptions = Pick<
   UnoCSSCatppuccinOptions,
   'prefix' | 'defaultFlavour'

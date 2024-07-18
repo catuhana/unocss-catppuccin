@@ -2,8 +2,8 @@ import { test, expect, describe } from 'vitest';
 
 import { _extendTheme } from './extend.ts';
 import {
-  CatppuccinColors,
-  CatppuccinFlavors,
+  type CatppuccinColors,
+  type CatppuccinFlavors,
   flavorEntries as flavourEntries,
   flavors as flavours,
 } from '@catppuccin/palette';
