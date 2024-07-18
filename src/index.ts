@@ -1,3 +1,5 @@
+// TODO: Don't allow `no-explicit-any` after implementing `Theme` type.
+
 import { _extendTheme } from './extend.ts';
 
 import type { Preset } from '@unocss/core';

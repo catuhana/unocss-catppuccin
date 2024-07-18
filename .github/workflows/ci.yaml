@@ -35,10 +35,10 @@ jobs:
           node-version: 18
 
       - name: Check linting
-        run: deno task lint
+        run: deno lint
 
       - name: Check formatting
-        run: deno task lint:fmt
+        run: deno fmt --check
 
       - name: Run tests
         run: deno test
