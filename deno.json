@@ -16,6 +16,9 @@
     "./extend": "./src/extend.ts",
     "./types": "./src/types.ts"
   },
+  "test": {
+    "exclude": ["npm/"]
+  },
   "fmt": {
     "exclude": ["npm/"],
     "indentWidth": 2,
