@@ -3,8 +3,8 @@ import { assert, assertEquals, assertInstanceOf } from '@std/assert';
 
 import { _extendTheme } from './extend.ts';
 import {
-  type CatppuccinColors,
-  type CatppuccinFlavors,
+  type CatppuccinColors as CatppuccinColours,
+  type CatppuccinFlavors as CatppuccinFlavours,
   flavorEntries as flavourEntries,
   flavors as flavours,
 } from '@catppuccin/palette';
@@ -22,8 +22,8 @@ describe('extending theme with defaults results an object in required format', (
       'colors',
       {
         ctp: {
-          [flavour in keyof CatppuccinFlavors]: {
-            [colour in keyof CatppuccinColors]: string;
+          [flavour in keyof CatppuccinFlavours]: {
+            [colour in keyof CatppuccinColours]: string;
           };
         };
       }
@@ -44,8 +44,8 @@ describe('extending theme with defaults results an object in required format', (
     const theme = {} as Record<
       'colors',
       {
-        [flavour in keyof CatppuccinFlavors]: {
-          [colour in keyof CatppuccinColors]: string;
+        [flavour in keyof CatppuccinFlavours]: {
+          [colour in keyof CatppuccinColours]: string;
         };
       }
     >;
@@ -66,8 +66,8 @@ describe('extending theme with defaults results an object in required format', (
       'colors',
       {
         [CUSTOM_PREFIX]: {
-          [flavour in keyof CatppuccinFlavors]: {
-            [colour in keyof CatppuccinColors]: string;
+          [flavour in keyof CatppuccinFlavours]: {
+            [colour in keyof CatppuccinColours]: string;
           };
         };
       }
@@ -104,7 +104,7 @@ describe("extending theme with 'defaultFlavour'", () => {
             'colors',
             {
               ctp: {
-                [colour in keyof CatppuccinColors]: string;
+                [colour in keyof CatppuccinColours]: string;
               };
             }
           >;
@@ -122,7 +122,7 @@ describe("extending theme with 'defaultFlavour'", () => {
           const theme = {} as Record<
             'colors',
             {
-              [colour in keyof CatppuccinColors]: string;
+              [colour in keyof CatppuccinColours]: string;
             }
           >;
 
@@ -139,7 +139,7 @@ describe("extending theme with 'defaultFlavour'", () => {
             'colors',
             {
               [CUSTOM_PREFIX]: {
-                [colour in keyof CatppuccinColors]: string;
+                [colour in keyof CatppuccinColours]: string;
               };
             }
           >;
@@ -167,8 +167,8 @@ Deno.test('generated colours are accurate to Catppuccin', () => {
     'colors',
     {
       ctp: {
-        [flavour in keyof CatppuccinFlavors]: {
-          [colour in keyof CatppuccinColors]: string;
+        [flavour in keyof CatppuccinFlavours]: {
+          [colour in keyof CatppuccinColours]: string;
         };
       };
     }
@@ -195,10 +195,10 @@ Deno.test("conflicting keys don't override existing keys", () => {
   } as Record<
     'colors',
     {
-      [colour in keyof CatppuccinColors]: string;
+      [colour in keyof CatppuccinColours]: string;
     } & {
       ctp: {
-        [colour in keyof CatppuccinColors]: string;
+        [colour in keyof CatppuccinColours]: string;
       };
     }
   >;
