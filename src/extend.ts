@@ -8,7 +8,7 @@ import type { ExtendOptions } from './types.ts';
 /**
  * Extend theme to UnoCSS by using `extendTheme` function.
  */
-export const extendTheme = (
+export const _extendTheme = (
   options: ExtendOptions = {}
 ): ((theme: any) => void) => {
   const { prefix = 'ctp', defaultFlavour } = options;
@@ -31,7 +31,7 @@ export const extendTheme = (
         }
       }
     }
-    // If `defaultFlavour` is not set, or specificed flavour doesn't exist:
+    // If `defaultFlavour` is not set, or specified flavour doesn't exist:
     else {
       // Iterate through all the flavours,
       for (let [flavourName, flavour] of flavourEntries) {
