@@ -177,11 +177,9 @@ Deno.test('generated colours are accurate to Catppuccin', () => {
   _extendTheme()(theme);
 
   for (const [flavourName, flavour] of flavourEntries) {
-    // ass(theme.colors.ctp[flavourName]).toBeTypeOf('object');
     assertInstanceOf(theme.colors.ctp[flavourName], Object);
 
     for (const [colourName, colour] of flavour.colorEntries) {
-      // expect(theme.colors.ctp[flavourName][colourName]).toBe(colour.hex);
       assertEquals(theme.colors.ctp[flavourName][colourName], colour.hex);
     }
   }
