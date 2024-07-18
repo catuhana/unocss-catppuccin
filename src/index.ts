@@ -1,4 +1,4 @@
-import { extendTheme } from './extend.ts';
+import { _extendTheme } from './extend.ts';
 
 import type { Preset } from '@unocss/core';
 
@@ -17,7 +17,7 @@ export const presetCatppuccin = (
   const { mode, prefix = 'ctp', defaultFlavour } = options;
 
   if (mode === 'extend') {
-    preset.extendTheme = extendTheme({ prefix, defaultFlavour });
+    preset.extendTheme = _extendTheme({ prefix, defaultFlavour });
   } else {
     // TODO: Custom logging?
     throw new Error(`Unsupported mode provided: \`${mode}\``);

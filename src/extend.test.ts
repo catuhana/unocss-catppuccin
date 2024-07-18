@@ -1,6 +1,6 @@
 import { test, expect, describe } from 'vitest';
 
-import { extendTheme } from './extend.ts';
+import { _extendTheme } from './extend.ts';
 import {
   CatppuccinColors,
   CatppuccinFlavors,
@@ -25,7 +25,7 @@ describe('extending theme with defaults results an object in required format', (
         };
       }
     >;
-    extendTheme()(theme);
+    _extendTheme()(theme);
 
     expect(theme).toBeTypeOf('object');
 
@@ -47,7 +47,7 @@ describe('extending theme with defaults results an object in required format', (
       }
     >;
 
-    extendTheme({ prefix: false })(theme);
+    _extendTheme({ prefix: false })(theme);
 
     expect(theme).toBeTypeOf('object');
 
@@ -71,7 +71,7 @@ describe('extending theme with defaults results an object in required format', (
       }
     >;
 
-    extendTheme({ prefix })(theme);
+    _extendTheme({ prefix })(theme);
 
     expect(theme).toBeTypeOf('object');
 
