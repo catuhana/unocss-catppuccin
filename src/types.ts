@@ -136,7 +136,7 @@ export interface UnoCSSCatppuccinOptions extends PresetOptions {
 }
 
 /**
- * Options for the `_extendTheme` function.
+ * Options for the internal `_extendTheme` function.
  *
  * Picks `prefix` and `defaultFlavour` from {@link UnoCSSCatppuccinOptions}.
  */

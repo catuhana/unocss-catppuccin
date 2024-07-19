@@ -7,6 +7,10 @@ import type { ExtendOptions } from './types.ts';
 
 /**
  * Extend theme to UnoCSS by using `extendTheme` function.
+ *
+ * @param options - Options for extending the theme.
+ * @returns The main function that supposed to be passed
+ * to UnoCSS `extendTheme` option.
  */
 export const _extendTheme = <Theme extends object = object>(
   options: ExtendOptions = {},
