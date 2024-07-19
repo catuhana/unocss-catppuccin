@@ -1,205 +1,146 @@
-import { test, expect, describe } from 'vitest';
+import { describe, it } from '@std/testing/bdd';
+import { assert, assertEquals, assertInstanceOf } from '@std/assert';
+
+import { flavorEntries as flavourEntries } from '@catppuccin/palette';
 
 import { _extendTheme } from './extend.ts';
-import {
-  type CatppuccinColors,
-  type CatppuccinFlavors,
-  flavorEntries as flavourEntries,
-  flavors as flavours,
-} from '@catppuccin/palette';
+import type { ExtendOptions, ThemeObject } from './types.ts';
 
-const CUSTOM_PREFIX = 'meow';
-
-describe('extending theme with defaults results an object in required format', () => {
+describe('`_extendTheme` with', () => {
   const expectedFlavours = flavourEntries.map(([flavourName]) => flavourName);
-  const expectedColours = flavours[expectedFlavours[0]].colorEntries.map(
-    ([colourName]) => colourName
-  );
+  const expectedColours = flavourEntries[0][1].colorEntries.map((
+    [colourName],
+  ) => colourName);
 
-  test('with default prefix', () => {
-    const theme = {} as Record<
-      'colors',
-      {
-        ctp: {
-          [flavour in keyof CatppuccinFlavors]: {
-            [colour in keyof CatppuccinColors]: string;
-          };
-        };
+  createExtendTestCases({ prefix: 'meow' }, [{
+    description: 'results a correct object schema',
+    validate: (theme, options) => {
+      assert(theme);
+      assertInstanceOf(theme, Object);
+
+      assertEquals(Object.keys(theme), ['colors']);
+      assertEquals(Object.keys(theme.colors), [options.prefix]);
+      assertEquals(Object.keys(theme.colors[options.prefix]), expectedFlavours);
+
+      for (const flavour of expectedFlavours) {
+        assertEquals(
+          Object.keys(theme.colors[options.prefix][flavour]),
+          expectedColours,
+        );
       }
-    >;
-    _extendTheme()(theme);
+    },
+  }]);
 
-    expect(theme).toBeTypeOf('object');
+  createExtendTestCases({ prefix: false }, [{
+    description: 'results a correct object schema',
+    validate: (theme) => {
+      assert(theme);
+      assertInstanceOf(theme, Object);
 
-    expect(Object.keys(theme)).toEqual(['colors']);
-    expect(Object.keys(theme.colors)).toEqual(['ctp']);
-    expect(Object.keys(theme.colors.ctp)).toEqual(expectedFlavours);
-    for (const flavour of expectedFlavours) {
-      expect(Object.keys(theme.colors.ctp[flavour])).toEqual(expectedColours);
-    }
-  });
+      assertEquals(Object.keys(theme), ['colors']);
+      assertEquals(Object.keys(theme.colors), expectedFlavours);
 
-  test('without a prefix', () => {
-    const theme = {} as Record<
-      'colors',
-      {
-        [flavour in keyof CatppuccinFlavors]: {
-          [colour in keyof CatppuccinColors]: string;
-        };
+      for (const flavour of expectedFlavours) {
+        assertEquals(Object.keys(theme.colors[flavour]), expectedColours);
       }
-    >;
+    },
+  }]);
 
-    _extendTheme({ prefix: false })(theme);
+  createExtendTestCases({}, [{
+    description: 'results a correct object schema',
+    validate: (theme) => {
+      assert(theme);
+      assertInstanceOf(theme, Object);
 
-    expect(theme).toBeTypeOf('object');
+      assertEquals(Object.keys(theme), ['colors']);
+      assertEquals(Object.keys(theme.colors), ['ctp']);
+      assertEquals(Object.keys(theme.colors.ctp), expectedFlavours);
 
-    expect(Object.keys(theme)).toEqual(['colors']);
-    expect(Object.keys(theme.colors)).toEqual(expectedFlavours);
-    for (const flavour of expectedFlavours) {
-      expect(Object.keys(theme.colors[flavour])).toEqual(expectedColours);
-    }
-  });
-
-  test('with custom prefix', () => {
-    const theme = {} as Record<
-      'colors',
-      {
-        [CUSTOM_PREFIX]: {
-          [flavour in keyof CatppuccinFlavors]: {
-            [colour in keyof CatppuccinColors]: string;
-          };
-        };
+      for (const flavour of expectedFlavours) {
+        assertEquals(Object.keys(theme.colors.ctp[flavour]), expectedColours);
       }
-    >;
+    },
+  }]);
 
-    _extendTheme({ prefix: CUSTOM_PREFIX })(theme);
+  createExtendTestCases({ prefix: 'meow', defaultFlavour: 'frappe' }, [{
+    description: 'results a correct object schema',
+    validate: (theme, options) => {
+      assert(theme);
+      assertInstanceOf(theme, Object);
 
-    expect(theme).toBeTypeOf('object');
+      assertEquals(Object.keys(theme), ['colors']);
+      assertEquals(Object.keys(theme.colors), [options.prefix]);
+      assertEquals(Object.keys(theme.colors[options.prefix]), expectedColours);
+    },
+  }]);
 
-    expect(Object.keys(theme)).toEqual(['colors']);
-    expect(Object.keys(theme.colors)).toEqual([CUSTOM_PREFIX]);
-    expect(Object.keys(theme.colors[CUSTOM_PREFIX])).toEqual(expectedFlavours);
-    for (const flavour of expectedFlavours) {
-      expect(Object.keys(theme.colors[CUSTOM_PREFIX][flavour])).toEqual(
-        expectedColours
-      );
-    }
-  });
+  createExtendTestCases({ prefix: false, defaultFlavour: 'latte' }, [{
+    description: 'results a correct object schema',
+    validate: (theme) => {
+      assert(theme);
+      assertInstanceOf(theme, Object);
+
+      assertEquals(Object.keys(theme), ['colors']);
+      assertEquals(Object.keys(theme.colors), expectedColours);
+    },
+  }]);
+
+  createExtendTestCases({ defaultFlavour: 'macchiato' }, [{
+    description: 'results a correct object schema',
+    validate: (theme) => {
+      assert(theme);
+      assertInstanceOf(theme, Object);
+
+      assertEquals(Object.keys(theme), ['colors']);
+      assertEquals(Object.keys(theme.colors), ['ctp']);
+      assertEquals(Object.keys(theme.colors.ctp), expectedColours);
+    },
+  }]);
+
+  function createExtendTestCases<P extends string, O extends ExtendOptions<P>>(
+    extendOptions: O,
+    tests: {
+      description: string;
+      validate: (theme: ThemeObject<O>, extendOptions: O) => void;
+    }[],
+  ) {
+    const theme = {} as ThemeObject<O>;
+
+    describe(`with \`${Deno.inspect(extendOptions)}\` options`, () => {
+      for (const test of tests) {
+        it(test.description, () => {
+          _extendTheme(extendOptions)(theme);
+
+          test.validate(theme, extendOptions);
+        });
+      }
+    });
+
+    return theme;
+  }
 });
 
-describe("extending theme with 'defaultFlavour'", () => {
-  const expectedFlavours = flavourEntries.map(([flavourName]) => flavourName);
+Deno.test("generated colours are accurate to Catppuccin's", () => {
+  const options = {};
+  const theme = {} as ThemeObject<typeof options>;
 
-  describe('results an object in required format', () => {
-    for (const flavour of expectedFlavours) {
-      const expectedColours = flavours[flavour].colorEntries.map(
-        ([colourName]) => colourName
-      );
-
-      describe(`with ${flavour} flavour`, () => {
-        test('using default prefix', () => {
-          const theme = {} as Record<
-            'colors',
-            {
-              ctp: {
-                [colour in keyof CatppuccinColors]: string;
-              };
-            }
-          >;
-
-          _extendTheme({ defaultFlavour: flavour })(theme);
-
-          expect(theme).toBeTypeOf('object');
-
-          expect(Object.keys(theme)).toEqual(['colors']);
-          expect(Object.keys(theme.colors)).toEqual(['ctp']);
-          expect(Object.keys(theme.colors.ctp)).toEqual(expectedColours);
-        });
-
-        test(`without a prefix`, () => {
-          const theme = {} as Record<
-            'colors',
-            {
-              [colour in keyof CatppuccinColors]: string;
-            }
-          >;
-
-          _extendTheme({ prefix: false, defaultFlavour: flavour })(theme);
-
-          expect(theme).toBeTypeOf('object');
-
-          expect(Object.keys(theme)).toEqual(['colors']);
-          expect(Object.keys(theme.colors)).toEqual(expectedColours);
-        });
-
-        test(`with custom prefix`, () => {
-          const theme = {} as Record<
-            'colors',
-            {
-              [CUSTOM_PREFIX]: {
-                [colour in keyof CatppuccinColors]: string;
-              };
-            }
-          >;
-
-          _extendTheme({ prefix: CUSTOM_PREFIX, defaultFlavour: flavour })(
-            theme
-          );
-
-          expect(theme).toBeTypeOf('object');
-
-          expect(Object.keys(theme)).toEqual(['colors']);
-          expect(Object.keys(theme.colors)).toEqual([CUSTOM_PREFIX]);
-          expect(Object.keys(theme.colors[CUSTOM_PREFIX])).toEqual(
-            expectedColours
-          );
-        });
-      });
-    }
-  });
-});
-
-test('generated colours are accurate to Catppuccin', () => {
-  const theme = {} as Record<
-    'colors',
-    {
-      ctp: {
-        [flavour in keyof CatppuccinFlavors]: {
-          [colour in keyof CatppuccinColors]: string;
-        };
-      };
-    }
-  >;
-
-  _extendTheme()(theme);
+  _extendTheme(options)(theme);
 
   for (const [flavourName, flavour] of flavourEntries) {
-    expect(theme.colors.ctp[flavourName]).toBeTypeOf('object');
+    assertInstanceOf(theme.colors.ctp[flavourName], Object);
 
     for (const [colourName, colour] of flavour.colorEntries) {
-      expect(theme.colors.ctp[flavourName][colourName]).toBe(colour.hex);
+      assertEquals(theme.colors.ctp[flavourName][colourName], colour.hex);
     }
   }
 });
 
-test("conflicting keys don't override existing keys", () => {
-  const theme = {
-    colors: {
-      red: 'meow',
-    },
-  } as Record<
-    'colors',
-    {
-      [colour in keyof CatppuccinColors]: string;
-    } & {
-      ctp: {
-        [colour in keyof CatppuccinColors]: string;
-      };
-    }
-  >;
+Deno.test("conflicting keys don't override existing keys", () => {
+  const options = { prefix: false, defaultFlavour: 'mocha' } as const;
+  const theme = { colors: { red: 'meow' } } as ThemeObject<typeof options>;
 
-  _extendTheme({ defaultFlavour: 'frappe', prefix: false })(theme);
+  _extendTheme(options)(theme);
 
-  expect(theme.colors.red).toBe('meow');
-  expect(theme.colors.ctp.red);
+  assertEquals(theme.colors.red, 'meow');
+  assert(theme.colors.ctp?.red);
 });

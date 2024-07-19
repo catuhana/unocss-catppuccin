@@ -4,11 +4,15 @@ import type { Preset } from '@unocss/core';
 
 import type { UnoCSSCatppuccinOptions } from './types.ts';
 
+// TODO: Fix docs
 /**
- * Extend theme to UnoCSS by using `extendTheme` function.
+ * Catppuccin preset for UnoCSS.
+ *
+ * @param options - Options for the preset.
+ * @returns The UnoCSS preset object.
  */
 export const presetCatppuccin = (
-  options: UnoCSSCatppuccinOptions = { mode: 'extend' }
+  options: UnoCSSCatppuccinOptions = { mode: 'extend' },
 ): Preset => {
   const preset: Preset = {
     name: 'unocss-catppuccin',

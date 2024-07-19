@@ -21,7 +21,8 @@ deno add unocss-catppuccin
 
 # Usage
 
-To use Catppuccin, simply include the `presetCatppuccin` preset in your UnoCSS configuration.
+To use Catppuccin, simply include the `presetCatppuccin` preset in your UnoCSS
+configuration.
 
 ```ts
 // unocss.config.ts
