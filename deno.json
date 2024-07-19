@@ -26,9 +26,6 @@
     "singleQuote": true
   },
   "lint": {
-    "rules": {
-      "exclude": ["no-explicit-any"]
-    },
     "exclude": ["npm/"]
   }
 }

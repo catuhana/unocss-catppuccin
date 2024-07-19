@@ -8,11 +8,15 @@ import type { ExtendOptions } from './types.ts';
 /**
  * Extend theme to UnoCSS by using `extendTheme` function.
  */
-export const _extendTheme = (
+export const _extendTheme = <Theme extends object = object>(
   options: ExtendOptions = {},
-): (theme: any) => void => {
+): (theme: Theme) => void => {
   const { prefix = 'ctp', defaultFlavour } = options;
 
+  //* We don't know what `theme` could be, since it's provided to us
+  //* by UnoCSS. I think we could type-safe the parts we have
+  //* (`ThemeObject` type), but I'm not sure how to do that.
+  // deno-lint-ignore no-explicit-any
   const extendTheme = (theme: any): void => {
     theme['colors'] ??= {};
 
