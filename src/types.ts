@@ -1,6 +1,70 @@
-import type { CatppuccinFlavors } from '@catppuccin/palette';
+import type {
+  CatppuccinColors as CatppuccinColours,
+  CatppuccinFlavors as CatppuccinFlavours,
+} from '@catppuccin/palette';
 
 import type { PresetOptions } from '@unocss/core';
+
+/**
+ * Theme object for Catppuccin colours.
+ *
+ * This type only contains the fields that are added with the `extend` mode.
+ */
+export type ThemeObject<Options extends ExtendOptions> = Options extends
+  { prefix: string; defaultFlavour?: undefined } ? {
+    colors: {
+      [prefix in Options['prefix']]: {
+        [flavour in keyof CatppuccinFlavours]: {
+          [colour in keyof CatppuccinColours]: string;
+        };
+      };
+    };
+  }
+  : Options extends { prefix: Falsy; defaultFlavour?: undefined } ? {
+      colors: {
+        [flavour in keyof CatppuccinFlavours]: {
+          [colour in keyof CatppuccinColours]: string;
+        };
+      };
+    }
+  : Options extends { prefix?: undefined; defaultFlavour?: undefined } ? {
+      colors: {
+        'ctp': {
+          [flavour in keyof CatppuccinFlavours]: {
+            [colour in keyof CatppuccinColours]: string;
+          };
+        };
+      };
+    }
+  : Options extends { prefix: string; defaultFlavour: keyof CatppuccinFlavours }
+    ? {
+      colors: {
+        [prefix in Options['prefix']]: {
+          [colour in keyof CatppuccinColours]: string;
+        };
+      };
+    }
+  : Options extends { prefix: Falsy; defaultFlavour: keyof CatppuccinFlavours }
+    ? {
+      colors:
+        & {
+          [colour in keyof CatppuccinColours]: string;
+        }
+        & {
+          'ctp'?: {
+            [colour in keyof CatppuccinColours]: string;
+          };
+        };
+    }
+  : Options extends
+    { prefix?: undefined; defaultFlavour: keyof CatppuccinFlavours } ? {
+      colors: {
+        'ctp': {
+          [colour in keyof CatppuccinColours]: string;
+        };
+      };
+    }
+  : never;
 
 /**
  * Falsy values except `undefined`.
@@ -68,7 +132,7 @@ export interface UnoCSSCatppuccinOptions extends PresetOptions {
    *
    * @default undefined
    */
-  defaultFlavour?: keyof CatppuccinFlavors;
+  defaultFlavour?: keyof CatppuccinFlavours;
 }
 
 /**
@@ -76,7 +140,11 @@ export interface UnoCSSCatppuccinOptions extends PresetOptions {
  *
  * Picks `prefix` and `defaultFlavour` from {@link UnoCSSCatppuccinOptions}.
  */
-export type ExtendOptions = Pick<
-  UnoCSSCatppuccinOptions,
-  'prefix' | 'defaultFlavour'
->;
+export type ExtendOptions<P extends string = string> =
+  & Pick<
+    UnoCSSCatppuccinOptions,
+    'defaultFlavour'
+  >
+  & {
+    prefix?: P | Falsy;
+  };
