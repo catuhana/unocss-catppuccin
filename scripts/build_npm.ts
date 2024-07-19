@@ -14,7 +14,7 @@ await build({
     deno: 'dev',
   },
   compilerOptions: {
-    lib: ['ESNext', 'DOM'],
+    lib: ['ESNext'],
     target: 'ES2022',
   },
   scriptModule: false,
