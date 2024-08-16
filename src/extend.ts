@@ -21,7 +21,7 @@ export const _extendTheme = <Theme extends object = object>(
   //* by UnoCSS. I think we could type-safe the parts we have
   //* (`ThemeObject` type), but I'm not sure how to do that.
   // deno-lint-ignore no-explicit-any
-  const extendTheme = (theme: any): void => {
+  return (theme: any): void => {
     theme['colors'] ??= {};
 
     // Determine the target object where the colours will be added
@@ -58,6 +58,4 @@ export const _extendTheme = <Theme extends object = object>(
       }
     }
   };
-
-  return extendTheme;
 };
