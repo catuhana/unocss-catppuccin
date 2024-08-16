@@ -18,8 +18,6 @@ await build({
     target: 'ES2022',
   },
   scriptModule: false,
-  typeCheck: 'single',
-  declaration: 'separate',
   package: {
     name: 'unocss-catppuccin',
     author: 'tuhana <npm@tuhana.me> (https://tuhana.me)',
