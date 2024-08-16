@@ -6,7 +6,7 @@ import {
 import type { ExtendOptions } from './types.ts';
 
 /**
- * Extend theme to UnoCSS by using `extendTheme` function.
+ * Extend theme to UnoCSS by passing this to `extendTheme` function.
  *
  * @param options - Options for extending the theme.
  * @returns The main function that supposed to be passed
