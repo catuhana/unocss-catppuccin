@@ -48,11 +48,11 @@ export type ThemeObject<Options extends ExtendOptions> = Options extends
     ? {
       colors:
         & {
-          [colour in keyof CatppuccinColours]: string;
+          [colour in keyof CatppuccinColours]?: string;
         }
         & {
           'ctp'?: {
-            [colour in keyof CatppuccinColours]: string;
+            [colour in keyof CatppuccinColours]?: string;
           };
         };
     }
