@@ -97,7 +97,10 @@ describe('`_extendTheme` with', () => {
     },
   }]);
 
-  function createExtendTestCases<P extends string, O extends ExtendOptions<P>>(
+  function createExtendTestCases<
+    P extends string,
+    O extends ExtendOptions<P>,
+  >(
     extendOptions: O,
     tests: {
       description: string;
