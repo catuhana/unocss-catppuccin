@@ -14,7 +14,11 @@
 # Installation
 
 ```sh
-npm/pnpm/yarn install unocss-catppuccin -D
+npm install -D unocss-catppuccin
+# or
+pnpm install -D unocss-catppuccin
+# or
+yarn install -D unocss-catppuccin
 # or
 deno add unocss-catppuccin
 ```
@@ -36,7 +40,7 @@ export default defineConfig({
 
 # Options
 
-Please refer to [src/types.ts](src/types.ts).
+Please refer to [the documentation in jsr.io](https://jsr.io/@tuhana/unocss-catppuccin/doc).
 
 # License
 
