@@ -18,11 +18,13 @@ export const presetCatppuccin = (
 
   const { mode, prefix = 'ctp', defaultFlavour } = options;
 
-  if (mode === 'extend') {
-    preset.extendTheme = _extendTheme({ prefix, defaultFlavour });
-  } else {
-    // TODO: Custom logging?
-    throw new Error(`Unsupported mode provided: \`${mode}\``);
+  switch (mode) {
+    case 'extend':
+      preset.extendTheme = _extendTheme({ prefix, defaultFlavour });
+      break;
+    default:
+      // TODO: Custom logging?
+      throw new Error(`Unsupported mode provided: \`${mode}\``);
   }
 
   return preset;
