@@ -40,7 +40,8 @@ export default defineConfig({
 
 # Options
 
-Please refer to [the documentation in jsr.io](https://jsr.io/@tuhana/unocss-catppuccin/doc).
+Please refer to
+[the documentation in jsr.io](https://jsr.io/@tuhana/unocss-catppuccin/doc).
 
 # License
 
