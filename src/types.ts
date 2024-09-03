@@ -112,7 +112,7 @@ export interface UnoCSSCatppuccinOptions extends PresetOptions {
    * Default flavour for using Catppuccin colours
    * directly with according colour labels.
    *
-   * Note: If {@link ExtenderOptions.prefix} is set to `undefined`,
+   * Note: If {@link prefix} is set to `undefined`,
    * and the desired colour already exists on the current preset,
    * the Catppuccin colour will be prefixed with `ctp`.
    *
@@ -138,7 +138,8 @@ export interface UnoCSSCatppuccinOptions extends PresetOptions {
 /**
  * Options for the internal `_extendTheme` function.
  *
- * Picks `prefix` and `defaultFlavour` from {@link UnoCSSCatppuccinOptions}.
+ * Picks `defaultFlavour` from {@link UnoCSSCatppuccinOptions} and adds a
+ * `prefix` option which holds the generic value {@link P} or {@link Falsy}.
  */
 export type ExtendOptions<P extends string = string> =
   & Pick<
