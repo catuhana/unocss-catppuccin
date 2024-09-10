@@ -7,25 +7,25 @@
       "jsr:@deno/dnt@^0.41.3": "jsr:@deno/dnt@0.41.3",
       "jsr:@std/assert@^0.223.0": "jsr:@std/assert@0.223.0",
       "jsr:@std/assert@^0.226.0": "jsr:@std/assert@0.226.0",
-      "jsr:@std/assert@^1.0.3": "jsr:@std/assert@1.0.3",
+      "jsr:@std/assert@^1.0.4": "jsr:@std/assert@1.0.4",
       "jsr:@std/bytes@^0.223.0": "jsr:@std/bytes@0.223.0",
       "jsr:@std/fmt@1": "jsr:@std/fmt@1.0.0",
       "jsr:@std/fmt@^0.223": "jsr:@std/fmt@0.223.0",
       "jsr:@std/fs@1": "jsr:@std/fs@1.0.1",
       "jsr:@std/fs@^0.223": "jsr:@std/fs@0.223.0",
       "jsr:@std/fs@^0.229.3": "jsr:@std/fs@0.229.3",
-      "jsr:@std/internal@^1.0.2": "jsr:@std/internal@1.0.2",
+      "jsr:@std/internal@^1.0.3": "jsr:@std/internal@1.0.3",
       "jsr:@std/io@^0.223": "jsr:@std/io@0.223.0",
       "jsr:@std/path@1": "jsr:@std/path@1.0.2",
       "jsr:@std/path@1.0.0-rc.1": "jsr:@std/path@1.0.0-rc.1",
       "jsr:@std/path@^0.223": "jsr:@std/path@0.223.0",
       "jsr:@std/path@^0.225.2": "jsr:@std/path@0.225.2",
       "jsr:@std/path@^1.0.2": "jsr:@std/path@1.0.2",
-      "jsr:@std/testing@^1.0.1": "jsr:@std/testing@1.0.1",
+      "jsr:@std/testing@^1.0.2": "jsr:@std/testing@1.0.2",
       "jsr:@ts-morph/bootstrap@^0.24.0": "jsr:@ts-morph/bootstrap@0.24.0",
       "jsr:@ts-morph/common@^0.24.0": "jsr:@ts-morph/common@0.24.0",
-      "npm:@catppuccin/palette@^1.2.0": "npm:@catppuccin/palette@1.2.0",
-      "npm:@unocss/core@^0.62.2": "npm:@unocss/core@0.62.2"
+      "npm:@catppuccin/palette@^1.3.0": "npm:@catppuccin/palette@1.3.0",
+      "npm:@unocss/core@^0.62.2": "npm:@unocss/core@0.62.3"
     },
     "jsr": {
       "@david/code-block-writer@13.0.2": {
@@ -57,10 +57,10 @@
       "@std/assert@0.226.0": {
         "integrity": "0dfb5f7c7723c18cec118e080fec76ce15b4c31154b15ad2bd74822603ef75b3"
       },
-      "@std/assert@1.0.3": {
-        "integrity": "b0d03ce1ced880df67132eea140623010d415848df66f6aa5df76507ca7c26d8",
+      "@std/assert@1.0.4": {
+        "integrity": "d4c767ea578e5bc09c15b6e503376003e5b2d1f4c0cdf08524a92101ff4d7b96",
         "dependencies": [
-          "jsr:@std/internal@^1.0.2"
+          "jsr:@std/internal@^1.0.3"
         ]
       },
       "@std/bytes@0.223.0": {
@@ -87,8 +87,8 @@
           "jsr:@std/path@^1.0.2"
         ]
       },
-      "@std/internal@1.0.2": {
-        "integrity": "f4cabe2021352e8bfc24e6569700df87bf070914fc38d4b23eddd20108ac4495"
+      "@std/internal@1.0.3": {
+        "integrity": "208e9b94a3d5649bd880e9ca38b885ab7651ab5b5303a56ed25de4755fb7b11e"
       },
       "@std/io@0.223.0": {
         "integrity": "2d8c3c2ab3a515619b90da2c6ff5ea7b75a94383259ef4d02116b228393f84f1",
@@ -115,8 +115,8 @@
       "@std/path@1.0.2": {
         "integrity": "a452174603f8c620bd278a380c596437a9eef50c891c64b85812f735245d9ec7"
       },
-      "@std/testing@1.0.1": {
-        "integrity": "9c25841137ee818933e1722091bb9ed5fdc251c35e84c97979a52196bdb6c5c3"
+      "@std/testing@1.0.2": {
+        "integrity": "9e8a7f4e26c219addabe7942d09c3450fa0a74e9662341961bc0ef502274dec3"
       },
       "@ts-morph/bootstrap@0.24.0": {
         "integrity": "a826a2ef7fa8a7c3f1042df2c034d20744d94da2ee32bf29275bcd4dffd3c060",
@@ -133,12 +133,12 @@
       }
     },
     "npm": {
-      "@catppuccin/palette@1.2.0": {
-        "integrity": "sha512-R5fxLcU47mRcsdQkXZBNfxt7SdEqLGWb1qhEKBrnYfEB4ZWOQRBEow4e78PKxaFUECBNOs6uEkwvwxFL9FmQqQ==",
+      "@catppuccin/palette@1.3.0": {
+        "integrity": "sha512-HlgVmsTJbpGnIv7FWeypvmTUgiU8SimM3KzutZJ4x7FYk3L43H67me0hAZcBTPYp2uzaLY4Iv0CnDHt3KiGf8g==",
         "dependencies": {}
       },
-      "@unocss/core@0.62.2": {
-        "integrity": "sha512-86jEFUJ/PSwdb1qqiEi0lWlewfKLQwiH+JAfnh8c2hLjOPVmCkb0nnsYSMh8drmtN5kpk6E06mN0IrKMO7OnvQ==",
+      "@unocss/core@0.62.3": {
+        "integrity": "sha512-Pfyrj8S7jq9K1QXD6Z5BCeiQavaHpbMN5q958/kmdbNGp57hOg1e346fMJAvgPjLBR+lE/hgZEsDrijtRiZXnw==",
         "dependencies": {}
       }
     }
@@ -147,9 +147,9 @@
   "workspace": {
     "dependencies": [
       "jsr:@deno/dnt@^0.41.3",
-      "jsr:@std/assert@^1.0.3",
-      "jsr:@std/testing@^1.0.1",
-      "npm:@catppuccin/palette@^1.2.0",
+      "jsr:@std/assert@^1.0.4",
+      "jsr:@std/testing@^1.0.2",
+      "npm:@catppuccin/palette@^1.3.0",
       "npm:@unocss/core@^0.62.2"
     ]
   }
