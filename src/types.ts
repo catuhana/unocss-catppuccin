@@ -92,7 +92,7 @@ export interface UnoCSSCatppuccinOptions extends PresetOptions {
    *
    * @default 'extend'
    */
-  mode: Modes;
+  mode?: Modes;
 
   /**
    * Prefix for matching Catppuccin colours.

@@ -16,7 +16,7 @@ export const presetCatppuccin = (
     name: 'unocss-catppuccin',
   };
 
-  const { mode, prefix = 'ctp', defaultFlavour } = options;
+  const { mode = 'extend', prefix = 'ctp', defaultFlavour } = options;
 
   switch (mode) {
     case 'extend':
