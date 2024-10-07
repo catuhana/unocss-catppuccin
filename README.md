@@ -43,6 +43,6 @@ export default defineConfig({
 Please refer to
 [the documentation in jsr.io](https://jsr.io/@tuhana/unocss-catppuccin/doc).
 
-# License
+# Licence
 
 This project is licenced under [Mozilla Public License Version 2.0](LICENCE).

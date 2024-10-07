@@ -1,83 +1,20 @@
-import type {
-  CatppuccinColors as CatppuccinColours,
-  CatppuccinFlavors as CatppuccinFlavours,
-} from '@catppuccin/palette';
+import type { CatppuccinFlavors } from '@catppuccin/palette';
 
 import type { PresetOptions } from '@unocss/core';
 
 /**
- * Theme object for Catppuccin colours.
- *
- * This type only contains the fields that are added with the `extend` mode.
- */
-export type ThemeObject<Options extends ExtendOptions> = Options extends
-  { prefix: string; defaultFlavour?: undefined } ? {
-    colors: {
-      [prefix in Options['prefix']]: {
-        [flavour in keyof CatppuccinFlavours]: {
-          [colour in keyof CatppuccinColours]: string;
-        };
-      };
-    };
-  }
-  : Options extends { prefix: Falsy; defaultFlavour?: undefined } ? {
-      colors: {
-        [flavour in keyof CatppuccinFlavours]: {
-          [colour in keyof CatppuccinColours]: string;
-        };
-      };
-    }
-  : Options extends { prefix?: undefined; defaultFlavour?: undefined } ? {
-      colors: {
-        'ctp': {
-          [flavour in keyof CatppuccinFlavours]: {
-            [colour in keyof CatppuccinColours]: string;
-          };
-        };
-      };
-    }
-  : Options extends { prefix: string; defaultFlavour: keyof CatppuccinFlavours }
-    ? {
-      colors: {
-        [prefix in Options['prefix']]: {
-          [colour in keyof CatppuccinColours]: string;
-        };
-      };
-    }
-  : Options extends { prefix: Falsy; defaultFlavour: keyof CatppuccinFlavours }
-    ? {
-      colors:
-        & {
-          [colour in keyof CatppuccinColours]?: string;
-        }
-        & {
-          'ctp'?: {
-            [colour in keyof CatppuccinColours]?: string;
-          };
-        };
-    }
-  : Options extends
-    { prefix?: undefined; defaultFlavour: keyof CatppuccinFlavours } ? {
-      colors: {
-        'ctp': {
-          [colour in keyof CatppuccinColours]: string;
-        };
-      };
-    }
-  : never;
-
-/**
  * Falsy values except `undefined`.
  *
- * `undefined` *is* considered as a falsy value, but if `prefix` option is
- * `undefined`, it will default to `ctp`.
+ * `undefined` *is* considered as a falsy value, but `undefined` some
+ * option fields ({@link UnoCSSCatppuccinOptions.prefix}) have default values.
  */
 export type Falsy = false | 0 | '' | null;
 
 /**
  * Which mode to use the preset with.
  *
- * `extend` mode will create new colours for current preset by using `extendTheme` function from UnoCSS.
+ * `extend` mode will create new colours for current preset by using
+ * `extendTheme` function from UnoCSS.
  */
 export type Modes = 'extend';
 
@@ -88,7 +25,8 @@ export interface UnoCSSCatppuccinOptions extends PresetOptions {
   /**
    * Which mode to use the preset with.
    *
-   * `extend` mode will create new colours for current preset by using `extendTheme` function from UnoCSS.
+   * `extend` mode will create new colours for current preset by using
+   * `extendTheme` function from UnoCSS.
    *
    * @default 'extend'
    */
@@ -132,7 +70,7 @@ export interface UnoCSSCatppuccinOptions extends PresetOptions {
    *
    * @default undefined
    */
-  defaultFlavour?: keyof CatppuccinFlavours;
+  defaultFlavour?: keyof CatppuccinFlavors;
 }
 
 /**

@@ -1,14 +1,73 @@
 import { describe, it } from '@std/testing/bdd';
 import { assert, assertEquals, assertInstanceOf } from '@std/assert';
 
-import { flavorEntries as flavourEntries } from '@catppuccin/palette';
+import { flavorEntries } from '@catppuccin/palette';
 
 import { _extendTheme } from './extend.ts';
-import type { ExtendOptions, ThemeObject } from './types.ts';
+
+import type { CatppuccinColors, CatppuccinFlavors } from '@catppuccin/palette';
+
+import type { ExtendOptions, Falsy } from './types.ts';
+
+type ThemeObject<Options extends ExtendOptions> = Options extends
+  { prefix: string; defaultFlavour?: undefined } ? {
+    colors: {
+      [prefix in Options['prefix']]: {
+        [flavour in keyof CatppuccinFlavors]: {
+          [colour in keyof CatppuccinColors]: string;
+        };
+      };
+    };
+  }
+  : Options extends { prefix: Falsy; defaultFlavour?: undefined } ? {
+      colors: {
+        [flavour in keyof CatppuccinFlavors]: {
+          [colour in keyof CatppuccinColors]: string;
+        };
+      };
+    }
+  : Options extends { prefix?: undefined; defaultFlavour?: undefined } ? {
+      colors: {
+        'ctp': {
+          [flavour in keyof CatppuccinFlavors]: {
+            [colour in keyof CatppuccinColors]: string;
+          };
+        };
+      };
+    }
+  : Options extends { prefix: string; defaultFlavour: keyof CatppuccinFlavors }
+    ? {
+      colors: {
+        [prefix in Options['prefix']]: {
+          [colour in keyof CatppuccinColors]: string;
+        };
+      };
+    }
+  : Options extends { prefix: Falsy; defaultFlavour: keyof CatppuccinFlavors }
+    ? {
+      colors:
+        & {
+          [colour in keyof CatppuccinColors]?: string;
+        }
+        & {
+          'ctp'?: {
+            [colour in keyof CatppuccinColors]?: string;
+          };
+        };
+    }
+  : Options extends
+    { prefix?: undefined; defaultFlavour: keyof CatppuccinFlavors } ? {
+      colors: {
+        'ctp': {
+          [colour in keyof CatppuccinColors]: string;
+        };
+      };
+    }
+  : never;
 
 describe('`_extendTheme` with', () => {
-  const expectedFlavours = flavourEntries.map(([flavourName]) => flavourName);
-  const expectedColours = flavourEntries[0][1].colorEntries.map((
+  const expectedFlavours = flavorEntries.map(([flavourName]) => flavourName);
+  const expectedColours = flavorEntries[0][1].colorEntries.map((
     [colourName],
   ) => colourName);
 
@@ -129,7 +188,7 @@ Deno.test("generated colours are accurate to Catppuccin's", () => {
 
   _extendTheme(options)(theme);
 
-  for (const [flavourName, flavour] of flavourEntries) {
+  for (const [flavourName, flavour] of flavorEntries) {
     assertInstanceOf(theme.colors.ctp[flavourName], Object);
 
     for (const [colourName, colour] of flavour.colorEntries) {

@@ -1,9 +1,7 @@
-import {
-  flavorEntries as flavourEntries,
-  flavors as flavours,
-} from '@catppuccin/palette';
+import { flavorEntries, flavors } from '@catppuccin/palette';
 
-import type { ExtendOptions } from './types.ts';
+import type { CatppuccinFlavor } from '@catppuccin/palette';
+import type { ExtendOptions, Falsy } from './types.ts';
 
 /**
  * Extend theme to UnoCSS by passing this to `extendTheme` function.
@@ -12,50 +10,48 @@ import type { ExtendOptions } from './types.ts';
  * @returns The main function that supposed to be passed
  * to UnoCSS `extendTheme` option.
  */
-export const _extendTheme = <Theme extends object = object>(
+export const _extendTheme = (
   options: ExtendOptions = {},
-): (theme: Theme) => void => {
+  // deno-lint-ignore no-explicit-any
+): (theme: Record<string, any>) => void => {
   const { prefix = 'ctp', defaultFlavour } = options;
 
-  //* We don't know what `theme` could be, since it's provided to us
-  //* by UnoCSS. I think we could type-safe the parts we have
-  //* (`ThemeObject` type), but I'm not sure how to do that.
-  // deno-lint-ignore no-explicit-any
-  return (theme: any): void => {
-    theme['colors'] ??= {};
+  return (theme): void => {
+    theme.colors ??= {};
 
-    // Determine the target object where the colours will be added
-    const target = prefix ? (theme['colors'][prefix] ??= {}) : theme['colors'];
+    const targetObject = prefix ? (theme.colors[prefix] ??= {}) : theme.colors;
 
-    // If `defaultFlavour` is set, and if it exists:
-    if (defaultFlavour && flavours[defaultFlavour]) {
-      // Iterate through the colours of that flavour and add them to the target
-      for (
-        const [colourName, colour] of flavours[defaultFlavour]
-          .colorEntries
-      ) {
-        if (!prefix && target[colourName]) {
-          target['ctp'] ??= {};
-          target['ctp'][colourName] = colour.hex;
-        } else {
-          target[colourName] = colour.hex;
-        }
-      }
-    } // If `defaultFlavour` is not set, or specified flavour doesn't exist:
-    else {
-      // Iterate through all the flavours,
-      for (const [flavourName, flavour] of flavourEntries) {
-        // create an empty object for that flavour
-        //! We have to create a new variable to prevent
-        //! accidentally nesting flavours inside each other
-        const newTarget = (target[flavourName] ??= {});
-
-        // Iterate through the colours of the flavour
-        for (const [colourName, colour] of flavour.colorEntries) {
-          // and add them to the new target
-          newTarget[colourName] = colour.hex;
-        }
+    if (defaultFlavour && flavors[defaultFlavour]) {
+      addColoursToTarget(
+        targetObject,
+        flavors[defaultFlavour].colorEntries,
+        prefix,
+      );
+    } else {
+      for (const [flavourName, flavour] of flavorEntries) {
+        targetObject[flavourName] ??= {};
+        addColoursToTarget(
+          targetObject[flavourName],
+          flavour.colorEntries,
+          prefix,
+        );
       }
     }
   };
 };
+
+function addColoursToTarget(
+  // deno-lint-ignore no-explicit-any
+  targetObject: any,
+  colourEntries: CatppuccinFlavor['colorEntries'],
+  prefix: string | Falsy,
+) {
+  for (const [colourName, colour] of colourEntries) {
+    if (!prefix && targetObject[colourName]) {
+      targetObject['ctp'] ??= {};
+      targetObject['ctp'][colourName] = colour.hex;
+    } else {
+      targetObject[colourName] = colour.hex;
+    }
+  }
+}

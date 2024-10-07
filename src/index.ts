@@ -7,7 +7,7 @@ import type { UnoCSSCatppuccinOptions } from './types.ts';
 /**
  * Catppuccin preset for UnoCSS.
  *
- * @param options - Options for the preset.
+ * @param options - Options of the preset.
  */
 export const presetCatppuccin = (
   options: UnoCSSCatppuccinOptions = { mode: 'extend' },
