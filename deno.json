@@ -1,6 +1,6 @@
 {
   "name": "@tuhana/unocss-catppuccin",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "tasks": {
     "build:npm": "deno run -A scripts/build_npm.ts"
   },
