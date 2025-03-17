@@ -27,7 +27,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ inputs.node-version }}
-          cache: 'pnpm'
+          cache: pnpm
 
       - name: Install dependencies
         run: pnpm install
@@ -39,5 +39,4 @@ jobs:
         run: pnpm check:lint
 
       - name: Run tests
-        if: inputs.node-version >= 16
         run: pnpm test
