@@ -53,8 +53,8 @@ jobs:
       contents: write
     steps:
       - name: Create release
+        env:
+          BRANCH_NAME: ${{ github.event.pull_request.head.ref }}
         run: |
-          BRANCH_NAME=$(echo ${{ github.event.pull_request.head.ref }})
-          RELEASE_TAG=$(echo ${BRANCH_NAME#*/})
-
-          gh release create "$RELEASE_TAG" --title "Release $RELEASE_TAG" --generate-notes
+          RELEASE_TAG=${BRANCH_NAME#*/} \
+            gh release create "$RELEASE_TAG" --title "Release $RELEASE_TAG" --generate-notes
