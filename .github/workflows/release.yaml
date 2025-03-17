@@ -15,7 +15,7 @@ jobs:
       startsWith(github.event.pull_request.head.ref, 'release/v') &&
       startsWith(github.event.pull_request.title, 'Bump version to')
     steps:
-      - run: echo "::set-output name=result::success"
+      - run: echo "Conditions met!"
   publish-packages:
     name: Publish Packages
     runs-on: ubuntu-latest
@@ -32,6 +32,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: lts/*
+          registry-url: https://registry.npmjs.org
           cache: pnpm
 
       - name: Install dependencies
