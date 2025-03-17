@@ -14,8 +14,6 @@ import type { ExtendOptions } from './types';
 export const _extendTheme = (options: ExtendOptions = {}) => {
   const { themeKey = 'colors', prefix = 'ctp', defaultFlavour } = options;
 
-  console.log(themeKey);
-
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return (theme: Record<string, any>) => {
     theme[themeKey] ??= {};
