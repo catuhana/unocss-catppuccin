@@ -45,7 +45,7 @@
   "devDependencies": {
     "@eslint/js": "^9.22.0",
     "@types/node": "^22.13.10",
-    "@unocss/core": ">=0.53.0",
+    "@unocss/core": ">=0.51.0",
     "eslint": "^9.22.0",
     "prettier": "^3.5.3",
     "typescript": "^5.8.2",
@@ -53,8 +53,8 @@
     "unbuild": "^3.5.0"
   },
   "peerDependencies": {
-    "@unocss/core": ">=0.53.0",
-    "unocss": ">=0.53.0"
+    "@unocss/core": ">=0.51.0",
+    "unocss": ">=0.51.0"
   },
   "peerDependenciesMeta": {
     "@unocss/core": {
