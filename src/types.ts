@@ -3,14 +3,6 @@ import type { CatppuccinFlavors } from '@catppuccin/palette';
 import type { PresetOptions } from '@unocss/core';
 
 /**
- * Falsy values except `undefined`.
- *
- * `undefined` *is* considered as a falsy value, but `undefined` some
- * option fields ({@link UnoCSSCatppuccinOptions.prefix}) have default values.
- */
-export type Falsy = false | 0 | '' | null;
-
-/**
  * Which mode to use the preset with.
  *
  * `extend` mode will create new colours for current preset by using
@@ -18,9 +10,6 @@ export type Falsy = false | 0 | '' | null;
  */
 export type Modes = 'extend';
 
-/**
- * Preset options for `unocss-catppuccin`.
- */
 export interface UnoCSSCatppuccinOptions extends PresetOptions {
   /**
    * Which mode to use the preset with.
@@ -33,24 +22,23 @@ export interface UnoCSSCatppuccinOptions extends PresetOptions {
   mode?: Modes;
 
   /**
-   * Prefix for matching Catppuccin colours.
+   * Prefix for using Catppuccin colours.
    *
    * @example
    * ```html
-   * <!-- If the prefix is `ctp` -->
    * <p class='text-ctp-mocha-red'>Hello world!</p>
    * <p class='border-ctp-latte-base'>Hello world!</p>
    * ```
    *
    * @default 'ctp'
    */
-  prefix?: string | Falsy;
+  prefix?: string | false;
 
   /**
    * Default flavour for using Catppuccin colours
    * directly with according colour labels.
    *
-   * Note: If {@link prefix} is set to `undefined`,
+   * Note: If {@link prefix} is set to `false`,
    * and the desired colour already exists on the current preset,
    * the Catppuccin colour will be prefixed with `ctp`.
    *
@@ -61,29 +49,20 @@ export interface UnoCSSCatppuccinOptions extends PresetOptions {
    * <!-- Let's make it `meow` -->
    * <p class='text-meow-flamingo'>Hello world!</p>
    *
-   * <!-- Let's make it a falsy value except `undefined`, for example `false` -->
+   * <!-- Let's make it `false` -->
    * <!-- This will use current preset's colour! -->
    * <p class='bg-red'>Hello world!</p>
    * <!-- To use Catppuccin's colour, add the `ctp` prefix  -->
    * <p class='bg-ctp-red'>Hello world!</p>
    * ```
-   *
-   * @default undefined
    */
   defaultFlavour?: keyof CatppuccinFlavors;
 }
 
 /**
  * Options for the internal `_extendTheme` function.
- *
- * Picks `defaultFlavour` from {@link UnoCSSCatppuccinOptions} and adds a
- * `prefix` option which holds the generic value {@link P} or {@link Falsy}.
  */
-export type ExtendOptions<P extends string = string> =
-  & Pick<
-    UnoCSSCatppuccinOptions,
-    'defaultFlavour'
-  >
-  & {
-    prefix?: P | Falsy;
-  };
+export interface ExtendOptions {
+  defaultFlavour?: keyof CatppuccinFlavors | undefined;
+  prefix?: string | false;
+}

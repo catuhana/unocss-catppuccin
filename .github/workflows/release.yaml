@@ -1,52 +1,60 @@
 name: Release
 
 on:
-  push:
-    tags: v*
-
-permissions:
-  contents: write
-  id-token: write
+  pull_request:
+    types:
+      - closed
 
 jobs:
-  release:
-    name: Create Release
+  check-release-conditions:
+    name: Check Release Conditions
     runs-on: ubuntu-latest
+    if: |
+      github.event.pull_request.merged == true &&
+      github.event.pull_request.base.ref == github.base_ref &&
+      startsWith(github.event.pull_request.head.ref, 'release/v') &&
+      startsWith(github.event.pull_request.title, 'Bump version to')
+    steps:
+      - run: echo "::set-output name=result::success"
+  publish-packages:
+    name: Publish Packages
+    runs-on: ubuntu-latest
+    needs: check-release-conditions
+    if: needs.check-release-conditions.result == 'success'
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set-up Deno
-        uses: denoland/setup-deno@v2
-        with:
-          deno-version: v2.x
+      - name: Set-up pnpm
+        uses: pnpm/action-setup@v4
 
       - name: Set-up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
-          registry-url: https://registry.npmjs.org
+          node-version: lts
+          cache: pnpm
 
-      - name: Build npm package
-        run: deno task build:npm
+      - name: Install dependencies
+        run: pnpm install
 
-      - name: Generate release notes
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const tag = context.ref.split('/').at(-1);
-            github.rest.repos.createRelease({
-              name: `Release ${tag}`,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              tag_name: tag,
-              generate_release_notes: true
-            })
+      - name: Publish to npm
+        run: npm publish --access public --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish to JSR
         run: npx jsr publish
+  create-release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    needs: publish-packages
+    if: needs.publish-packages.result == 'success'
+    permissions:
+      contents: write
+    steps:
+      - name: Create release
+        run: |
+          BRANCH_NAME=$(echo ${{ github.event.pull_request.head.ref }})
+          RELEASE_TAG=$(echo ${BRANCH_NAME#*/})
 
-      - name: Publish to npm
-        run: cd npm && npm publish --access public --provenance
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          gh release create "$RELEASE_TAG" --title "Release $RELEASE_TAG" --generate-notes

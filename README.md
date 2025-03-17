@@ -16,16 +16,16 @@
 ```sh
 npm install -D unocss-catppuccin
 # or
-pnpm install -D unocss-catppuccin
+pnpm add -D unocss-catppuccin
 # or
-yarn install -D unocss-catppuccin
+yarn add -D unocss-catppuccin
 # or
-deno add unocss-catppuccin
+deno add jsr:unocss-catppuccin
 ```
 
 # Usage
 
-To use Catppuccin, simply include the `presetCatppuccin` preset in your UnoCSS
+To use Catppuccin, include the `presetCatppuccin` preset in your UnoCSS
 configuration.
 
 ```ts
