@@ -29,6 +29,9 @@ jobs:
           node-version: ${{ inputs.node-version }}
           cache: 'pnpm'
 
+      - name: Install dependencies
+        run: pnpm install
+
       - name: Check formatting
         run: pnpm check:format
 
