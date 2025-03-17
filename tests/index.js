@@ -4,7 +4,7 @@ import { ok, equal, deepEqual } from 'node:assert';
 
 import { flavorEntries, flavors } from '@catppuccin/palette';
 
-import { _extendTheme } from '../dist/index.mjs';
+import { presetCatppuccin } from '../dist/index.mjs';
 
 describe('`_extendTheme` with', () => {
   const expectedFlavourNames = Object.keys(flavors);
@@ -28,7 +28,7 @@ describe('`_extendTheme` with', () => {
 
     describe(`with ${inspect(extendOptions)} options`, () => {
       it('produces correct theme structure', () => {
-        _extendTheme(extendOptions)(theme);
+        presetCatppuccin(extendOptions).extendTheme(theme);
         validator(theme, extendOptions);
       });
     });
@@ -123,7 +123,7 @@ describe('`_extendTheme` with', () => {
 
 test("generated colours are accurate to Catppuccin's", () => {
   const theme = {};
-  _extendTheme({})(theme);
+  presetCatppuccin({}).extendTheme(theme);
 
   for (const [flavourName, flavour] of flavorEntries) {
     ok(
@@ -143,7 +143,9 @@ test("generated colours are accurate to Catppuccin's", () => {
 
 test("conflicting keys don't override existing keys", () => {
   const theme = { colors: { red: 'meow' } };
-  _extendTheme({ prefix: false, defaultFlavour: 'mocha' })(theme);
+  presetCatppuccin({ prefix: false, defaultFlavour: 'mocha' }).extendTheme(
+    theme,
+  );
 
   equal(theme.colors.red, 'meow', 'Existing colour should not be overridden');
   ok(
@@ -154,7 +156,7 @@ test("conflicting keys don't override existing keys", () => {
 
 test('handles existing ctp key correctly', () => {
   const theme = { colors: { ctp: { custom: 'value' } } };
-  _extendTheme({})(theme);
+  presetCatppuccin({}).extendTheme(theme);
 
   equal(
     theme.colors.ctp.custom,
