@@ -9,7 +9,7 @@ on:
         type: string
       node-version:
         description: Node.js version
-        default: lts
+        default: lts/*
         type: string
 
 jobs:
