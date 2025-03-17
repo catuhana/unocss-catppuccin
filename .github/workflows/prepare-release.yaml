@@ -42,7 +42,7 @@ jobs:
 
       - name: Update versions
         run: |
-          sed -i 's/"version": "[^"]*"/"version": "'"$NEW_TAG"'"/' package.json jsr.json
+          sed -i 's/"version": "[^"]*"/"version": "'"${NEW_TAG//v}"'"/' package.json jsr.json
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
