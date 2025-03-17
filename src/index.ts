@@ -9,20 +9,23 @@ import type { UnoCSSCatppuccinOptions } from './types.ts';
  *
  * @param options - Options of the preset.
  */
-export const presetCatppuccin = (
-  options: UnoCSSCatppuccinOptions = { mode: 'extend' },
-) => {
+export const presetCatppuccin = (options: UnoCSSCatppuccinOptions = {}) => {
   const preset: Preset = { name: 'unocss-catppuccin' };
 
-  const { mode = 'extend', prefix = 'ctp', defaultFlavour } = options;
+  const {
+    mode = 'extend',
+    themeKey = 'colors',
+    prefix = 'ctp',
+    defaultFlavour,
+  } = options;
 
   switch (mode) {
     case 'extend':
-      preset.extendTheme = _extendTheme({ prefix, defaultFlavour });
+      preset.extendTheme = _extendTheme({ prefix, themeKey, defaultFlavour });
       break;
     default:
       // TODO: Custom logging?
-      throw new Error(`Unsupported mode provided: \`${mode}\``);
+      throw new Error(`Unsupported mode provided: '${mode}'`);
   }
 
   return preset;

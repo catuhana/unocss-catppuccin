@@ -165,3 +165,10 @@ test('handles existing ctp key correctly', () => {
   );
   ok(theme.colors.ctp.mocha, 'Catppuccin mocha flavour should be added');
 });
+
+test("'themeKey' option works", () => {
+  const theme = {};
+  presetCatppuccin({ themeKey: 'colourSchemas' }).extendTheme(theme);
+
+  ok(theme.colourSchemas, 'Theme should be added under custom key');
+});
