@@ -42,13 +42,17 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Build package
+        run: pnpm build
+
       - name: Publish to npm
         run: pnpm publish --access public --provenance
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
 
-      - name: Publish to JSR
-        run: pnpx jsr publish
+      # JSR doesn't support >= range yet.
+      # - name: Publish to JSR
+      #   run: pnpx jsr publish
   create-release:
     name: Create Release on GitHub
     runs-on: ubuntu-latest
