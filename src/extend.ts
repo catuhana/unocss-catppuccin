@@ -12,14 +12,14 @@ import type { ExtendOptions } from './types';
  * to UnoCSS `extendTheme` option.
  */
 export const _extendTheme = (options: ExtendOptions = {}) => {
-  const { prefix = 'ctp', defaultFlavour } = options;
+  const { themeKey = 'colors', prefix = 'ctp', defaultFlavour } = options;
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return (theme: Record<string, any>) => {
-    theme['colors'] ??= {};
+    theme[themeKey] ??= {};
 
     const targetObject =
-      prefix ? (theme['colors'][prefix] ??= {}) : theme['colors'];
+      prefix ? (theme[themeKey][prefix] ??= {}) : theme[themeKey];
 
     if (defaultFlavour && flavors[defaultFlavour]) {
       addColoursToTarget(

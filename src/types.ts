@@ -22,6 +22,13 @@ export interface UnoCSSCatppuccinOptions extends PresetOptions {
   mode?: Modes;
 
   /**
+   * Theme colours key to use for extending the current preset.
+   *
+   * @default 'colors'
+   */
+  themeKey?: string;
+
+  /**
    * Prefix for using Catppuccin colours.
    *
    * @example
@@ -63,6 +70,7 @@ export interface UnoCSSCatppuccinOptions extends PresetOptions {
  * Options for the internal `_extendTheme` function.
  */
 export interface ExtendOptions {
-  defaultFlavour?: keyof CatppuccinFlavors | undefined;
+  themeKey?: string | undefined;
   prefix?: string | false;
+  defaultFlavour?: keyof CatppuccinFlavors | undefined;
 }
