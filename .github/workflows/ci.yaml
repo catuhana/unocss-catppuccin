@@ -1,47 +1,41 @@
 name: CI
+run-name: ${{ inputs.reason }}
 
 on:
   push:
-    paths-ignore:
-      - .github/FUNDING.yml
-      - .vscode/**
-      - LICENCE
-      - README.md
-  pull_request:
-    paths-ignore:
-      - .github/FUNDING.yml
-      - .vscode/**
-      - LICENCE
-      - README.md
     branches:
       - main
+    paths:
+      - .github/workflows/ci.yaml
+      - src/**
+      - tests/**
+      - package.json
+      - pnpm-lock.yaml
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/ci.yaml
+      - src/**
+      - tests/**
+      - package.json
+      - pnpm-lock.yaml
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: Dispatch reason
+        type: string
+        required: true
 
 jobs:
-  build_and_lint:
-    name: Build and Lint
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Set-up Deno
-        uses: denoland/setup-deno@v2
-        with:
-          deno-version: v2.x
-
-      - name: Set-up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-
-      - name: Check linting
-        run: deno lint
-
-      - name: Check formatting
-        run: deno fmt --check
-
-      - name: Run tests
-        run: deno test
-
-      - name: Build npm package
-        run: deno task build:npm
+  code-check:
+    name: Run Formatter and Linter
+    uses: ./.github/workflows/code-check.yaml
+    strategy:
+      matrix:
+        node-version:
+          - 18.x
+          - 20.x
+          - 22.x
+    with:
+      node-version: ${{ matrix.node-version }}

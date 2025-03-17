@@ -1,7 +1,8 @@
 import { flavorEntries, flavors } from '@catppuccin/palette';
 
 import type { CatppuccinFlavor } from '@catppuccin/palette';
-import type { ExtendOptions, Falsy } from './types.ts';
+
+import type { ExtendOptions } from './types';
 
 /**
  * Extend theme to UnoCSS by passing this to `extendTheme` function.
@@ -10,16 +11,15 @@ import type { ExtendOptions, Falsy } from './types.ts';
  * @returns The main function that supposed to be passed
  * to UnoCSS `extendTheme` option.
  */
-export const _extendTheme = (
-  options: ExtendOptions = {},
-  // deno-lint-ignore no-explicit-any
-): (theme: Record<string, any>) => void => {
+export const _extendTheme = (options: ExtendOptions = {}) => {
   const { prefix = 'ctp', defaultFlavour } = options;
 
-  return (theme): void => {
-    theme.colors ??= {};
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return (theme: Record<string, any>) => {
+    theme['colors'] ??= {};
 
-    const targetObject = prefix ? (theme.colors[prefix] ??= {}) : theme.colors;
+    const targetObject =
+      prefix ? (theme['colors'][prefix] ??= {}) : theme['colors'];
 
     if (defaultFlavour && flavors[defaultFlavour]) {
       addColoursToTarget(
@@ -41,10 +41,10 @@ export const _extendTheme = (
 };
 
 function addColoursToTarget(
-  // deno-lint-ignore no-explicit-any
-  targetObject: any,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  targetObject: Record<string, any>,
   colourEntries: CatppuccinFlavor['colorEntries'],
-  prefix: string | Falsy,
+  prefix: string | false,
 ) {
   for (const [colourName, colour] of colourEntries) {
     if (!prefix && targetObject[colourName]) {

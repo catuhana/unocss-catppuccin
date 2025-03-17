@@ -1,0 +1,45 @@
+name: Check Code Format and Lint
+
+on:
+  workflow_call:
+    inputs:
+      runs-on:
+        description: Runs on
+        default: ubuntu-latest
+        type: string
+      node-version:
+        description: Node.js version
+        default: lts
+        type: string
+
+jobs:
+  code-check:
+    name: Run Formatter and Linter
+    runs-on: ${{ inputs.runs-on }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set-up pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Set-up Node.js ${{ inputs.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs.node-version }}
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Check formatting
+        run: pnpm check:format
+
+      - name: Check linting
+        run: pnpm check:lint
+
+      - name: Build project
+        run: pnpm build
+
+      - name: Run tests
+        run: pnpm test

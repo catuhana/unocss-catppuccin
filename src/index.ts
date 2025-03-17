@@ -11,10 +11,8 @@ import type { UnoCSSCatppuccinOptions } from './types.ts';
  */
 export const presetCatppuccin = (
   options: UnoCSSCatppuccinOptions = { mode: 'extend' },
-): Preset => {
-  const preset: Preset = {
-    name: 'unocss-catppuccin',
-  };
+) => {
+  const preset: Preset = { name: 'unocss-catppuccin' };
 
   const { mode = 'extend', prefix = 'ctp', defaultFlavour } = options;
 
