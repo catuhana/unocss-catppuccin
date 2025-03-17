@@ -4,7 +4,7 @@ import { ok, equal, deepEqual } from 'node:assert';
 
 import { flavorEntries, flavors } from '@catppuccin/palette';
 
-import { _extendTheme } from '../src/extend.ts';
+import { _extendTheme } from '../dist/index.mjs';
 
 describe('`_extendTheme` with', () => {
   const expectedFlavourNames = Object.keys(flavors);
