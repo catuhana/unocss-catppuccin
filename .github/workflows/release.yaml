@@ -38,12 +38,12 @@ jobs:
         run: pnpm install
 
       - name: Publish to npm
-        run: npm publish --access public --provenance
+        run: pnpm publish --access public --provenance
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
 
       - name: Publish to JSR
-        run: npx jsr publish
+        run: pnpx jsr publish
   create-release:
     name: Create Release
     runs-on: ubuntu-latest
