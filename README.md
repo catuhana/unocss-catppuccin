@@ -1,17 +1,19 @@
-<center>
+[![Licence](https://badgers.space/github/license/catuhana/unocss-catppuccin)](#licence)
+[![npm Version](https://badgers.space/npm/version/unocss-catppuccin)](https://npmjs.com/package/unocss-catppuccin)
+[![CI Status](https://badgers.space/github/checks/catuhana/unocss-catppuccin)](https://github.com/catuhana/unocss-catppuccin/actions)
+
+<!-- [![Documentation Status](https://badgers.space/github/checks/catuhana/unocss-catppuccin/main/docs)](https://github.com/catuhana/unocss-catppuccin/actions) -->
 
 # [Catppuccin](https://catppuccin.com/) for [UnoCSS](https://unocss.dev)
 
-🌸 Soothing pastel theme preset for UnoCSS!
+🌸 Soothing pastel colour theme preset for UnoCSS!
 
-[![CI Status](https://img.shields.io/github/actions/workflow/status/catuhana/unocss-catppuccin/ci.yaml?style=flat-square&logo=github-actions&label=CI&labelColor=%23eff1f5&color=%2340a02b)](https://github.com/catuhana/unocss-catppuccin/actions/workflows/ci.yaml)
-[![npm Version](https://img.shields.io/npm/v/unocss-catppuccin?style=flat-square&logo=npm&labelColor=%23eff1f5&color=%2340a02b)](https://npmjs.com/package/unocss-catppuccin)
-[![JSR](https://jsr.io/badges/@tuhana/unocss-catppuccin)](https://jsr.io/@tuhana/unocss-catppuccin)
-[![GitHub Stars](https://img.shields.io/github/stars/catuhana/unocss-catppuccin?style=flat-square&labelColor=%23eff1f5&color=%2340a02b)](https://github.com/catuhana/unocss-catppuccin/stargazers)
-
-</center>
+<!-- TODO: Add showcase/previews etc. -->
 
 # Installation
+
+<!-- TODO: Add JSR back once https://github.com/denoland/deno/issues/26587
+  is fixed. -->
 
 ```sh
 npm install -D unocss-catppuccin
@@ -19,29 +21,48 @@ npm install -D unocss-catppuccin
 pnpm add -D unocss-catppuccin
 # or
 yarn add -D unocss-catppuccin
-# or
-deno add jsr:unocss-catppuccin
 ```
 
 # Usage
 
-To use Catppuccin, include the `presetCatppuccin` preset in your UnoCSS
-configuration.
+1. Install the [preset package](#installation),
+
+2. apply the preset to your [configuration file](https://unocss.dev/guide/config-file),
 
 ```ts
-// unocss.config.ts
-import { defineConfig, presetUno } from 'unocss';
-import { presetCatppuccin } from 'unocss-catppuccin';
+// uno.config.ts
+import { defineConfig } from 'unocss';
+
+import presetWind4 from '@unocss/preset-wind4';
+import presetCatppuccin from 'unocss-catppuccin';
 
 export default defineConfig({
-  presets: [presetUno(), presetCatppuccin(/* options */)],
+  presets: [
+    /*
+      A preset with CSS utilities must be used for this preset
+      to extend its colours in `extend` mode option, which is
+      the default.
+    */
+    presetWind4(),
+    presetCatppuccin(/* options */),
+  ],
 });
 ```
 
-# Options
+3. and voila! You can now use Catppuccin!
 
-Please refer to
-[the documentation in jsr.io](https://jsr.io/@tuhana/unocss-catppuccin/doc).
+```html
+<div class="bg-ctp-latte-base">
+  <span class="text-ctp-latte-mauve">Hello</span>
+  <span class="text-ctp-latte-lavender">Catppuccin!</span>
+</div>
+```
+
+# Documentation
+
+TODO
+
+<!-- TODO: Add #Contributing -->
 
 # Licence
 
