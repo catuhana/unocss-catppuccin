@@ -1,4 +1,8 @@
-// TODO: Maybe use `vitest` so we can keep using TS files?
+/**
+ * TODO: Maybe use `vitest` so we can keep using TS files?
+ * Don't forget to remove `@catppuccin/palette` from `devDependencies`
+ * once this is done.
+ */
 import { describe, test, it } from 'node:test';
 import { inspect } from 'node:util';
 import { ok, equal, deepEqual } from 'node:assert';

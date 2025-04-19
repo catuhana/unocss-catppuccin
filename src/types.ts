@@ -1,4 +1,5 @@
-import type { CatppuccinFlavors } from '@catppuccin/palette';
+// TODO: Improve documentation.
+import type { FlavourName } from './palette';
 
 import type { PresetOptions } from '@unocss/core';
 
@@ -63,7 +64,7 @@ export interface UnoCSSCatppuccinOptions extends PresetOptions {
    * <p class='bg-ctp-red'>Hello world!</p>
    * ```
    */
-  defaultFlavour?: keyof CatppuccinFlavors;
+  defaultFlavour?: FlavourName;
 }
 
 /**
@@ -72,5 +73,5 @@ export interface UnoCSSCatppuccinOptions extends PresetOptions {
 export interface ExtendOptions {
   themeKey?: string | undefined;
   prefix?: string | false;
-  defaultFlavour?: keyof CatppuccinFlavors | undefined;
+  defaultFlavour?: FlavourName | undefined;
 }

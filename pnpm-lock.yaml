@@ -8,13 +8,13 @@ importers:
 
   .:
     dependencies:
-      '@catppuccin/palette':
-        specifier: ^1.7.1
-        version: 1.7.1
       unocss:
         specifier: '>=0.51.0'
         version: 66.0.0(postcss@8.5.3)(vite@6.3.2(@types/node@22.14.1)(jiti@2.4.2))(vue@3.5.13(typescript@5.8.3))
     devDependencies:
+      '@catppuccin/palette':
+        specifier: ^1.7.1
+        version: 1.7.1
       '@eslint/js':
         specifier: ^9.25.0
         version: 9.25.0

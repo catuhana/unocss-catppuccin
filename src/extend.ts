@@ -1,6 +1,5 @@
-import { flavorEntries, flavors } from '@catppuccin/palette';
-
-import type { CatppuccinFlavor } from '@catppuccin/palette';
+// TODO: Get rid of `any` usages.
+import { FLAVOURS, type PaletteColours } from './palette';
 
 import type { ExtendOptions } from './types';
 
@@ -14,44 +13,37 @@ import type { ExtendOptions } from './types';
 export const _extendTheme = (options: ExtendOptions = {}) => {
   const { themeKey = 'colors', prefix = 'ctp', defaultFlavour } = options;
 
+  const addFlavourColors = (
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    targetObj: Record<string, any>,
+    flavour: PaletteColours,
+    namespace?: string,
+  ) => {
+    for (const [colorId, color] of Object.entries(flavour)) {
+      if (!prefix && targetObj[colorId] && !namespace) {
+        targetObj['ctp'] ??= {};
+        targetObj['ctp'][colorId] = color;
+      } else if (namespace) {
+        const namespaceObj = (targetObj[namespace] ??= {});
+        namespaceObj[colorId] = color;
+      } else {
+        targetObj[colorId] = color;
+      }
+    }
+  };
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return (theme: Record<string, any>) => {
     theme[themeKey] ??= {};
-
     const targetObject =
       prefix ? (theme[themeKey][prefix] ??= {}) : theme[themeKey];
 
-    if (defaultFlavour && flavors[defaultFlavour]) {
-      addColoursToTarget(
-        targetObject,
-        flavors[defaultFlavour].colorEntries,
-        prefix,
-      );
+    if (defaultFlavour && defaultFlavour in FLAVOURS) {
+      addFlavourColors(targetObject, FLAVOURS[defaultFlavour]);
     } else {
-      for (const [flavourName, flavour] of flavorEntries) {
-        targetObject[flavourName] ??= {};
-        addColoursToTarget(
-          targetObject[flavourName],
-          flavour.colorEntries,
-          prefix,
-        );
+      for (const [flavourIdentifier, flavour] of Object.entries(FLAVOURS)) {
+        addFlavourColors(targetObject, flavour, flavourIdentifier);
       }
     }
   };
 };
-
-function addColoursToTarget(
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  targetObject: Record<string, any>,
-  colourEntries: CatppuccinFlavor['colorEntries'],
-  prefix: string | false,
-) {
-  for (const [colourName, colour] of colourEntries) {
-    if (!prefix && targetObject[colourName]) {
-      targetObject['ctp'] ??= {};
-      targetObject['ctp'][colourName] = colour.hex;
-    } else {
-      targetObject[colourName] = colour.hex;
-    }
-  }
-}
