@@ -24,9 +24,16 @@ export default (options: UnoCSSCatppuccinOptions = {}) => {
       preset.extendTheme = _extendTheme({ prefix, themeKey, defaultFlavour });
       break;
     default:
-      // TODO: Custom logging?
-      throw new Error(`Unsupported mode provided: '${mode}'`);
+      throw new CatppuccinUnoCSSError(`Unsupported mode provided: '${mode}'`);
   }
 
   return preset;
 };
+
+class CatppuccinUnoCSSError extends Error {
+  constructor(message: string) {
+    super(message);
+
+    this.name = '[unocss-catppuccin] :: error :';
+  }
+}
