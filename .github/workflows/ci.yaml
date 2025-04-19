@@ -3,8 +3,6 @@ run-name: ${{ inputs.reason }}
 
 on:
   push:
-    branches:
-      - main
     paths:
       - .github/workflows/ci.yaml
       - src/**
@@ -12,8 +10,6 @@ on:
       - package.json
       - pnpm-lock.yaml
   pull_request:
-    branches:
-      - main
     paths:
       - .github/workflows/ci.yaml
       - src/**
@@ -29,7 +25,7 @@ on:
 
 jobs:
   code-check:
-    name: Run Formatter and Linter
+    name: Run Code Check Workflow
     uses: ./.github/workflows/code-check.yaml
     strategy:
       matrix:
