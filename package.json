@@ -19,20 +19,17 @@
   "type": "module",
   "exports": {
     ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs",
+      "import": "./dist/index.js",
       "types": {
-        "import": "./dist/index.d.mts",
-        "require": "./dist/index.d.cts"
+        "import": "./dist/index.d.ts"
       }
     }
   },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
     "test": "node --test tests/index.js",
-    "build": "unbuild",
+    "build": "pkgroll",
     "check:lint": "eslint . --ext .ts",
     "check:format": "prettier --check ."
   },
@@ -47,10 +44,10 @@
     "@types/node": ">=18.0.0",
     "@unocss/core": ">=0.51.0",
     "eslint": "^9.22.0",
+    "pkgroll": "^2.12.1",
     "prettier": "^3.5.3",
     "typescript": "^5.8.2",
-    "typescript-eslint": "^8.26.1",
-    "unbuild": "^3.5.0"
+    "typescript-eslint": "^8.26.1"
   },
   "peerDependencies": {
     "@unocss/core": ">=0.51.0",

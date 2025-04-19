@@ -5,7 +5,7 @@ import { ok, equal, deepEqual } from 'node:assert';
 
 import { flavorEntries, flavors } from '@catppuccin/palette';
 
-import presetCatppuccin from '../dist/index.mjs';
+import presetCatppuccin from '../dist/index.js';
 
 describe('`_extendTheme` with', () => {
   const expectedFlavourNames = Object.keys(flavors);
