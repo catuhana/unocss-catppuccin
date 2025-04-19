@@ -1,10 +1,11 @@
+// TODO: Maybe use `vitest` so we can keep using TS files?
 import { describe, test, it } from 'node:test';
 import { inspect } from 'node:util';
 import { ok, equal, deepEqual } from 'node:assert';
 
 import { flavorEntries, flavors } from '@catppuccin/palette';
 
-import { presetCatppuccin } from '../dist/index.mjs';
+import presetCatppuccin from '../dist/index.mjs';
 
 describe('`_extendTheme` with', () => {
   const expectedFlavourNames = Object.keys(flavors);
