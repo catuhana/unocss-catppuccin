@@ -1,7 +1,7 @@
 // TODO: Get rid of `any` usages.
-import { FLAVOURS, type PaletteColours } from './palette';
+import { FLAVOURS, type PaletteColours } from './palette.ts';
 
-import type { ExtendOptions } from './types';
+import type { ExtendOptions } from './types.ts';
 
 /**
  * Extend theme to UnoCSS by passing this to `extendTheme` function.

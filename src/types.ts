@@ -1,5 +1,5 @@
 // TODO: Improve documentation.
-import type { FlavourName } from './palette';
+import type { FlavourName } from './palette.ts';
 
 import type { PresetOptions } from '@unocss/core';
 
