@@ -1,13 +1,9 @@
-// TODO: Improve documentation.
-import type { FlavourName } from './palette.ts';
-
 import type { PresetOptions } from '@unocss/core';
 
+import type { FlavourName } from './palette.ts';
+
 /**
- * Which mode to use the preset with.
- *
- * `extend` mode will create new colours for current preset by using
- * `extendTheme` function from UnoCSS.
+ * @see {@link UnoCSSCatppuccinOptions.mode}
  */
 export type Modes = 'extend';
 
@@ -15,22 +11,28 @@ export interface UnoCSSCatppuccinOptions extends PresetOptions {
   /**
    * Which mode to use the preset with.
    *
-   * `extend` mode will create new colours for current preset by using
-   * `extendTheme` function from UnoCSS.
+   * `extend` mode will extend the `theme` object to add
+   * Catppuccin colours. A preset with CSS utilities MUST
+   * be used to be able to use the colours.
    *
    * @default 'extend'
    */
   mode?: Modes;
 
   /**
-   * Theme colours key to use for extending the current preset.
+   * Which `theme` object key to expand add the colours to.
+   * Some presets might use a different key for colours object.
    *
    * @default 'colors'
    */
   themeKey?: string;
 
   /**
-   * Prefix for using Catppuccin colours.
+   * Prefix to use for Catppuccin colours.
+   *
+   * Prefix is also used when {@link defaultFlavour}
+   * is set and a colour from another preset uses the
+   * same name as a Catppuccin colour, e.g. `red`.
    *
    * @example
    * ```html
@@ -43,12 +45,13 @@ export interface UnoCSSCatppuccinOptions extends PresetOptions {
   prefix?: string | false;
 
   /**
-   * Default flavour for using Catppuccin colours
-   * directly with according colour labels.
+   * Default flavour to use colours directly from.
    *
-   * Note: If {@link prefix} is set to `false`,
-   * and the desired colour already exists on the current preset,
-   * the Catppuccin colour will be prefixed with `ctp`.
+   * If {@link prefix} is set to false `false` with the
+   * combination of this option, and if a Catppuccin colour
+   * conflicts with another preset's colour, the Catppuccin
+   * colour will be prefixed with the value of
+   * {@link defaultFlavour}.
    *
    * @example
    * ```html
@@ -58,9 +61,9 @@ export interface UnoCSSCatppuccinOptions extends PresetOptions {
    * <p class='text-meow-flamingo'>Hello world!</p>
    *
    * <!-- Let's make it `false` -->
-   * <!-- This will use current preset's colour! -->
+   * <!-- If they conflict, this will use current preset's colour! -->
    * <p class='bg-red'>Hello world!</p>
-   * <!-- To use Catppuccin's colour, add the `ctp` prefix  -->
+   * <!-- To use Catppuccin's colour instead, add the `ctp` prefix  -->
    * <p class='bg-ctp-red'>Hello world!</p>
    * ```
    */
