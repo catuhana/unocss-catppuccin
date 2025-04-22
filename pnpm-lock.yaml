@@ -8,9 +8,6 @@ importers:
 
   .:
     devDependencies:
-      '@catppuccin/palette':
-        specifier: ^1.7.1
-        version: 1.7.1
       '@eslint/js':
         specifier: ^9.25.1
         version: 9.25.1
@@ -37,9 +34,6 @@ importers:
         version: 8.31.0(eslint@9.25.1(jiti@2.4.2))(typescript@5.8.3)
 
 packages:
-
-  '@catppuccin/palette@1.7.1':
-    resolution: {integrity: sha512-aRc1tbzrevOTV7nFTT9SRdF26w/MIwT4Jwt4fDMc9itRZUDXCuEDBLyz4TQMlqO9ZP8mf5Hu4Jr6D03NLFc6Gw==}
 
   '@esbuild/aix-ppc64@0.25.2':
     resolution: {integrity: sha512-wCIboOL2yXZym2cgm6mlA742s9QeJ8DjGVaL39dLN4rRwrOgOyYSnOaFPhKZGLb2ngj4EyfAFjsNJwPXZvseag==}
@@ -946,8 +940,6 @@ packages:
     engines: {node: '>=10'}
 
 snapshots:
-
-  '@catppuccin/palette@1.7.1': {}
 
   '@esbuild/aix-ppc64@0.25.2':
     optional: true

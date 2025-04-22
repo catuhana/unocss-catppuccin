@@ -1,4 +1,4 @@
-import { _extendTheme } from './extend.ts';
+import { _extendTheme } from './extend/index.ts';
 
 import type { Preset } from '@unocss/core';
 
