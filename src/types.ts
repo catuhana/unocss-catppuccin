@@ -1,13 +1,19 @@
 import type { PresetOptions } from '@unocss/core';
+import type { ExtendOptions } from './extend/types';
 
-export type Mode<
-  Type extends string = string,
-  Options extends object = object,
-> = (options?: Options) => Options & { type: Type };
+/** @see {@link UnoCSSCatppuccinOptions.mode} */
+export type Modes = 'extend';
 
-/**
- * Base options for the preset.
- */
-export interface UnoCSSCatppuccinOptions extends PresetOptions {
-  mode?: ReturnType<Mode>;
+export interface UnoCSSCatppuccinOptions extends PresetOptions, ExtendOptions {
+  /**
+   * Which mode to use the preset with.
+   *
+   * `extend` mode will extend the `theme` object to add
+   * Catppuccin colours. A preset with CSS utilities
+   * (e.g. [Wind4 Preset](https://unocss.dev/presets/wind4))
+   * MUST be used to be able to use the colours.
+   *
+   * @default 'extend'
+   */
+  mode?: Modes;
 }

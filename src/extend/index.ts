@@ -2,7 +2,6 @@
 import { FLAVOURS, type PaletteColours } from '../palette.ts';
 
 import type { ExtendOptions } from './types.ts';
-import type { Mode } from '../types.ts';
 
 /**
  * Extend theme to UnoCSS by passing this to `extendTheme` function.
@@ -47,8 +46,4 @@ export const _extendTheme = (options: ExtendOptions = {}) => {
       }
     }
   };
-};
-
-export const extendMode: Mode<'extend', ExtendOptions> = (options = {}) => {
-  return { type: 'extend', ...options };
 };
