@@ -42,9 +42,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Build package
-        run: pnpm build
-
       - name: Publish to npm
         run: pnpm publish --access public --provenance
         env:

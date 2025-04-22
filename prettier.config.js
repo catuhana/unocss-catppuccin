@@ -1,6 +1,4 @@
-/**
- * @type {import('prettier').Options}
- */
+/** @type {import('prettier').Options} */
 export default {
   arrowParens: 'avoid',
   experimentalOperatorPosition: 'start',

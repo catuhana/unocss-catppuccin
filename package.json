@@ -30,7 +30,8 @@
     "build": "pkgroll",
     "generate-palette": "whiskers unocss.tera | prettier --parser typescript >src/palette.ts",
     "check:lint": "eslint . --ext .ts",
-    "check:format": "prettier --check ."
+    "check:format": "prettier --check .",
+    "prepublishOnly": "pnpm build"
   },
   "files": [
     "dist/"
