@@ -5,4 +5,12 @@ export default ts.config(
   js.configs.recommended,
   ts.configs.strict,
   ts.configs.stylistic,
+  {
+    rules: {
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        { varsIgnorePattern: '^_' },
+      ],
+    },
+  },
 );

@@ -14,8 +14,8 @@ export default (options: UnoCSSCatppuccinOptions = {}) => {
 
   switch (options.mode) {
     case 'extend': {
-      const { themeKey = 'colors', prefix = 'ctp', defaultFlavour } = options;
-      preset.extendTheme = _extendTheme({ prefix, themeKey, defaultFlavour });
+      const { mode: _mode, ...extendOptions } = options;
+      preset.extendTheme = _extendTheme(extendOptions);
       break;
     }
     default:
