@@ -1,9 +1,7 @@
 import type { PresetOptions } from '@unocss/core';
 import type { ExtendOptions } from './extend/types';
 
-/**
- * @see {@link UnoCSSCatppuccinOptions.mode}
- */
+/** @see {@link UnoCSSCatppuccinOptions.mode} */
 export type Modes = 'extend';
 
 export interface UnoCSSCatppuccinOptions extends PresetOptions, ExtendOptions {
