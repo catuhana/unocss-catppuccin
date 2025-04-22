@@ -1,4 +1,4 @@
-name: Check Code Format and Lint
+name: Run Tests
 
 on:
   workflow_call:
@@ -9,12 +9,12 @@ on:
         type: string
       node-version:
         description: Node.js version
-        default: lts/*
+        default: latest
         type: string
 
 jobs:
   code-check:
-    name: Run Formatter and Linter
+    name: Run Tests
     runs-on: ${{ inputs.runs-on }}
     steps:
       - name: Checkout repository
@@ -32,11 +32,5 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Check formatting
-        run: pnpm check:format
-
-      - name: Check linting
-        run: pnpm check:lint
-
-      - name: Build project
-        run: pnpm build
+      - name: Run tests
+        run: pnpm test

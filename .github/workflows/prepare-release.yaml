@@ -20,11 +20,16 @@ jobs:
           - 22.x
     with:
       node-version: ${{ matrix.node-version }}
+  code-tests:
+    name: Run Tests Workflow
+    uses: ./.github/workflows/code-test.yaml
   prepare-release:
     name: Prepare Release and Create PR
     runs-on: ubuntu-latest
-    needs: code-check
-    if: needs.code-check.result == 'success'
+    needs:
+      - code-check
+      - code-tests
+    if: needs.code-check.result == 'success' && needs.code-tests.result == 'success'
     permissions:
       contents: write
       pull-requests: write

@@ -35,3 +35,6 @@ jobs:
           - 22.x
     with:
       node-version: ${{ matrix.node-version }}
+  code-tests:
+    name: Run Tests Workflow
+    uses: ./.github/workflows/code-test.yaml
