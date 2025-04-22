@@ -26,7 +26,6 @@ yarn add -D unocss-catppuccin
 # Usage
 
 1. Install the [preset](#installation),
-
 2. apply the preset to your [configuration file](https://unocss.dev/guide/config-file),
 
 ```ts
@@ -34,7 +33,7 @@ yarn add -D unocss-catppuccin
 import { defineConfig } from 'unocss';
 
 import presetWind4 from '@unocss/preset-wind4';
-import presetCatppuccin from 'unocss-catppuccin';
+import presetCatppuccin, { extendMode } from 'unocss-catppuccin';
 
 export default defineConfig({
   presets: [
@@ -44,7 +43,10 @@ export default defineConfig({
       the default.
     */
     presetWind4(),
-    presetCatppuccin(/* options */),
+    presetCatppuccin({
+      // `extend` mode
+      mode: extendMode(/* options */),
+    }),
   ],
 });
 ```
