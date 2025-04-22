@@ -12,8 +12,9 @@ export interface UnoCSSCatppuccinOptions extends PresetOptions {
    * Which mode to use the preset with.
    *
    * `extend` mode will extend the `theme` object to add
-   * Catppuccin colours. A preset with CSS utilities MUST
-   * be used to be able to use the colours.
+   * Catppuccin colours. A preset with CSS utilities
+   * (e.g. [Wind4 Preset](https://unocss.dev/presets/wind4))
+   * MUST be used to be able to use the colours.
    *
    * @default 'extend'
    */
@@ -21,7 +22,6 @@ export interface UnoCSSCatppuccinOptions extends PresetOptions {
 
   /**
    * Which `theme` object key to expand add the colours to.
-   * Some presets might use a different key for colours object.
    *
    * @default 'colors'
    */
@@ -29,10 +29,6 @@ export interface UnoCSSCatppuccinOptions extends PresetOptions {
 
   /**
    * Prefix to use for Catppuccin colours.
-   *
-   * Prefix is also used when {@link defaultFlavour}
-   * is set and a colour from another preset uses the
-   * same name as a Catppuccin colour, e.g. `red`.
    *
    * @example
    * ```html

@@ -25,7 +25,7 @@ yarn add -D unocss-catppuccin
 
 # Usage
 
-1. Install the [preset package](#installation),
+1. Install the [preset](#installation),
 
 2. apply the preset to your [configuration file](https://unocss.dev/guide/config-file),
 
