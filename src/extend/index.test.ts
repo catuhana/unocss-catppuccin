@@ -108,11 +108,11 @@ describe('_extendTheme', () => {
 
     ok(
       prefixContainer,
-      `Theme colors should exist${prefix === false ? '' : ` under '${prefix}' prefix`}`,
+      `Theme colours should exist${prefix === false ? '' : ` under '${prefix}' prefix`}`,
     );
 
     if (defaultFlavour) {
-      validateFlavourColors(
+      validateFlavourColours(
         prefixContainer,
         FLAVOURS[defaultFlavour],
         prefix === false,
@@ -135,45 +135,45 @@ describe('_extendTheme', () => {
     deepEqual(
       Object.keys(flavourObj).sort(),
       expectedColourNames.sort(),
-      `Colors in '${flavourName}' should match expected color names`,
+      `Colours in '${flavourName}' should match expected colour names`,
     );
 
-    for (const [colorName, color] of Object.entries(
+    for (const [colourName, colour] of Object.entries(
       FLAVOURS[flavourName as FlavourName],
     )) {
       equal(
-        flavourObj[colorName],
-        color,
-        `'${flavourName}.${colorName}' should have correct hex value`,
+        flavourObj[colourName],
+        colour,
+        `'${flavourName}.${colourName}' should have correct hex value`,
       );
     }
   }
 
-  function validateFlavourColors(
+  function validateFlavourColours(
     container: any,
-    flavourColors: any,
+    flavourColours: any,
     checkFallback: boolean,
   ) {
-    for (const colorName of Object.keys(flavourColors)) {
-      const colorValue =
-        container[colorName] || (checkFallback && container.ctp?.[colorName]);
+    for (const colourName of Object.keys(flavourColours)) {
+      const colourValue =
+        container[colourName] || (checkFallback && container.ctp?.[colourName]);
 
       ok(
-        colorValue !== undefined,
-        `Color '${colorName}' should exist in theme`,
+        colourValue !== undefined,
+        `Colour '${colourName}' should exist in theme`,
       );
 
-      if (container[colorName]) {
+      if (container[colourName]) {
         equal(
-          container[colorName],
-          flavourColors[colorName],
-          `Color '${colorName}' should have correct hex value`,
+          container[colourName],
+          flavourColours[colourName],
+          `Colour '${colourName}' should have correct hex value`,
         );
-      } else if (checkFallback && container.ctp?.[colorName]) {
+      } else if (checkFallback && container.ctp?.[colourName]) {
         equal(
-          container.ctp[colorName],
-          flavourColors[colorName],
-          `Fallback color 'ctp.${colorName}' should have correct hex value`,
+          container.ctp[colourName],
+          flavourColours[colourName],
+          `Fallback colour 'ctp.${colourName}' should have correct hex value`,
         );
       }
     }
