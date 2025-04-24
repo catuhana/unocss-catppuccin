@@ -32,7 +32,7 @@ export type ColourName =
   | 'mantle'
   | 'crust';
 
-export type PaletteColours = Record<ColourName, string>;
+export type PaletteColours = Record<ColourName, `#${string}`>;
 export type Palette = Record<FlavourName, PaletteColours>;
 
 export const FLAVOUR_LATTE_COLOURS = {
