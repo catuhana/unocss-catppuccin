@@ -26,11 +26,11 @@ export const FLAVOUR_{{flavour.identifier | upper}}_COLOURS = {
 {%- for _, colour in flavour.colors %}
   {{colour.identifier}}: '#{{colour.hex}}',
 {%- endfor %}
-} as const;
+} as const satisfies PaletteColours;
 {% endfor %}
 
 export const FLAVOURS = {
 {%- for _, flavour in flavors %}
   {{flavour.identifier}}: FLAVOUR_{{flavour.identifier | upper}}_COLOURS,
 {%- endfor %}
-} as const;
+} as const satisfies Palette;

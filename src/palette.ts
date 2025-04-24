@@ -62,7 +62,7 @@ export const FLAVOUR_LATTE_COLOURS = {
   base: '#eff1f5',
   mantle: '#e6e9ef',
   crust: '#dce0e8',
-} as const;
+} as const satisfies PaletteColours;
 export const FLAVOUR_FRAPPE_COLOURS = {
   rosewater: '#f2d5cf',
   flamingo: '#eebebe',
@@ -90,7 +90,7 @@ export const FLAVOUR_FRAPPE_COLOURS = {
   base: '#303446',
   mantle: '#292c3c',
   crust: '#232634',
-} as const;
+} as const satisfies PaletteColours;
 export const FLAVOUR_MACCHIATO_COLOURS = {
   rosewater: '#f4dbd6',
   flamingo: '#f0c6c6',
@@ -118,7 +118,7 @@ export const FLAVOUR_MACCHIATO_COLOURS = {
   base: '#24273a',
   mantle: '#1e2030',
   crust: '#181926',
-} as const;
+} as const satisfies PaletteColours;
 export const FLAVOUR_MOCHA_COLOURS = {
   rosewater: '#f5e0dc',
   flamingo: '#f2cdcd',
@@ -146,11 +146,11 @@ export const FLAVOUR_MOCHA_COLOURS = {
   base: '#1e1e2e',
   mantle: '#181825',
   crust: '#11111b',
-} as const;
+} as const satisfies PaletteColours;
 
 export const FLAVOURS = {
   latte: FLAVOUR_LATTE_COLOURS,
   frappe: FLAVOUR_FRAPPE_COLOURS,
   macchiato: FLAVOUR_MACCHIATO_COLOURS,
   mocha: FLAVOUR_MOCHA_COLOURS,
-} as const;
+} as const satisfies Palette;
