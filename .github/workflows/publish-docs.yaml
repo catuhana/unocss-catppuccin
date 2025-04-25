@@ -63,4 +63,4 @@ jobs:
         id: deploy
         uses: actions/deploy-pages@v4
         with:
-          preview: ${{ github.event_name == 'pull_request' || github.event_name == 'push' }}
+          preview: ${{ github.event_name == 'push' || github.event_name == 'pull_request' }}

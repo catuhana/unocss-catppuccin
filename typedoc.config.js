@@ -5,6 +5,6 @@ export default {
   out: 'docs',
   cleanOutputDir: true,
   plugin: ['typedoc-material-theme'],
-  // @ts-expect-error Configuration for the above theme.
+  // @ts-expect-error Configuration for the theme above.
   themeColor: '#b47aff',
 };
