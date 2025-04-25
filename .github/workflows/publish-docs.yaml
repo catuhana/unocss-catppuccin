@@ -1,12 +1,6 @@
 name: Publish Documentation
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
   workflow_run:
     workflows: [CI, Release]
     types: [completed]
@@ -24,11 +18,7 @@ jobs:
   publish:
     name: Publish Documentation
     runs-on: ubuntu-latest
-    if: |
-      github.event_name == 'push' ||
-        github.event_name == 'pull_request' ||
-        (github.event_name == 'workflow_run' &&
-          github.event.workflow_run.conclusion == 'success')
+    if: github.event.workflow_run.conclusion == 'success'
     environment:
       name: github-pages
       url: ${{ steps.deploy.outputs.page_url }}
@@ -63,4 +53,4 @@ jobs:
         id: deploy
         uses: actions/deploy-pages@v4
         with:
-          preview: ${{ github.event_name == 'push' || github.event_name == 'pull_request' }}
+          preview: ${{ github.event.workflow_run.event == 'CI' }}
