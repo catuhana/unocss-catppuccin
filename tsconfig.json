@@ -29,7 +29,6 @@
     "checkJs": true,
 
     // Interop Constraints
-    "allowSyntheticDefaultImports": false,
     "isolatedModules": true,
     "verbatimModuleSyntax": true,
 
@@ -41,6 +40,9 @@
     "target": "ESNext",
 
     // Output Formatting
-    "noErrorTruncation": true
+    "noErrorTruncation": true,
+
+    // Completeness
+    "skipLibCheck": true
   }
 }
