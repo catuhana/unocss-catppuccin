@@ -20,7 +20,7 @@ export default (options: UnoCSSCatppuccinOptions = { mode: 'extend' }) => {
     }
     default:
       throw new CatppuccinUnoCSSError(
-        `Unsupported mode provided: '${options.mode}'`,
+        `Unsupported mode provided: '${String(options.mode)}'`,
       );
   }
 
