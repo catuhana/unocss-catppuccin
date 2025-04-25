@@ -13,22 +13,42 @@ import type { ExtendOptions } from './types.ts';
 export const _extendTheme = (options: ExtendOptions = {}) => {
   const { themeKey = 'colors', prefix = 'ctp', defaultFlavour } = options;
 
-  const addFlavourColors = (
+  const addFlavourColours = (
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     targetObj: Record<string, any>,
     flavour: PaletteColours,
     namespace?: string,
   ) => {
-    for (const [colorId, color] of Object.entries(flavour)) {
-      if (!prefix && targetObj[colorId] && !namespace) {
+    if (namespace) {
+      if (
+        targetObj[namespace] !== undefined
+        && typeof targetObj[namespace] !== 'object'
+      ) {
         targetObj['ctp'] ??= {};
-        targetObj['ctp'][colorId] = color;
-      } else if (namespace) {
-        const namespaceObj = (targetObj[namespace] ??= {});
-        namespaceObj[colorId] = color;
-      } else {
-        targetObj[colorId] = color;
+        targetObj['ctp'][namespace] ??= {};
+        Object.assign(targetObj['ctp'][namespace], flavour);
+        return;
       }
+
+      targetObj[namespace] ??= {};
+      Object.assign(targetObj[namespace], flavour);
+      return;
+    }
+
+    if (!prefix) {
+      targetObj['ctp'] ??= {};
+      const ctpObj = targetObj['ctp']; // Cache this reference
+
+      for (const [colorId, color] of Object.entries(flavour)) {
+        if (colorId in targetObj) {
+          // 'in' operator is slightly faster
+          ctpObj[colorId] = color;
+        } else {
+          targetObj[colorId] = color;
+        }
+      }
+    } else {
+      Object.assign(targetObj, flavour);
     }
   };
 
@@ -39,10 +59,10 @@ export const _extendTheme = (options: ExtendOptions = {}) => {
       prefix ? (theme[themeKey][prefix] ??= {}) : theme[themeKey];
 
     if (defaultFlavour && defaultFlavour in FLAVOURS) {
-      addFlavourColors(targetObject, FLAVOURS[defaultFlavour]);
+      addFlavourColours(targetObject, FLAVOURS[defaultFlavour]);
     } else {
       for (const [flavourIdentifier, flavour] of Object.entries(FLAVOURS)) {
-        addFlavourColors(targetObject, flavour, flavourIdentifier);
+        addFlavourColours(targetObject, flavour, flavourIdentifier);
       }
     }
   };
