@@ -9,7 +9,7 @@ import { FLAVOURS } from '../palette.ts';
 import type { ExtendOptions } from './types.ts';
 import type { FlavourName } from '../palette.ts';
 
-describe('_extendTheme', () => {
+await describe('_extendTheme', async () => {
   const expectedFlavourNames = Object.keys(FLAVOURS) as FlavourName[];
   const expectedColourNames = Object.keys(
     FLAVOURS.frappe,
@@ -19,7 +19,7 @@ describe('_extendTheme', () => {
   const prefixOptions = [undefined, 'ctp', 'customPrefix', false] as const;
   const defaultFlavourOptions = [undefined, ...expectedFlavourNames] as const;
 
-  describe('option combinations', () => {
+  await describe('option combinations', async () => {
     for (const themeKey of themeKeyOptions) {
       for (const prefix of prefixOptions) {
         for (const defaultFlavour of defaultFlavourOptions) {
@@ -34,7 +34,7 @@ describe('_extendTheme', () => {
             .map(([key, value]) => `${key}=${JSON.stringify(value)}`)
             .join(', ');
 
-          test(`${optionDesc || 'default options'}`, () => {
+          await test(optionDesc || 'default options', () => {
             // TODO: Don't use any when first todo at index is
             // fixed.
             const theme: any = {};
@@ -46,7 +46,7 @@ describe('_extendTheme', () => {
     }
   });
 
-  test("conflicting keys don't override existing keys", () => {
+  await test("conflicting keys don't override existing keys", () => {
     const theme: { colors: { red: string; ctp?: Record<string, string> } } = {
       colors: { red: 'meow' },
     };
@@ -59,7 +59,7 @@ describe('_extendTheme', () => {
     );
   });
 
-  test('handles existing ctp key correctly', () => {
+  await test('handles existing ctp key correctly', () => {
     const theme: { colors: { ctp: { custom: string; mocha?: string } } } = {
       colors: { ctp: { custom: 'value' } },
     };
@@ -73,7 +73,7 @@ describe('_extendTheme', () => {
     ok(theme.colors.ctp.mocha, 'Catppuccin mocha flavour should be added');
   });
 
-  test("generated colours are accurate to Catppuccin's palette", () => {
+  await test("generated colours are accurate to Catppuccin's palette", () => {
     const theme = {} as {
       colors: { ctp: Record<string, string | Record<string, string>> };
     };
@@ -156,7 +156,7 @@ describe('_extendTheme', () => {
   ) {
     for (const colourName of Object.keys(flavourColours)) {
       const colourValue =
-        container[colourName] || (checkFallback && container.ctp?.[colourName]);
+        container[colourName] ?? (checkFallback && container.ctp?.[colourName]);
 
       ok(
         colourValue !== undefined,
