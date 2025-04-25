@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { describe, test, type TestContext } from 'node:test';
+import { suite, test, type TestContext } from 'node:test';
 
 import { _extendTheme } from './index.ts';
 import { FLAVOURS } from '../palette.ts';
@@ -8,17 +8,17 @@ import { FLAVOURS } from '../palette.ts';
 import type { ExtendOptions } from './types.ts';
 import type { FlavourName } from '../palette.ts';
 
-await describe('_extendTheme', async () => {
+await suite('_extendTheme', async () => {
   const expectedFlavourNames = Object.keys(FLAVOURS) as FlavourName[];
   const expectedColourNames = Object.keys(
     FLAVOURS.frappe,
   ) as (keyof (typeof FLAVOURS)['frappe'])[];
 
-  const themeKeyOptions = [undefined, 'colors', 'customThemeKey'] as const;
-  const prefixOptions = [undefined, 'ctp', 'customPrefix', false] as const;
+  const themeKeyOptions = [undefined, 'colors', 'tones'] as const;
+  const prefixOptions = [undefined, 'ctp', 'meow', false] as const;
   const defaultFlavourOptions = [undefined, ...expectedFlavourNames] as const;
 
-  await describe('option combinations', async () => {
+  await suite('option combinations', async () => {
     for (const themeKey of themeKeyOptions) {
       for (const prefix of prefixOptions) {
         for (const defaultFlavour of defaultFlavourOptions) {
