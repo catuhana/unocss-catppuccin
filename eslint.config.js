@@ -13,6 +13,7 @@ export default ts.config([
   {
     name: 'TypeScript',
     files: ['**/*.{m,}ts'],
+    // Use `typeChecked` variants?
     extends: [ts.configs.strict, ts.configs.stylistic],
     rules: {
       '@typescript-eslint/no-unused-vars': [
@@ -23,9 +24,7 @@ export default ts.config([
   },
   {
     name: 'YAML',
-    // @ts-expect-error `ts.config` has its own types that mess
-    // things up.
-    extends: [yaml.configs['flat/standard']],
+    extends: [/** @type {any} */ (yaml.configs['flat/standard'])],
     rules: { 'yml/quotes': 'off' },
   },
   {
