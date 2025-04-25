@@ -3,15 +3,13 @@
 [![CI Status](https://badgers.space/github/checks/catuhana/unocss-catppuccin)](https://github.com/catuhana/unocss-catppuccin/actions)
 [![Documentation Status](https://badgers.space/github/checks/catuhana/unocss-catppuccin/main/Publish%20Documentation?label=docs)](https://catuhana.github.io/unocss-catppuccin)
 
-<!-- [![Documentation Status](https://badgers.space/github/checks/catuhana/unocss-catppuccin/main/docs)](https://github.com/catuhana/unocss-catppuccin/actions) -->
-
 # [Catppuccin](https://catppuccin.com/) for [UnoCSS](https://unocss.dev)
 
 🌸 Soothing pastel colour theme preset for UnoCSS!
 
 <!-- TODO: Add showcase/previews etc. -->
 
-# Installation
+## Installation
 
 <!-- TODO: Add JSR back once https://github.com/denoland/deno/issues/26587
   is fixed. -->
@@ -24,11 +22,9 @@ pnpm add -D unocss-catppuccin
 yarn add -D unocss-catppuccin
 ```
 
-# Usage
+## Usage
 
-1. Install the [preset](#installation),
-
-2. apply the preset to your [configuration file](https://unocss.dev/guide/config-file),
+After adding the preset to UnoCSS configuration file,
 
 ```ts
 // uno.config.ts
@@ -50,7 +46,7 @@ export default defineConfig({
 });
 ```
 
-3. and voila! You can now use Catppuccin!
+you can now use Catppucin colours!
 
 ```html
 <div class="bg-ctp-latte-base">
@@ -59,12 +55,12 @@ export default defineConfig({
 </div>
 ```
 
-# Documentation
+### Options
 
-TODO
+You can check the [documentation for `options` here](https://catuhana.github.io/unocss-catppuccin/interfaces/types.UnoCSSCatppuccinOptions.html).
 
 <!-- TODO: Add #Contributing -->
 
-# Licence
+## Licence
 
 This project is licenced under [Mozilla Public License Version 2.0](LICENCE).
