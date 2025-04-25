@@ -28,6 +28,7 @@
   "scripts": {
     "test": "node --test \"**/**.test.ts\"",
     "build": "pkgroll",
+    "build:docs": "typedoc",
     "generate-palette": "whiskers unocss.tera | prettier --parser typescript >src/palette.ts",
     "check:lint": "eslint . --ext .ts",
     "check:format": "prettier --check .",
@@ -43,6 +44,8 @@
     "eslint": "^9.25.1",
     "pkgroll": "^2.12.1",
     "prettier": "^3.5.3",
+    "typedoc": "^0.28.3",
+    "typedoc-material-theme": "^1.4.0",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.31.0"
   },
