@@ -46,7 +46,7 @@
     "@unocss/core": "^66.0.0",
     "eslint": "^9.25.1",
     "eslint-plugin-yml": "^1.18.0",
-    "pkgroll": "^2.12.1",
+    "pkgroll": "^2.12.2",
     "prettier": "^3.5.3",
     "typedoc": "^0.28.3",
     "typedoc-material-theme": "^1.4.0",
