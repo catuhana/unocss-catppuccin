@@ -25,6 +25,9 @@
     // Emit
     "noEmit": true,
 
+    // Editor Support
+    "checkJs": true,
+
     // Interop Constraints
     "allowSyntheticDefaultImports": false,
     "isolatedModules": true,
