@@ -2,7 +2,7 @@ import type { FlavourName } from '../palette.ts';
 
 export interface ExtendOptions {
   /**
-   * Which `theme` object key to expand add the colours to.
+   * Which `theme` object key to add the colours to.
    *
    * @default 'colors'
    */
@@ -10,6 +10,12 @@ export interface ExtendOptions {
 
   /**
    * Prefix to use for Catppuccin colours.
+   *
+   * When set to `false`, the prefix is removed and
+   * colours are added directly to the theme. If a
+   * Catppuccin colour conflicts with another preset's
+   * colour, the Catppuccin colour will be prefixed with
+   * `ctp`.
    *
    * @example
    * ```html
@@ -24,11 +30,13 @@ export interface ExtendOptions {
   /**
    * Default flavour to use colours directly from.
    *
-   * If {@link prefix} is set to false `false` with the
-   * combination of this option, and if a Catppuccin colour
-   * conflicts with another preset's colour, the Catppuccin
-   * colour will be prefixed with the value of
-   * {@link defaultFlavour}.
+   * When specified, colours from this flavour are added
+   * directly without the flavour name.
+   *
+   * If {@link prefix} is set to `false` with the combination
+   * of this option, and if a Catppuccin colour conflicts with
+   * another preset's colour, the Catppuccin colour will be
+   * prefixed with `ctp`.
    *
    * @example
    * ```html
