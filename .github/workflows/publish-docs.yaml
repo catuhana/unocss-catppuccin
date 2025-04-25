@@ -39,6 +39,21 @@ jobs:
       - name: Set up GitHub Pages
         uses: actions/configure-pages@v5
 
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: latest
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build documentation
+        run: pnpm build:docs
+
       - name: Upload artifacts
         uses: actions/upload-pages-artifact@v3
         with:
