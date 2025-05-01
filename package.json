@@ -41,8 +41,7 @@
     "@eslint/js": "^9.25.1",
     "@eslint/json": "^0.12.0",
     "@eslint/markdown": "^6.4.0",
-    "@types/node": "^22.15.2",
-    "@typescript-eslint/utils": "^8.31.0",
+    "@types/node": "^22.15.3",
     "@unocss/core": "^66.0.0",
     "eslint": "^9.25.1",
     "eslint-plugin-yml": "^1.18.0",
@@ -51,7 +50,7 @@
     "typedoc": "^0.28.3",
     "typedoc-material-theme": "^1.4.0",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.31.0"
+    "typescript-eslint": "^8.31.1"
   },
   "peerDependencies": {
     "@unocss/core": ">=0.51.0 <101"
@@ -61,7 +60,7 @@
       "optional": true
     }
   },
-  "packageManager": "pnpm@10.9.0+sha512.0486e394640d3c1fb3c9d43d49cf92879ff74f8516959c235308f5a8f62e2e19528a65cdc2a3058f587cde71eba3d5b56327c8c33a97e4c4051ca48a10ca2d5f",
+  "packageManager": "pnpm@10.10.0",
   "engines": {
     "node": ">=20.0.0"
   }
