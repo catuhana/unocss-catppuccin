@@ -29,7 +29,7 @@
     "test": "node --test \"**/**.test.ts\"",
     "build": "pkgroll",
     "build:docs": "typedoc",
-    "generate-palette": "whiskers templates/unocss.tera | prettier --parser typescript >src/palette.ts",
+    "generate-palette": "whiskers templates/palette.ts.tera | prettier --parser typescript >src/palette.ts",
     "check:lint": "eslint . --ext .ts",
     "check:format": "prettier --check .",
     "prepublishOnly": "pnpm build"
