@@ -1,7 +1,6 @@
-// TODO: Get rid of `any` usages.
 import { FLAVOURS, type PaletteColours } from '../palette.ts';
 
-import type { ExtendOptions } from './types.ts';
+import type { ExtendOptions, Theme as PresetTheme } from './types.ts';
 
 /**
  * Extend theme to UnoCSS by passing this to `extendTheme` function.
@@ -10,12 +9,17 @@ import type { ExtendOptions } from './types.ts';
  * @returns The main function that supposed to be passed
  * to UnoCSS `extendTheme` option.
  */
-export const _extendTheme = (options: ExtendOptions = {}) => {
-  const { themeKey = 'colors', prefix = 'ctp', defaultFlavour } = options;
-
+export const _extendTheme = <
+  ThemeKey extends string = 'colors',
+  Prefix extends string | false = 'ctp',
+  Theme extends PresetTheme<ThemeKey, Prefix> = PresetTheme<ThemeKey, Prefix>,
+>({
+  themeKey = 'colors' as ThemeKey,
+  prefix = 'ctp' as Prefix,
+  defaultFlavour,
+}: ExtendOptions<ThemeKey, Prefix> = {}) => {
   const addFlavourColours = (
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    targetObj: Record<string, any>,
+    targetObj: Theme[ThemeKey],
     flavour: PaletteColours,
     namespace?: string,
   ) => {
@@ -37,11 +41,10 @@ export const _extendTheme = (options: ExtendOptions = {}) => {
 
     if (!prefix) {
       targetObj['ctp'] ??= {};
-      const ctpObj = targetObj['ctp']; // Cache this reference
+      const ctpObj = targetObj['ctp'];
 
       for (const [colorId, color] of Object.entries(flavour)) {
         if (colorId in targetObj) {
-          // 'in' operator is slightly faster
           ctpObj[colorId] = color;
         } else {
           targetObj[colorId] = color;
@@ -52,11 +55,13 @@ export const _extendTheme = (options: ExtendOptions = {}) => {
     }
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return (theme: Record<string, any>) => {
-    theme[themeKey] ??= {};
+  return (theme: Theme) => {
+    theme[themeKey] ??= {} as Theme[ThemeKey];
+
     const targetObject =
-      prefix ? (theme[themeKey][prefix] ??= {}) : theme[themeKey];
+      prefix ?
+        (theme[themeKey][prefix] ??= {} as Theme[ThemeKey][Prefix])
+      : theme[themeKey];
 
     if (defaultFlavour && defaultFlavour in FLAVOURS) {
       addFlavourColours(targetObject, FLAVOURS[defaultFlavour]);

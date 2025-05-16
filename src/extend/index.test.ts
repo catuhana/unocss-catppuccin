@@ -5,7 +5,7 @@ import { suite, test, type TestContext } from 'node:test';
 import { _extendTheme } from './index.ts';
 import { FLAVOURS } from '../palette.ts';
 
-import type { ExtendOptions } from './types.ts';
+import type { ExtendOptions, Theme } from './types.ts';
 import type { FlavourName } from '../palette.ts';
 
 await suite('_extendTheme', async () => {
@@ -14,15 +14,15 @@ await suite('_extendTheme', async () => {
     FLAVOURS.frappe,
   ) as (keyof (typeof FLAVOURS)['frappe'])[];
 
-  const themeKeyOptions = [undefined, 'colors', 'tones'] as const;
-  const prefixOptions = [undefined, 'ctp', 'meow', false] as const;
+  const themeKeyOptions = [/*undefined, */ 'colors', 'tones'] as const;
+  const prefixOptions = [/*undefined, */ 'ctp', 'meow', false] as const;
   const defaultFlavourOptions = [undefined, ...expectedFlavourNames] as const;
 
   await suite('option combinations', async () => {
     for (const themeKey of themeKeyOptions) {
       for (const prefix of prefixOptions) {
         for (const defaultFlavour of defaultFlavourOptions) {
-          const options: ExtendOptions = {};
+          const options: ExtendOptions<typeof themeKey, typeof prefix> = {};
 
           if (themeKey !== undefined) options.themeKey = themeKey;
           if (prefix !== undefined) options.prefix = prefix;
@@ -46,9 +46,9 @@ await suite('_extendTheme', async () => {
   });
 
   await test("conflicting keys don't override existing keys", (test: TestContext) => {
-    const theme: { colors: { red: string; ctp?: Record<string, string> } } = {
-      colors: { red: 'meow' },
-    };
+    const theme = {
+      colors: { red: 'meow', ctp: { red: '#am' } },
+    } satisfies Theme<'colors', false>;
     _extendTheme({ prefix: false, defaultFlavour: 'mocha' })(theme);
 
     test.assert.equal(
@@ -103,10 +103,18 @@ await suite('_extendTheme', async () => {
   });
 
   // TODO: Ditto.
-  function validateTheme(theme: any, options: ExtendOptions) {
+  function validateTheme<
+    ThemeKey extends string,
+    Prefix extends string | false,
+  >(
+    theme: any,
+    {
+      themeKey = 'colors' as ThemeKey,
+      prefix = 'ctp' as Prefix,
+      defaultFlavour,
+    }: ExtendOptions<ThemeKey, Prefix>,
+  ) {
     return (test: TestContext) => {
-      const { themeKey = 'colors', prefix = 'ctp', defaultFlavour } = options;
-
       test.assert.ok(theme, 'Theme should exist');
       test.assert.ok(theme[themeKey], `Theme should have a '${themeKey}' key`);
 

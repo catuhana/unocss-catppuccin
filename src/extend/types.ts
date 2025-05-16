@@ -1,12 +1,26 @@
 import type { FlavourName } from '../palette.ts';
 
-export interface ExtendOptions {
+export type Theme<
+  ThemeKey extends string = 'colors',
+  Prefix extends string | false = 'ctp',
+> = Partial<Record<ThemeKey, Colours<Prefix>>>;
+
+export type Colours<Prefix extends string | false = 'ctp'> =
+  Prefix extends string ?
+    { [prefix in Prefix]: { [key: string]: Colours | /*`#${string}`*/ string } }
+  : Prefix extends false ? { [key: string]: Colours | /*`#${string}`*/ string }
+  : never;
+
+export interface ExtendOptions<
+  ThemeKey extends string = 'colors',
+  Prefix extends string | false = 'ctp',
+> {
   /**
    * Which `theme` object key to add the colours to.
    *
    * @default 'colors'
    */
-  themeKey?: string;
+  themeKey?: ThemeKey;
 
   /**
    * Prefix to use for Catppuccin colours.
@@ -25,7 +39,7 @@ export interface ExtendOptions {
    *
    * @default 'ctp'
    */
-  prefix?: string | false;
+  prefix?: Prefix;
 
   /**
    * Default flavour to use colours directly from.
