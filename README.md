@@ -9,6 +9,9 @@
 
 <!-- TODO: Add showcase/previews etc. -->
 
+> [!IMPORTANT]
+> You're currently viewing the `main` branch, which can have unpublished and changed API.
+
 ## Installation
 
 <!-- TODO: Add JSR back once https://github.com/denoland/deno/issues/26587
@@ -57,7 +60,7 @@ you can now use Catppucin colours!
 
 ### Options
 
-You can check the [documentation for `options` here](https://catuhana.github.io/unocss-catppuccin/interfaces/types.UnoCSSCatppuccinOptions.html).
+You can check the [documentation here](https://catuhana.github.io/unocss-catppuccin).
 
 <!-- TODO: Add #Contributing -->
 
