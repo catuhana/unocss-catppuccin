@@ -9,8 +9,12 @@
 
 <!-- TODO: Add showcase/previews etc. -->
 
+<!-- eslint-disable markdown/no-missing-label-refs -->
+
 > [!IMPORTANT]
 > You're currently viewing the `main` branch, which can have unpublished and changed API.
+
+<!-- eslint-enable markdown/no-missing-label-refs -->
 
 ## Installation
 

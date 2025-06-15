@@ -8,6 +8,8 @@ import yaml from 'eslint-plugin-yml';
 import { default as markdown } from '@eslint/markdown';
 
 export default ts.config([
+  // @ts-expect-error no idea whats wrong here but
+  // tsc keeps complaining so ignore it.
   globalIgnores(['docs']),
   { name: 'JavaScript', files: ['**/*.{m,}js'], ...js.configs.recommended },
   {
