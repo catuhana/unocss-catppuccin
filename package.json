@@ -38,19 +38,19 @@
     "dist/"
   ],
   "devDependencies": {
-    "@eslint/js": "^9.29.0",
+    "@eslint/js": "^9.30.0",
     "@eslint/json": "^0.12.0",
-    "@eslint/markdown": "^6.5.0",
-    "@types/node": "^24.0.1",
-    "@unocss/core": "^66.2.0",
-    "eslint": "^9.29.0",
+    "@eslint/markdown": "^6.6.0",
+    "@types/node": "^24.0.7",
+    "@unocss/core": "^66.3.2",
+    "eslint": "^9.30.0",
     "eslint-plugin-yml": "^1.18.0",
-    "pkgroll": "^2.12.2",
-    "prettier": "^3.5.3",
-    "typedoc": "^0.28.5",
+    "pkgroll": "^2.13.1",
+    "prettier": "^3.6.2",
+    "typedoc": "^0.28.6",
     "typedoc-material-theme": "^1.4.0",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.34.0"
+    "typescript-eslint": "^8.35.0"
   },
   "peerDependencies": {
     "@unocss/core": ">=0.51.0 <101"
@@ -60,7 +60,7 @@
       "optional": true
     }
   },
-  "packageManager": "pnpm@10.12.1",
+  "packageManager": "pnpm@10.12.4",
   "engines": {
     "node": ">=20.0.0"
   }
