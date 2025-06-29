@@ -54,3 +54,10 @@ export interface ExtendOptions {
    */
   defaultFlavour?: FlavourName;
 }
+
+/**
+ * @internal
+ */
+export interface ThemeColoursObject {
+  [key: string]: ThemeColoursObject | string;
+}

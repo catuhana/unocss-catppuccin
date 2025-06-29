@@ -1,11 +1,6 @@
-// TODO: Get rid of `any` usages and next line.
-/* eslint-disable @typescript-eslint/no-unsafe-argument,
-                  @typescript-eslint/no-unsafe-assignment,
-                  @typescript-eslint/no-unsafe-member-access */
-
 import { FLAVOURS, type PaletteColours } from '../palette.ts';
 
-import type { ExtendOptions } from './types.ts';
+import type { ExtendOptions, ThemeColoursObject } from './types.ts';
 
 /**
  * Extend theme to UnoCSS by passing this to `extendTheme` function.
@@ -18,8 +13,7 @@ export const _extendTheme = (options: ExtendOptions = {}) => {
   const { themeKey = 'colors', prefix = 'ctp', defaultFlavour } = options;
 
   const addFlavourColours = (
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    targetObj: Record<string, any>,
+    targetObj: ThemeColoursObject,
     flavour: PaletteColours,
     namespace?: string,
   ) => {
@@ -28,39 +22,51 @@ export const _extendTheme = (options: ExtendOptions = {}) => {
         targetObj[namespace] !== undefined
         && typeof targetObj[namespace] !== 'object'
       ) {
-        targetObj['ctp'] ??= {};
-        targetObj['ctp'][namespace] ??= {};
-        Object.assign(targetObj['ctp'][namespace], flavour);
+        if (!targetObj['ctp']) targetObj['ctp'] = {};
+
+        const targetObjCtp = targetObj['ctp'] as ThemeColoursObject;
+        if (!targetObjCtp[namespace]) targetObjCtp[namespace] = {};
+
+        Object.assign(targetObjCtp[namespace], flavour);
+
         return;
       }
 
-      targetObj[namespace] ??= {};
+      if (!targetObj[namespace]) targetObj[namespace] = {};
       Object.assign(targetObj[namespace], flavour);
+
       return;
     }
 
-    if (!prefix) {
-      targetObj['ctp'] ??= {};
-      const ctpObj = targetObj['ctp']; // Cache this reference
-
-      for (const [colorId, color] of Object.entries(flavour)) {
-        if (colorId in targetObj) {
-          // 'in' operator is slightly faster
-          ctpObj[colorId] = color;
-        } else {
-          targetObj[colorId] = color;
-        }
-      }
-    } else {
+    if (prefix) {
       Object.assign(targetObj, flavour);
+
+      return;
+    }
+
+    if (!targetObj['ctp']) targetObj['ctp'] = {};
+    const targetObjCtp = targetObj['ctp'] as ThemeColoursObject;
+    for (const [colorId, color] of Object.entries(flavour)) {
+      if (colorId in targetObj) {
+        targetObjCtp[colorId] = color;
+      } else {
+        targetObj[colorId] = color;
+      }
     }
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return (theme: Record<string, any>) => {
-    theme[themeKey] ??= {};
-    const targetObject =
-      prefix ? (theme[themeKey][prefix] ??= {}) : theme[themeKey];
+  return (_theme: object) => {
+    const theme = _theme as Record<string, ThemeColoursObject>;
+
+    if (!theme[themeKey]) theme[themeKey] = {};
+
+    let targetObject = theme[themeKey];
+    if (prefix) {
+      if (!targetObject[prefix]) targetObject[prefix] = {};
+      targetObject = targetObject[prefix] = targetObject[
+        prefix
+      ] as ThemeColoursObject;
+    }
 
     if (defaultFlavour && defaultFlavour in FLAVOURS) {
       addFlavourColours(targetObject, FLAVOURS[defaultFlavour]);
