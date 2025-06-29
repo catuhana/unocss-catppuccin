@@ -20,7 +20,7 @@ export default ({ mode, ...rest }: UnoCSSCatppuccinOptions = {}) => {
     }
     default:
       throw new CatppuccinUnoCSSError(
-        `Unsupported mode provided: '${String(mode)}'`,
+        `unsupported mode provided: '${String(mode)}'`,
       );
   }
 
