@@ -1,15 +1,9 @@
-// TODO: Get rid of `any` usages and next line.
-/* eslint-disable @typescript-eslint/no-explicit-any,
-                  @typescript-eslint/no-unsafe-argument,
-                  @typescript-eslint/no-unsafe-assignment,
-                  @typescript-eslint/no-unsafe-member-access */
-
 import { suite, test, type TestContext } from 'node:test';
 
 import { _extendTheme } from './index.ts';
 import { FLAVOURS } from '../palette.ts';
 
-import type { ExtendOptions } from './types.ts';
+import type { ExtendOptions, ThemeColoursObject } from './types.ts';
 import type { FlavourName } from '../palette.ts';
 
 await suite('_extendTheme', async () => {
@@ -38,9 +32,7 @@ await suite('_extendTheme', async () => {
             .join(', ');
 
           await test(optionDescription || 'default options', test => {
-            // TODO: Don't use any when first todo at index is
-            // fixed.
-            const theme: any = {};
+            const theme = {};
             _extendTheme(options)(theme);
             validateTheme(theme, options)(test);
           });
@@ -106,16 +98,16 @@ await suite('_extendTheme', async () => {
     }
   });
 
-  // TODO: Ditto.
-  function validateTheme(theme: any, options: ExtendOptions) {
+  function validateTheme(theme: ThemeColoursObject, options: ExtendOptions) {
     return (test: TestContext) => {
       const { themeKey = 'colors', prefix = 'ctp', defaultFlavour } = options;
 
       test.assert.ok(theme, 'Theme should exist');
       test.assert.ok(theme[themeKey], `Theme should have a '${themeKey}' key`);
 
-      const targetObj = theme[themeKey];
-      const prefixContainer = prefix === false ? targetObj : targetObj[prefix];
+      const targetObj = theme[themeKey] as ThemeColoursObject;
+      const prefixContainer = (
+        prefix === false ? targetObj : targetObj[prefix]) as ThemeColoursObject;
 
       test.assert.ok(
         prefixContainer,
@@ -135,13 +127,19 @@ await suite('_extendTheme', async () => {
             `Flavour '${flavourName}' should exist in theme`,
           );
 
-          validateFlavourStructure(prefixContainer[flavourName], flavourName);
+          validateFlavourStructure(
+            prefixContainer[flavourName] as ThemeColoursObject,
+            flavourName,
+          );
         }
       }
     };
   }
 
-  function validateFlavourStructure(flavourObj: any, flavourName: string) {
+  function validateFlavourStructure(
+    flavourObj: ThemeColoursObject,
+    flavourName: string,
+  ) {
     return (test: TestContext) => {
       test.assert.ok(
         flavourObj instanceof Object,
@@ -167,15 +165,16 @@ await suite('_extendTheme', async () => {
   }
 
   function validateFlavourColours(
-    container: any,
-    flavourColours: any,
+    container: ThemeColoursObject,
+    flavourColours: ThemeColoursObject,
     checkFallback: boolean,
   ) {
     return (test: TestContext) => {
       for (const colourName of Object.keys(flavourColours)) {
         const colourValue =
           container[colourName]
-          ?? (checkFallback && container.ctp?.[colourName]);
+          ?? (checkFallback
+            && (container['ctp'] as ThemeColoursObject)[colourName]);
 
         test.assert.ok(
           colourValue !== undefined,
@@ -188,9 +187,12 @@ await suite('_extendTheme', async () => {
             flavourColours[colourName],
             `Colour '${colourName}' should have correct hex value`,
           );
-        } else if (checkFallback && container.ctp?.[colourName]) {
+        } else if (
+          checkFallback
+          && (container['ctp'] as ThemeColoursObject)[colourName]
+        ) {
           test.assert.equal(
-            container.ctp[colourName],
+            (container['ctp'] as ThemeColoursObject)[colourName],
             flavourColours[colourName],
             `Fallback colour 'ctp.${colourName}' should have correct hex value`,
           );
