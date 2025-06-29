@@ -15,13 +15,18 @@ export default ts.config([
   {
     name: 'TypeScript',
     files: ['**/*.{m,}ts'],
-    // Use `typeChecked` variants?
-    extends: [ts.configs.strict, ts.configs.stylistic],
+    extends: [ts.configs.strictTypeChecked],
     rules: {
       '@typescript-eslint/no-unused-vars': [
         'error',
         { varsIgnorePattern: '^_' },
       ],
+    },
+    languageOptions: {
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname,
+      },
     },
   },
   {

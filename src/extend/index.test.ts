@@ -1,4 +1,8 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+// TODO: Get rid of `any` usages and next line.
+/* eslint-disable @typescript-eslint/no-explicit-any,
+                  @typescript-eslint/no-unsafe-argument,
+                  @typescript-eslint/no-unsafe-assignment,
+                  @typescript-eslint/no-unsafe-member-access */
 
 import { suite, test, type TestContext } from 'node:test';
 

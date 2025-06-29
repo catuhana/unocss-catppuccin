@@ -1,4 +1,8 @@
-// TODO: Get rid of `any` usages.
+// TODO: Get rid of `any` usages and next line.
+/* eslint-disable @typescript-eslint/no-unsafe-argument,
+                  @typescript-eslint/no-unsafe-assignment,
+                  @typescript-eslint/no-unsafe-member-access */
+
 import { FLAVOURS, type PaletteColours } from '../palette.ts';
 
 import type { ExtendOptions } from './types.ts';
