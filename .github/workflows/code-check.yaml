@@ -32,8 +32,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Build workspaces
-        run: pnpm -r build
+      - name: Build library
+        run: pnpm build
+
+      - name: Build website
+        run: pnpm --filter website build
 
       - name: Check formatting
         run: pnpm check:format
