@@ -97,7 +97,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/catppuccin/unocss/blob/main/LICENSE">
+  <a href="./LICENCE">
     <img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=MIT&logoColor=d9e0ee&colorA=363a4f&colorB=b7bdf8" alt="Licence Badge" />
   </a>
 </p>
