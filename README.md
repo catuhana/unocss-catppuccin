@@ -38,35 +38,35 @@
 
 1. Install the npm package `@catppuccin/unocss`
 
-    ```sh
-    npm install -D @catppuccin/unocss
-    # or
-    pnpm add -D @catppuccin/unocss
-    # or
-    yarn add -D @catppuccin/unocss
-    ```
+   ```sh
+   npm install -D @catppuccin/unocss
+   # or
+   pnpm add -D @catppuccin/unocss
+   # or
+   yarn add -D @catppuccin/unocss
+   ```
 
 2. Add the preset to your UnoCSS configuration
 
-    ```ts
-    // uno.config.ts
-    import { defineConfig } from 'unocss';
+   ```ts
+   // uno.config.ts
+   import { defineConfig } from 'unocss';
 
-    import presetWind4 from '@unocss/preset-wind4';
-    import presetCatppuccin from '@catppuccin/unocss';
+   import presetWind4 from '@unocss/preset-wind4';
+   import presetCatppuccin from '@catppuccin/unocss';
 
-    export default defineConfig({
-      presets: [
-        /*
-          A preset with CSS utilities must be used for this preset
-          to extend its colours in `extend` mode option, which is
-          the default.
-        */
-        presetWind4(),
-        presetCatppuccin(/* options */),
-      ],
-    });
-    ```
+   export default defineConfig({
+     presets: [
+       /*
+         A preset with CSS utilities must be used for this preset
+         to extend its colours in `extend` mode option, which is
+         the default.
+       */
+       presetWind4(),
+       presetCatppuccin(/* options */),
+     ],
+   });
+   ```
 
 3. Configure the preset if needed. Refer to the FAQ for documentation <!-- TODO: Link to FAQ directly -->
 
