@@ -1,73 +1,94 @@
-[![Licence](https://badgers.space/github/license/catuhana/unocss-catppuccin)](#licence)
-[![npm Version](https://badgers.space/npm/version/unocss-catppuccin)](https://npmjs.com/package/unocss-catppuccin)
-[![CI Status](https://badgers.space/github/checks/catuhana/unocss-catppuccin)](https://github.com/catuhana/unocss-catppuccin/actions)
-[![Documentation Status](https://badgers.space/github/checks/catuhana/unocss-catppuccin/main/Publish%20Documentation?label=docs)](https://catuhana.github.io/unocss-catppuccin)
+<h3 align="center">
+ <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/logos/exports/1544x1544_circle.png" width="100" alt="Logo"/><br/>
+ Catppuccin for <a href="https://github.com/unocss/unocss">UnoCSS</a>
+</h3>
 
-# [Catppuccin](https://catppuccin.com/) for [UnoCSS](https://unocss.dev)
+<p align="center">
+ <a href="https://github.com/catppuccin/unocss/stargazers"><img src="https://img.shields.io/github/stars/catppuccin/unocss?colorA=363a4f&colorB=b7bdf8&style=for-the-badge"></a>
+ <a href="https://github.com/catppuccin/unocss/issues"><img src="https://img.shields.io/github/issues/catppuccin/unocss?colorA=363a4f&colorB=f5a97f&style=for-the-badge"></a>
+ <a href="https://github.com/catppuccin/unocss/contributors"><img src="https://img.shields.io/github/contributors/catppuccin/unocss?colorA=363a4f&colorB=a6da95&style=for-the-badge"></a>
+</p>
 
-🌸 Soothing pastel colour theme preset for UnoCSS!
+<!-- TODO: To be updated after addition of an example usage in this repo. -->
+<p align="center">
+ <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/previews/preview.webp"/>
+</p>
 
-<!-- TODO: Add showcase/previews etc. -->
+## Previews
 
-<!-- eslint-disable markdown/no-missing-label-refs -->
-
-> [!IMPORTANT]
-> You're currently viewing the `main` branch, which can have unpublished and changed API.
-
-<!-- eslint-enable markdown/no-missing-label-refs -->
-
-## Installation
-
-<!-- TODO: Add JSR back once https://github.com/denoland/deno/issues/26587
-  is fixed. -->
-
-```sh
-npm install -D unocss-catppuccin
-# or
-pnpm add -D unocss-catppuccin
-# or
-yarn add -D unocss-catppuccin
-```
+<!-- TODO: Ditto. -->
+<details>
+  <summary>🌻 Latte</summary>
+  <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/previews/latte.webp" />
+</details>
+<details>
+  <summary>🪴 Frappé</summary>
+  <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/previews/frappe.webp" />
+</details>
+<details>
+  <summary>🌺 Macchiato</summary>
+  <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/previews/macchiato.webp" />
+</details>
+<details>
+  <summary>🌿 Mocha</summary>
+  <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/previews/mocha.webp" />
+</details>
 
 ## Usage
 
-After adding the preset to UnoCSS configuration file,
+1. Install the npm package `@catppuccin/unocss`
 
-```ts
-// uno.config.ts
-import { defineConfig } from 'unocss';
+    ```sh
+    npm install -D @catppuccin/unocss
+    # or
+    pnpm add -D @catppuccin/unocss
+    # or
+    yarn add -D @catppuccin/unocss
+    ```
 
-import presetWind4 from '@unocss/preset-wind4';
-import presetCatppuccin from 'unocss-catppuccin';
+2. Add the preset to your UnoCSS configuration
 
-export default defineConfig({
-  presets: [
-    /*
-      A preset with CSS utilities must be used for this preset
-      to extend its colours in `extend` mode option, which is
-      the default.
-    */
-    presetWind4(),
-    presetCatppuccin(/* options */),
-  ],
-});
-```
+    ```ts
+    // uno.config.ts
+    import { defineConfig } from 'unocss';
 
-you can now use Catppucin colours!
+    import presetWind4 from '@unocss/preset-wind4';
+    import presetCatppuccin from '@catppuccin/unocss';
 
-```html
-<div class="bg-ctp-latte-base">
-  <span class="text-ctp-latte-mauve">Hello</span>
-  <span class="text-ctp-latte-lavender">Catppuccin!</span>
-</div>
-```
+    export default defineConfig({
+      presets: [
+        /*
+          A preset with CSS utilities must be used for this preset
+          to extend its colours in `extend` mode option, which is
+          the default.
+        */
+        presetWind4(),
+        presetCatppuccin(/* options */),
+      ],
+    });
+    ```
 
-### Options
+3. Configure the preset if needed. Refer to the FAQ for documentation <!-- TODO: Link to FAQ directly -->
 
-You can check the [documentation here](https://catuhana.github.io/unocss-catppuccin).
+## 🙋 FAQ
 
-<!-- TODO: Add #Contributing -->
+- Q: Where can I find the documentation?\
+  A: Documentation can be found at <https://unocss.catppuccin.org/docs> <!-- TODO: Generate and push the documentation there -->
 
-## Licence
+## 💝 Thanks to
 
-This project is licenced under [Mozilla Public License Version 2.0](LICENCE).
+- [tuhana](https://github.com/catuhana)
+
+&nbsp;
+
+<p align="center">
+ <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/footers/gray0_ctp_on_line.svg?sanitize=true" />
+</p>
+
+<p align="center">
+ Copyright &copy; 2021-present <a href="https://github.com/catppuccin" target="_blank">Catppuccin Org</a>
+</p>
+
+<p align="center">
+ <a href="https://github.com/catppuccin/unocss/blob/main/LICENSE"><img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=MIT&logoColor=d9e0ee&colorA=363a4f&colorB=b7bdf8"/></a>
+</p>
