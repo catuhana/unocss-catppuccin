@@ -32,11 +32,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Build workspaces
+        run: pnpm -r build
+
       - name: Check formatting
         run: pnpm check:format
 
       - name: Check linting
         run: pnpm check:lint
-
-      - name: Build project
-        run: pnpm build
