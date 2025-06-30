@@ -1,5 +1,5 @@
 {
-  "name": "unocss-catppuccin",
+  "name": "@catppuccin/unocss",
   "version": "3.0.0",
   "description": "🌸 Soothing pastel theme preset for UnoCSS!",
   "keywords": [
@@ -9,10 +9,13 @@
     "colours",
     "pastel"
   ],
-  "homepage": "https://github.com/catuhana/unocss-catppuccin#readme",
-  "repository": "github:catuhana/unocss-catppuccin",
-  "funding": "https://github.com/sponsors/catuhana",
-  "license": "MPL-2.0",
+  "homepage": "https://github.com/catppuccin/unocss#readme",
+  "repository": "github:catppuccin/unocss",
+  "funding": [
+    "https://github.com/sponsors/catppuccin",
+    "https://opencollective.com/catppuccin"
+  ],
+  "license": "MIT",
   "author": "tuhana <tuhana.cat+npm@gmail.com>",
   "type": "module",
   "exports": {
