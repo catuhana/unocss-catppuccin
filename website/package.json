@@ -1,0 +1,15 @@
+{
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^5.10.1"
+  },
+  "devDependencies": {
+    "@catppuccin/unocss": "link:..",
+    "unocss": "^66.3.2"
+  },
+  "packageManager": "pnpm@10.12.4"
+}

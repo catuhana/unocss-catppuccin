@@ -46,11 +46,11 @@ export const _extendTheme = (options: ExtendOptions = {}) => {
 
     if (!targetObj['ctp']) targetObj['ctp'] = {};
     const targetObjCtp = targetObj['ctp'] as ThemeColoursObject;
-    for (const [colorId, color] of Object.entries(flavour)) {
-      if (colorId in targetObj) {
-        targetObjCtp[colorId] = color;
+    for (const [colourId, colour] of Object.entries(flavour)) {
+      if (colourId in targetObj) {
+        targetObjCtp[colourId] = colour;
       } else {
-        targetObj[colorId] = color;
+        targetObj[colourId] = colour;
       }
     }
   };

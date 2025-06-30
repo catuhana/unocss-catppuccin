@@ -1,0 +1,159 @@
+---
+import { type CatppuccinFlavour } from '../constants/catppuccin.ts';
+
+const { title, catppuccinFlavour = 'latte' } = Astro.props as {
+  title?: string;
+  catppuccinFlavour?: CatppuccinFlavour;
+};
+---
+
+<html lang='en' data-catppuccin-flavour={catppuccinFlavour}>
+  <head>
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width' />
+
+    <title>{title ?? 'Catppuccin for UnoCSS'}</title>
+
+    <meta name='generator' content={Astro.generator} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    color-scheme: light dark;
+
+    &[data-catppuccin-flavour='latte'] {
+      color-scheme: light;
+    }
+  }
+
+  body {
+    font-family: system-ui, sans-serif;
+
+    background-color: var(--ctp-base);
+    color: var(--ctp-text);
+  }
+
+  :root {
+    /* TODO: Use Wind4 Preset layers, couldn't figure how for now. */
+    /* TODO: Can be simplified. */
+    &[data-catppuccin-flavour='mocha'] {
+      --ctp-rosewater: theme('colors.ctp.mocha.rosewater');
+      --ctp-flamingo: theme('colors.ctp.mocha.flamingo');
+      --ctp-pink: theme('colors.ctp.mocha.pink');
+      --ctp-mauve: theme('colors.ctp.mocha.mauve');
+      --ctp-red: theme('colors.ctp.mocha.red');
+      --ctp-maroon: theme('colors.ctp.mocha.maroon');
+      --ctp-peach: theme('colors.ctp.mocha.peach');
+      --ctp-yellow: theme('colors.ctp.mocha.yellow');
+      --ctp-green: theme('colors.ctp.mocha.green');
+      --ctp-teal: theme('colors.ctp.mocha.teal');
+      --ctp-sky: theme('colors.ctp.mocha.sky');
+      --ctp-sapphire: theme('colors.ctp.mocha.sapphire');
+      --ctp-blue: theme('colors.ctp.mocha.blue');
+      --ctp-lavender: theme('colors.ctp.mocha.lavender');
+      --ctp-text: theme('colors.ctp.mocha.text');
+      --ctp-subtext1: theme('colors.ctp.mocha.subtext1');
+      --ctp-subtext0: theme('colors.ctp.mocha.subtext0');
+      --ctp-overlay2: theme('colors.ctp.mocha.overlay2');
+      --ctp-overlay1: theme('colors.ctp.mocha.overlay1');
+      --ctp-overlay0: theme('colors.ctp.mocha.overlay0');
+      --ctp-surface2: theme('colors.ctp.mocha.surface2');
+      --ctp-surface1: theme('colors.ctp.mocha.surface1');
+      --ctp-surface0: theme('colors.ctp.mocha.surface0');
+      --ctp-base: theme('colors.ctp.mocha.base');
+      --ctp-mantle: theme('colors.ctp.mocha.mantle');
+      --ctp-crust: theme('colors.ctp.mocha.crust');
+    }
+
+    &[data-catppuccin-flavour='latte'] {
+      --ctp-rosewater: theme('colors.ctp.latte.rosewater');
+      --ctp-flamingo: theme('colors.ctp.latte.flamingo');
+      --ctp-pink: theme('colors.ctp.latte.pink');
+      --ctp-mauve: theme('colors.ctp.latte.mauve');
+      --ctp-red: theme('colors.ctp.latte.red');
+      --ctp-maroon: theme('colors.ctp.latte.maroon');
+      --ctp-peach: theme('colors.ctp.latte.peach');
+      --ctp-yellow: theme('colors.ctp.latte.yellow');
+      --ctp-green: theme('colors.ctp.latte.green');
+      --ctp-teal: theme('colors.ctp.latte.teal');
+      --ctp-sky: theme('colors.ctp.latte.sky');
+      --ctp-sapphire: theme('colors.ctp.latte.sapphire');
+      --ctp-blue: theme('colors.ctp.latte.blue');
+      --ctp-lavender: theme('colors.ctp.latte.lavender');
+      --ctp-text: theme('colors.ctp.latte.text');
+      --ctp-subtext1: theme('colors.ctp.latte.subtext1');
+      --ctp-subtext0: theme('colors.ctp.latte.subtext0');
+      --ctp-overlay2: theme('colors.ctp.latte.overlay2');
+      --ctp-overlay1: theme('colors.ctp.latte.overlay1');
+      --ctp-overlay0: theme('colors.ctp.latte.overlay0');
+      --ctp-surface2: theme('colors.ctp.latte.surface2');
+      --ctp-surface1: theme('colors.ctp.latte.surface1');
+      --ctp-surface0: theme('colors.ctp.latte.surface0');
+      --ctp-base: theme('colors.ctp.latte.base');
+      --ctp-mantle: theme('colors.ctp.latte.mantle');
+      --ctp-crust: theme('colors.ctp.latte.crust');
+    }
+
+    &[data-catppuccin-flavour='frappe'] {
+      --ctp-rosewater: theme('colors.ctp.frappe.rosewater');
+      --ctp-flamingo: theme('colors.ctp.frappe.flamingo');
+      --ctp-pink: theme('colors.ctp.frappe.pink');
+      --ctp-mauve: theme('colors.ctp.frappe.mauve');
+      --ctp-red: theme('colors.ctp.frappe.red');
+      --ctp-maroon: theme('colors.ctp.frappe.maroon');
+      --ctp-peach: theme('colors.ctp.frappe.peach');
+      --ctp-yellow: theme('colors.ctp.frappe.yellow');
+      --ctp-green: theme('colors.ctp.frappe.green');
+      --ctp-teal: theme('colors.ctp.frappe.teal');
+      --ctp-sky: theme('colors.ctp.frappe.sky');
+      --ctp-sapphire: theme('colors.ctp.frappe.sapphire');
+      --ctp-blue: theme('colors.ctp.frappe.blue');
+      --ctp-lavender: theme('colors.ctp.frappe.lavender');
+      --ctp-text: theme('colors.ctp.frappe.text');
+      --ctp-subtext1: theme('colors.ctp.frappe.subtext1');
+      --ctp-subtext0: theme('colors.ctp.frappe.subtext0');
+      --ctp-overlay2: theme('colors.ctp.frappe.overlay2');
+      --ctp-overlay1: theme('colors.ctp.frappe.overlay1');
+      --ctp-overlay0: theme('colors.ctp.frappe.overlay0');
+      --ctp-surface2: theme('colors.ctp.frappe.surface2');
+      --ctp-surface1: theme('colors.ctp.frappe.surface1');
+      --ctp-surface0: theme('colors.ctp.frappe.surface0');
+      --ctp-base: theme('colors.ctp.frappe.base');
+      --ctp-mantle: theme('colors.ctp.frappe.mantle');
+      --ctp-crust: theme('colors.ctp.frappe.crust');
+    }
+
+    &[data-catppuccin-flavour='macchiato'] {
+      --ctp-rosewater: theme('colors.ctp.macchiato.rosewater');
+      --ctp-flamingo: theme('colors.ctp.macchiato.flamingo');
+      --ctp-pink: theme('colors.ctp.macchiato.pink');
+      --ctp-mauve: theme('colors.ctp.macchiato.mauve');
+      --ctp-red: theme('colors.ctp.macchiato.red');
+      --ctp-maroon: theme('colors.ctp.macchiato.maroon');
+      --ctp-peach: theme('colors.ctp.macchiato.peach');
+      --ctp-yellow: theme('colors.ctp.macchiato.yellow');
+      --ctp-green: theme('colors.ctp.macchiato.green');
+      --ctp-teal: theme('colors.ctp.macchiato.teal');
+      --ctp-sky: theme('colors.ctp.macchiato.sky');
+      --ctp-sapphire: theme('colors.ctp.macchiato.sapphire');
+      --ctp-blue: theme('colors.ctp.macchiato.blue');
+      --ctp-lavender: theme('colors.ctp.macchiato.lavender');
+      --ctp-text: theme('colors.ctp.macchiato.text');
+      --ctp-subtext1: theme('colors.ctp.macchiato.subtext1');
+      --ctp-subtext0: theme('colors.ctp.macchiato.subtext0');
+      --ctp-overlay2: theme('colors.ctp.macchiato.overlay2');
+      --ctp-overlay1: theme('colors.ctp.macchiato.overlay1');
+      --ctp-overlay0: theme('colors.ctp.macchiato.overlay0');
+      --ctp-surface2: theme('colors.ctp.macchiato.surface2');
+      --ctp-surface1: theme('colors.ctp.macchiato.surface1');
+      --ctp-surface0: theme('colors.ctp.macchiato.surface0');
+      --ctp-base: theme('colors.ctp.macchiato.base');
+      --ctp-mantle: theme('colors.ctp.macchiato.mantle');
+      --ctp-crust: theme('colors.ctp.macchiato.crust');
+    }
+  }
+</style>
