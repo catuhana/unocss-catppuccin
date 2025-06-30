@@ -41,13 +41,13 @@ importers:
 
   website:
     dependencies:
-      '@catppuccin/unocss':
-        specifier: link:..
-        version: link:..
       astro:
         specifier: ^5.10.1
         version: 5.10.1(@types/node@24.0.7)(jiti@2.4.2)(rollup@4.44.1)(sass@1.89.2)(typescript@5.8.3)(yaml@2.8.0)
     devDependencies:
+      '@catppuccin/unocss':
+        specifier: link:..
+        version: link:..
       unocss:
         specifier: ^66.3.2
         version: 66.3.2(postcss@8.5.6)(vite@6.3.5(@types/node@24.0.7)(jiti@2.4.2)(sass@1.89.2)(yaml@2.8.0))(vue@3.5.17(typescript@5.8.3))
