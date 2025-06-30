@@ -36,7 +36,7 @@ jobs:
         run: pnpm build
 
       - name: Build website
-        run: pnpm --filter website build
+        run: pnpm --filter ./website build
 
       - name: Check formatting
         run: pnpm check:format
