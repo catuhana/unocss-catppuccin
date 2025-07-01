@@ -6,6 +6,10 @@ import { presetWind4, transformerDirectives } from 'unocss';
 import presetCatppuccin from '@catppuccin/unocss';
 
 export default defineConfig({
+  // TODO: Update next two lines after moving to
+  // the Catppuccin organisation.
+  site: 'https://catuhana.github.io',
+  base: '/unocss-catppuccin/',
   integrations: [
     UnoCSS({
       presets: [

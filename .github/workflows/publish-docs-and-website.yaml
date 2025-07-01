@@ -50,7 +50,7 @@ jobs:
       - name: Prepare structure
         run: |
           mkdir -p github-pages/docs
-          cp -r docs* github-pages/docs/
+          cp -r docs/* github-pages/docs/
           cp -r website/dist/* github-pages/
 
       - name: Upload artifacts
