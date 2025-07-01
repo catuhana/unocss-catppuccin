@@ -5,7 +5,7 @@ const { title, catppuccinFlavour = '🌻' } = Astro.props as {
 };
 ---
 
-<html lang='en' data-catppuccin-flavour={catppuccinFlavour}>
+<html lang='en' data-theme={catppuccinFlavour}>
   <head>
     <meta charset='utf-8' />
     <meta name='viewport' content='width=device-width' />
@@ -23,7 +23,7 @@ const { title, catppuccinFlavour = '🌻' } = Astro.props as {
   :root {
     color-scheme: light dark;
 
-    &[data-catppuccin-flavour='latte'] {
+    &[data-theme='latte'] {
       color-scheme: light;
     }
   }
@@ -41,7 +41,7 @@ const { title, catppuccinFlavour = '🌻' } = Astro.props as {
     /* TODO: Remove when this is supported natively in `unocss-catppuccin` */
 
     /* Latte */
-    &[data-catppuccin-flavour='🌻'] {
+    &[data-theme='🌻'] {
       --ctp-rosewater: theme('colors.ctp.latte.rosewater');
       --ctp-flamingo: theme('colors.ctp.latte.flamingo');
       --ctp-pink: theme('colors.ctp.latte.pink');
@@ -71,7 +71,7 @@ const { title, catppuccinFlavour = '🌻' } = Astro.props as {
     }
 
     /* Frappe */
-    &[data-catppuccin-flavour='🪴'] {
+    &[data-theme='🪴'] {
       --ctp-rosewater: theme('colors.ctp.frappe.rosewater');
       --ctp-flamingo: theme('colors.ctp.frappe.flamingo');
       --ctp-pink: theme('colors.ctp.frappe.pink');
@@ -101,7 +101,7 @@ const { title, catppuccinFlavour = '🌻' } = Astro.props as {
     }
 
     /* Macchiato */
-    &[data-catppuccin-flavour='🌺'] {
+    &[data-theme='🌺'] {
       --ctp-rosewater: theme('colors.ctp.macchiato.rosewater');
       --ctp-flamingo: theme('colors.ctp.macchiato.flamingo');
       --ctp-pink: theme('colors.ctp.macchiato.pink');
@@ -131,7 +131,7 @@ const { title, catppuccinFlavour = '🌻' } = Astro.props as {
     }
 
     /* Mocha */
-    &[data-catppuccin-flavour='🌿'] {
+    &[data-theme='🌿'] {
       --ctp-rosewater: theme('colors.ctp.mocha.rosewater');
       --ctp-flamingo: theme('colors.ctp.mocha.flamingo');
       --ctp-pink: theme('colors.ctp.mocha.pink');

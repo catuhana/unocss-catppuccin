@@ -110,10 +110,7 @@ import {
         button.addEventListener('click', () => {
           const flavour = button.getAttribute('data-flavour');
           if (flavour) {
-            document.documentElement.setAttribute(
-              'data-catppuccin-flavour',
-              flavour
-            );
+            document.documentElement.setAttribute('data-theme', flavour);
           }
         });
       });
