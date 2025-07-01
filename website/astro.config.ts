@@ -1,4 +1,4 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig, envField } from 'astro/config';
 
 import UnoCSS from 'unocss/astro';
 
@@ -20,6 +20,16 @@ export default defineConfig({
       safelist: generateSafelist(),
     }),
   ],
+  env: {
+    schema: {
+      DETERMINISTIC_PILL_LENGTH: envField.boolean({
+        context: 'client',
+        access: 'public',
+        optional: true,
+        default: false,
+      }),
+    },
+  },
 });
 
 function generateSafelist() {

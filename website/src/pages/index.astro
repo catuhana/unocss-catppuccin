@@ -6,6 +6,8 @@ import {
   catppuccinAccentColours,
   catppuccinBaseColours,
 } from '../constants/catppuccin.ts';
+
+import { DETERMINISTIC_PILL_LENGTH } from 'astro:env/client';
 ---
 
 <Main>
@@ -25,22 +27,25 @@ import {
         <h2 class='text-3xl font-extrabold mb-6'>Flavours</h2>
         <div class='flex flex-wrap gap-2 items-end'>
           {
-            catppuccinFlavours.map(flavour => {
-              return (
-                <button
-                  type='button'
-                  class={`text-ctp-${flavour}-text bg-ctp-${flavour}-surface1 h-12 p-2 rounded-8 hover:bg-ctp-${flavour}-surface2 font-semibold cursor-pointer min-w-fit transition-all duration-300 ease hover:scale-y-120`}
-                  data-flavour={
-                    { latte: '🌻', frappe: '🪴', macchiato: '🌺', mocha: '🌿' }[
-                      flavour
-                    ]
-                  }
-                  data-pill
-                >
-                  {flavour.charAt(0).toUpperCase() + flavour.slice(1)}
-                </button>
-              );
-            })
+            catppuccinFlavours.map(flavour => (
+              <button
+                type='button'
+                class={`text-ctp-${flavour}-text bg-ctp-${flavour}-surface1 h-12 p-2 rounded-8 hover:bg-ctp-${flavour}-surface2 font-semibold cursor-pointer min-w-fit transition-all duration-300 ease hover:scale-y-120`}
+                style={
+                  DETERMINISTIC_PILL_LENGTH ?
+                    `width: ${Math.random() * 128 + 48}px;`
+                  : false
+                }
+                data-flavour={
+                  { latte: '🌻', frappe: '🪴', macchiato: '🌺', mocha: '🌿' }[
+                    flavour
+                  ]
+                }
+                data-pill
+              >
+                {flavour.charAt(0).toUpperCase() + flavour.slice(1)}
+              </button>
+            ))
           }
         </div>
       </div>
@@ -51,6 +56,11 @@ import {
             catppuccinAccentColours.map(colour => (
               <span
                 class={`bg-[--ctp-${colour}] w-[attr(data-pill-length)] rounded-full h-12 transition-transform duration-300 ease hover:scale-y-120`}
+                style={
+                  DETERMINISTIC_PILL_LENGTH ?
+                    `width: ${Math.random() * 128 + 48}px;`
+                  : false
+                }
                 title={colour}
                 data-pill
               />
@@ -66,6 +76,11 @@ import {
               return (
                 <span
                   class={`bg-[--ctp-${colour}] w-[attr(data-pill-length)] rounded-full h-12 transition-transform duration-300 ease hover:scale-y-120`}
+                  style={
+                    DETERMINISTIC_PILL_LENGTH ?
+                      `width: ${Math.random() * 128 + 48}px;`
+                    : false
+                  }
                   title={colour}
                   data-pill
                 />
@@ -89,26 +104,31 @@ import {
 </style>
 
 <script>
-  Promise.all([
-    Promise.resolve().then(() => {
-      document.querySelectorAll<HTMLElement>('[data-pill]').forEach(pill => {
-        pill.style.width = `${Math.floor(Math.random() * 128) + 48}px`;
-      });
-    }),
-    Promise.resolve().then(() => {
-      document
-        .querySelectorAll<HTMLButtonElement>('button[data-flavour]')
-        .forEach(button => {
-          button.addEventListener('click', () => {
-            const flavour = button.getAttribute('data-flavour');
-            if (flavour) {
-              document.documentElement.setAttribute(
-                'data-catppuccin-flavour',
-                flavour
-              );
-            }
-          });
+  import { DETERMINISTIC_PILL_LENGTH } from 'astro:env/client';
+
+  Promise.all([pillLengthRandomiser(), themeSwitcher()]);
+
+  async function pillLengthRandomiser() {
+    if (DETERMINISTIC_PILL_LENGTH) return;
+
+    document.querySelectorAll<HTMLElement>('[data-pill]').forEach(pill => {
+      pill.style.width = `${Math.floor(Math.random() * 128) + 48}px`;
+    });
+  }
+
+  async function themeSwitcher() {
+    document
+      .querySelectorAll<HTMLButtonElement>('button[data-flavour]')
+      .forEach(button => {
+        button.addEventListener('click', () => {
+          const flavour = button.getAttribute('data-flavour');
+          if (flavour) {
+            document.documentElement.setAttribute(
+              'data-catppuccin-flavour',
+              flavour
+            );
+          }
         });
-    }),
-  ]);
+      });
+  }
 </script>
