@@ -41,13 +41,22 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Build documentation
-        run: pnpm build:docs
+      - name: Build library, documentation and website
+        run: |
+          pnpm build
+          pnpm build:docs
+          pnpm build:website
+
+      - name: Prepare structure
+        run: |
+          mkdir -p github-pages/docs
+          cp -r docs* github-pages/docs/
+          cp -r website/dist/* github-pages/
 
       - name: Upload artifacts
         uses: actions/upload-pages-artifact@v3
         with:
-          path: docs
+          path: github-pages
 
       - name: Deploy to GitHub Pages
         id: deploy
