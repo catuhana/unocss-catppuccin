@@ -6,8 +6,6 @@ import {
   catppuccinAccentColours,
   catppuccinBaseColours,
 } from '../constants/catppuccin.ts';
-
-import { DETERMINISTIC_PILL_LENGTH } from 'astro:env/client';
 ---
 
 <Main>
@@ -31,11 +29,7 @@ import { DETERMINISTIC_PILL_LENGTH } from 'astro:env/client';
               <button
                 type='button'
                 class={`text-ctp-${flavour}-text bg-ctp-${flavour}-surface1 h-12 p-2 rounded-8 hover:bg-ctp-${flavour}-surface2 font-semibold cursor-pointer min-w-fit transition-all duration-300 ease hover:scale-y-120`}
-                style={
-                  DETERMINISTIC_PILL_LENGTH ?
-                    `width: ${Math.random() * 128 + 48}px;`
-                  : false
-                }
+                style={`width: ${Math.random() * 128 + 48}px;`}
                 data-flavour={
                   { latte: '🌻', frappe: '🪴', macchiato: '🌺', mocha: '🌿' }[
                     flavour
@@ -55,12 +49,8 @@ import { DETERMINISTIC_PILL_LENGTH } from 'astro:env/client';
           {
             catppuccinAccentColours.map(colour => (
               <span
-                class={`bg-[--ctp-${colour}] w-[attr(data-pill-length)] rounded-full h-12 transition-transform duration-300 ease hover:scale-y-120`}
-                style={
-                  DETERMINISTIC_PILL_LENGTH ?
-                    `width: ${Math.random() * 128 + 48}px;`
-                  : false
-                }
+                class={`bg-[--ctp-${colour}] w-[attr(data-pill-length)] rounded-full h-12 transition-all duration-300 ease hover:scale-y-120`}
+                style={`width: ${Math.random() * 128 + 48}px;`}
                 title={colour}
                 data-pill
               />
@@ -75,12 +65,8 @@ import { DETERMINISTIC_PILL_LENGTH } from 'astro:env/client';
             catppuccinBaseColours.map(colour => {
               return (
                 <span
-                  class={`bg-[--ctp-${colour}] w-[attr(data-pill-length)] rounded-full h-12 transition-transform duration-300 ease hover:scale-y-120`}
-                  style={
-                    DETERMINISTIC_PILL_LENGTH ?
-                      `width: ${Math.random() * 128 + 48}px;`
-                    : false
-                  }
+                  class={`bg-[--ctp-${colour}] w-[attr(data-pill-length)] rounded-full h-12 transition-all duration-300 ease hover:scale-y-120`}
+                  style={`width: ${Math.random() * 128 + 48}px;`}
                   title={colour}
                   data-pill
                 />
@@ -111,6 +97,7 @@ import { DETERMINISTIC_PILL_LENGTH } from 'astro:env/client';
   async function pillLengthRandomiser() {
     if (DETERMINISTIC_PILL_LENGTH) return;
 
+    await new Promise(resolve => setTimeout(resolve, 500));
     document.querySelectorAll<HTMLElement>('[data-pill]').forEach(pill => {
       pill.style.width = `${Math.floor(Math.random() * 128) + 48}px`;
     });
