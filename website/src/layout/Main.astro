@@ -15,27 +15,50 @@ const {
 
 <html lang='en' data-theme={theme}>
   <head>
-    <meta charset='utf-8' />
+    <meta charset='UTF-8' />
     <meta name='viewport' content='width=device-width' />
 
     <title>{title}</title>
 
-    <meta name='keywords' content='UnoCSS, Catppuccin, Theme' />
+    <!-- Information -->
     <meta name='description' content={description} />
+    <meta name='keywords' content='UnoCSS, Catppuccin, Theme' />
+
+    <!-- Meta -->
+    <meta name='theme-color' content='#ea76cb' />
+    <meta
+      name='theme-color'
+      content='#f5c2e7'
+      media='(prefers-color-scheme: dark)'
+    />
+    <meta name='color-scheme' content='dark light' />
     <meta name='generator' content={Astro.generator} />
 
     <!-- OpenGraph -->
-    <meta property='og:type' content='website' />
-    <meta property='og:url' content={Astro.site} />
     <meta property='og:title' content={title} />
+    <meta property='og:site_name' content='Catppuccin' />
     <meta property='og:description' content={description} />
-    <!-- TODO: Maybe move `assets/` folder to `github-pages` artifact
-               and use image from there? -->
+    <meta property='og:url' content={Astro.site} />
+    <meta property='og:type' content='website' />
+    <!--? Maybe move `assets/` folder to `github-pages` artifact
+          and use image from there -->
     <meta
       property='og:image'
       content='https://raw.githubusercontent.com/catuhana/unocss-catppuccin/refs/heads/main/assets/previews/preview.webp'
     />
 
+    <!-- Twitter -->
+    <meta property='twitter:title' content={title} />
+    <meta property='twitter:description' content={description} />
+    <!--? Ditto -->
+    <meta
+      property='twitter:image'
+      content='https://raw.githubusercontent.com/catuhana/unocss-catppuccin/refs/heads/main/assets/previews/preview.webp'
+    />
+    <meta name='twitter:image:alt' content='Preview of Catppuccin for UnoCSS' />
+    <meta property='twitter:card' content='summary_large_image' />
+
+    <!-- TODO: Add light variant of favicon -->
     <link
       rel='shortcut icon'
       href='/unocss-catppuccin/icon.svg'
@@ -49,10 +72,12 @@ const {
 
 <style is:global>
   :root {
-    color-scheme: light dark;
-
     &[data-theme='latte'] {
       color-scheme: light;
+    }
+
+    &:not([data-theme='latte']) {
+      color-scheme: dark;
     }
   }
 
