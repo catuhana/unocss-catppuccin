@@ -1,4 +1,4 @@
-name: Publish Documentation
+name: Publish Documentation and Website
 
 on:
   workflow_run:
@@ -16,7 +16,7 @@ concurrency:
 
 jobs:
   publish:
-    name: Publish Documentation
+    name: Publish Documentation and Website
     runs-on: ubuntu-latest
     if: github.event.workflow_run.conclusion == 'success'
     environment:
