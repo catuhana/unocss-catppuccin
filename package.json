@@ -24,6 +24,12 @@
       "types": {
         "import": "./dist/index.d.ts"
       }
+    },
+    "./palette": {
+      "import": "./dist/palette.js",
+      "types": {
+        "import": "./dist/palette.d.ts"
+      }
     }
   },
   "module": "./dist/index.js",

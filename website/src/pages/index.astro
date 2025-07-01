@@ -2,10 +2,36 @@
 import Main from '../layout/Main.astro';
 
 import {
-  catppuccinFlavours,
-  catppuccinAccentColours,
-  catppuccinBaseColours,
-} from '../constants/catppuccin.ts';
+  FLAVOURS,
+  FLAVOUR_FRAPPE_COLOURS as COLOURS,
+} from '@catppuccin/unocss/palette';
+
+// TODO: Improve palette generation.
+const [ACCENT_COLOURS, BASE_COLOURS] = Object.keys(COLOURS).reduce(
+  (acc, colour) => {
+    const isBaseColour =
+      colour === 'text'
+      || colour === 'subtext1'
+      || colour === 'subtext0'
+      || colour === 'overlay2'
+      || colour === 'overlay1'
+      || colour === 'overlay0'
+      || colour === 'surface2'
+      || colour === 'surface1'
+      || colour === 'surface0'
+      || colour === 'base'
+      || colour === 'mantle'
+      || colour === 'crust';
+
+    if (isBaseColour) {
+      acc[1].push(colour);
+    } else {
+      acc[0].push(colour);
+    }
+    return acc;
+  },
+  [[] as string[], [] as string[]]
+);
 ---
 
 <Main>
@@ -24,7 +50,7 @@ import {
         <h2 class='text-3xl font-extrabold mb-6'>Flavours</h2>
         <div class='flex flex-wrap gap-2 items-end'>
           {
-            catppuccinFlavours.map(flavour => (
+            Object.keys(FLAVOURS).map(flavour => (
               <button
                 type='button'
                 class={`text-ctp-${flavour}-text bg-ctp-${flavour}-surface1 h-12 p-2 rounded-8 hover:bg-ctp-${flavour}-surface2 font-semibold cursor-pointer min-w-fit transition-all duration-300 ease hover:scale-y-120`}
@@ -46,7 +72,7 @@ import {
         <h2 class='text-3xl font-extrabold mb-6'>Accent Colours</h2>
         <div class='flex flex-wrap gap-2 items-end'>
           {
-            catppuccinAccentColours.map(colour => (
+            ACCENT_COLOURS.map(colour => (
               <span
                 class={`bg-[--ctp-${colour}] w-[attr(data-pill-length)] rounded-full h-12 transition-all duration-300 ease hover:scale-y-120`}
                 style={`width: ${Math.random() * 128 + 48}px;`}
@@ -61,7 +87,7 @@ import {
         <h2 class='text-3xl font-extrabold mb-6'>Base Colours</h2>
         <div class='flex flex-wrap gap-2 items-end'>
           {
-            catppuccinBaseColours.map(colour => {
+            BASE_COLOURS.map(colour => {
               return (
                 <span
                   class={`bg-[--ctp-${colour}] w-[attr(data-pill-length)] rounded-full h-12 transition-all duration-300 ease hover:scale-y-120`}
@@ -96,7 +122,7 @@ import {
   async function pillLengthRandomiser() {
     if (DETERMINISTIC_PILL_LENGTH) return;
 
-    await new Promise(resolve => setTimeout(resolve, 500));
+    await new Promise(resolve => setTimeout(resolve, 300));
     document.querySelectorAll<HTMLElement>('[data-pill]').forEach(pill => {
       pill.style.width = `${Math.floor(Math.random() * 128) + 48}px`;
     });
