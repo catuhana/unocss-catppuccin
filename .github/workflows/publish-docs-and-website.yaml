@@ -4,6 +4,12 @@ on:
   workflow_run:
     workflows: [CI, Release]
     types: [completed]
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: Dispatch reason
+        type: string
+        required: true
 
 permissions:
   contents: read
