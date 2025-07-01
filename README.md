@@ -72,12 +72,12 @@
    });
    ```
 
-3. Configure the preset if needed. Refer to the FAQ for documentation <!-- TODO: Link to FAQ directly -->
+3. Configure the preset if needed. Refer to the [FAQ](#-faq) for documentation
 
 ## 🙋 FAQ
 
 - Q: Where can I find the documentation?\
-  A: Documentation can be found at <https://unocss.catppuccin.org/docs> <!-- TODO: Generate and push the documentation there -->
+  A: Documentation can be found at <https://unocss.catppuccin.org/docs>
 
 ## 💝 Thanks to
 
