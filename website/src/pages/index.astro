@@ -100,7 +100,7 @@ import {
   async function pillLengthRandomiser() {
     if (DETERMINISTIC_PILL_LENGTH) return;
 
-    await new Promise(resolve => setTimeout(resolve, 300));
+    await new Promise(resolve => setTimeout(resolve, 100));
     document.querySelectorAll<HTMLElement>('[data-pill]').forEach(pill => {
       pill.style.width = `${Math.floor(Math.random() * 128) + 48}px`;
     });
