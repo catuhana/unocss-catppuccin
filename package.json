@@ -42,7 +42,7 @@
     "generate-palette": "whiskers templates/palette.ts.tera | prettier --parser typescript >src/palette.ts",
     "check:lint": "eslint . --ext .ts",
     "check:format": "prettier --check .",
-    "prepublishOnly": "pnpm build"
+    "prepack": "pnpm build"
   },
   "files": [
     "dist/"
