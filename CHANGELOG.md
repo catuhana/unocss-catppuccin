@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Better `palette` generation with more helpful exports
 - **BREAKING**: Export the preset as `default` ([`47cbd02`](https://github.com/catppuccin/unocss/commit/47cbd0209356917926b68a18d894446c21ae5d08))
 - **BREAKING**: Move to the [Catppuccin organisation](https://github.com/catppuccin)
 

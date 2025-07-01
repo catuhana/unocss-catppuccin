@@ -1,7 +1,9 @@
 ---
+import type { FlavourEmoji } from '@catppuccin/unocss/palette';
+
 const { title, catppuccinFlavour = '🌻' } = Astro.props as {
   title?: string;
-  catppuccinFlavour?: '🌻' | '🪴' | '🌺' | '🌿';
+  catppuccinFlavour?: FlavourEmoji;
 };
 ---
 

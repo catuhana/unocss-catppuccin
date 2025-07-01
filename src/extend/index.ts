@@ -1,4 +1,4 @@
-import { FLAVOURS, type PaletteColours } from '../palette.ts';
+import { COLOURS, type FlavourPalette } from '../palette.ts';
 
 import type { ExtendOptions, ThemeColoursObject } from './types.ts';
 
@@ -14,7 +14,7 @@ export const _extendTheme = (options: ExtendOptions = {}) => {
 
   const addFlavourColours = (
     targetObj: ThemeColoursObject,
-    flavour: PaletteColours,
+    flavour: FlavourPalette,
     namespace?: string,
   ) => {
     if (namespace) {
@@ -68,10 +68,10 @@ export const _extendTheme = (options: ExtendOptions = {}) => {
       ] as ThemeColoursObject;
     }
 
-    if (defaultFlavour && defaultFlavour in FLAVOURS) {
-      addFlavourColours(targetObject, FLAVOURS[defaultFlavour]);
+    if (defaultFlavour && defaultFlavour in COLOURS) {
+      addFlavourColours(targetObject, COLOURS[defaultFlavour]);
     } else {
-      for (const [flavourIdentifier, flavour] of Object.entries(FLAVOURS)) {
+      for (const [flavourIdentifier, flavour] of Object.entries(COLOURS)) {
         addFlavourColours(targetObject, flavour, flavourIdentifier);
       }
     }

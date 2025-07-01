@@ -7,30 +7,77 @@ whiskers:
  * npm script. Do NOT edit manually.
  */
 
-export type FlavourName =
+export const FLAVOUR_NAMES = [
 {%- for _, flavour in flavors -%}
 '{{flavour.identifier}}'
-{%- if not loop.last -%}|{%- endif -%}
-{%- endfor -%};
-export type ColourName =
-{%- for _, flavour in flavors.latte.colors -%}
-'{{flavour.identifier}}'
-{%- if not loop.last -%}|{%- endif -%}
-{%- endfor -%};
+{%- if not loop.last -%}, {%- endif -%}
+{%- endfor -%}
+] as const;
+export const FLAVOUR_NAMES_PRETTY = [
+{%- for _, flavour in flavors %}
+  '{{flavour.name}}',
+{%- endfor %}
+] as const;
+export const FLAVOUR_EMOJIS = [
+{%- for _, flavour in flavors %}
+  '{{flavour.emoji}}',
+{%- endfor %}
+] as const;
 
-export type PaletteColours = Record<ColourName, `#${string}`>;
-export type Palette = Record<FlavourName, PaletteColours>;
+{%- set accent_colors = [] -%}
+{%- set neutral_colors = [] -%}
+{%- for _, colour in flavors.latte.colors -%}
+  {%- if colour.accent -%}
+    {%- set_global accent_colors = accent_colors | concat(with=[colour.identifier]) -%}
+  {%- else -%}
+    {%- set_global neutral_colors = neutral_colors | concat(with=[colour.identifier]) -%}
+  {%- endif -%}
+{%- endfor %}
+
+export const ACCENT_COLOUR_NAMES = [
+{%- for color in accent_colors %}
+  '{{color}}',
+{%- endfor %}
+] as const;
+export const NEUTRAL_COLOUR_NAMES = [
+{%- for color in neutral_colors %}
+  '{{color}}',
+{%- endfor %}
+] as const;
+
+export type FlavourName = (typeof FLAVOUR_NAMES)[number];
+export type PrettyFlavourName = (typeof FLAVOUR_NAMES_PRETTY)[number];
+export type FlavourEmoji = (typeof FLAVOUR_EMOJIS)[number];
+
+export type ColourName = AccentColourName | NeutralColourName;
+export type AccentColourName = (typeof ACCENT_COLOUR_NAMES)[number];
+export type NeutralColourName = (typeof NEUTRAL_COLOUR_NAMES)[number];
+
+export type FlavourPalette = Record<ColourName, `#${string}`>;
+export type ColourPalette = Record<FlavourName, FlavourPalette>;
 
 {% for _, flavour in flavors -%}
-export const FLAVOUR_{{flavour.identifier | upper}}_COLOURS = {
-{%- for _, colour in flavour.colors %}
-  {{colour.identifier}}: '#{{colour.hex}}',
+export const COLOURS_FLAVOUR_{{flavour.identifier | upper}} = {
+{%- for _, colour in flavour.colors -%}
+  {%- if colour.accent -%}
+    {%- for accent_colour in accent_colors -%}
+      {%- if accent_colour == colour.identifier %}
+  [ACCENT_COLOUR_NAMES[{{loop.index0}}]]: '#{{colour.hex}}',
+      {%- endif -%}
+    {%- endfor -%}
+  {%- else -%}
+    {%- for neutral_colour in neutral_colors -%}
+      {%- if neutral_colour == colour.identifier %}
+  [NEUTRAL_COLOUR_NAMES[{{loop.index0}}]]: '#{{colour.hex}}',
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
 {%- endfor %}
-} as const satisfies PaletteColours;
+} as const satisfies FlavourPalette;
 {% endfor %}
 
-export const FLAVOURS = {
+export const COLOURS = {
 {%- for _, flavour in flavors %}
-  {{flavour.identifier}}: FLAVOUR_{{flavour.identifier | upper}}_COLOURS,
+  [FLAVOUR_NAMES[{{loop.index0}}]]: COLOURS_FLAVOUR_{{flavour.identifier | upper}},
 {%- endfor %}
-} as const satisfies Palette;
+} as const satisfies ColourPalette;

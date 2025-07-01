@@ -1,20 +1,20 @@
 import { suite, test, type TestContext } from 'node:test';
 
 import { _extendTheme } from './index.ts';
-import { FLAVOURS } from '../palette.ts';
+import {
+  COLOURS,
+  FLAVOUR_NAMES,
+  ACCENT_COLOUR_NAMES,
+  NEUTRAL_COLOUR_NAMES,
+} from '../palette.ts';
 
 import type { ExtendOptions, ThemeColoursObject } from './types.ts';
 import type { FlavourName } from '../palette.ts';
 
 await suite('_extendTheme', async () => {
-  const expectedFlavourNames = Object.keys(FLAVOURS) as FlavourName[];
-  const expectedColourNames = Object.keys(
-    FLAVOURS.frappe,
-  ) as (keyof (typeof FLAVOURS)['frappe'])[];
-
   const themeKeyOptions = [undefined, 'colors', 'tones'] as const;
   const prefixOptions = [undefined, 'ctp', 'meow', false] as const;
-  const defaultFlavourOptions = [undefined, ...expectedFlavourNames] as const;
+  const defaultFlavourOptions = [undefined, ...FLAVOUR_NAMES] as const;
 
   await suite('option combinations', async () => {
     for (const themeKey of themeKeyOptions) {
@@ -81,7 +81,7 @@ await suite('_extendTheme', async () => {
     };
     _extendTheme({})(theme);
 
-    for (const [flavourName, flavour] of Object.entries(FLAVOURS)) {
+    for (const [flavourName, flavour] of Object.entries(COLOURS)) {
       const themeFlavour = theme.colors.ctp[flavourName];
       test.assert.ok(
         themeFlavour instanceof Object,
@@ -117,11 +117,11 @@ await suite('_extendTheme', async () => {
       if (defaultFlavour) {
         validateFlavourColours(
           prefixContainer,
-          FLAVOURS[defaultFlavour],
+          COLOURS[defaultFlavour],
           prefix === false,
         );
       } else {
-        for (const flavourName of expectedFlavourNames) {
+        for (const flavourName of FLAVOUR_NAMES) {
           test.assert.ok(
             prefixContainer[flavourName],
             `Flavour '${flavourName}' should exist in theme`,
@@ -148,12 +148,12 @@ await suite('_extendTheme', async () => {
 
       test.assert.deepEqual(
         Object.keys(flavourObj).sort(),
-        expectedColourNames.sort(),
+        [...ACCENT_COLOUR_NAMES, ...NEUTRAL_COLOUR_NAMES].sort(),
         `Colours in '${flavourName}' should match expected colour names`,
       );
 
       for (const [colourName, colour] of Object.entries(
-        FLAVOURS[flavourName as FlavourName],
+        COLOURS[flavourName as FlavourName],
       )) {
         test.assert.equal(
           flavourObj[colourName],
