@@ -1,4 +1,4 @@
-name: Publish Documentation
+name: Publish Documentation and Website
 
 on:
   workflow_run:
@@ -25,6 +25,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_branch }}
 
       - name: Set up GitHub Pages
         uses: actions/configure-pages@v5
