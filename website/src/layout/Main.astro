@@ -1,9 +1,7 @@
 ---
-import { type CatppuccinFlavour } from '../constants/catppuccin.ts';
-
-const { title, catppuccinFlavour = 'latte' } = Astro.props as {
+const { title, catppuccinFlavour = '🌻' } = Astro.props as {
   title?: string;
-  catppuccinFlavour?: CatppuccinFlavour;
+  catppuccinFlavour?: '🌻' | '🪴' | '🌺' | '🌿';
 };
 ---
 
@@ -40,36 +38,10 @@ const { title, catppuccinFlavour = 'latte' } = Astro.props as {
   :root {
     /* TODO: Use Wind4 Preset layers, couldn't figure how for now. */
     /* TODO: Can be simplified. */
-    &[data-catppuccin-flavour='mocha'] {
-      --ctp-rosewater: theme('colors.ctp.mocha.rosewater');
-      --ctp-flamingo: theme('colors.ctp.mocha.flamingo');
-      --ctp-pink: theme('colors.ctp.mocha.pink');
-      --ctp-mauve: theme('colors.ctp.mocha.mauve');
-      --ctp-red: theme('colors.ctp.mocha.red');
-      --ctp-maroon: theme('colors.ctp.mocha.maroon');
-      --ctp-peach: theme('colors.ctp.mocha.peach');
-      --ctp-yellow: theme('colors.ctp.mocha.yellow');
-      --ctp-green: theme('colors.ctp.mocha.green');
-      --ctp-teal: theme('colors.ctp.mocha.teal');
-      --ctp-sky: theme('colors.ctp.mocha.sky');
-      --ctp-sapphire: theme('colors.ctp.mocha.sapphire');
-      --ctp-blue: theme('colors.ctp.mocha.blue');
-      --ctp-lavender: theme('colors.ctp.mocha.lavender');
-      --ctp-text: theme('colors.ctp.mocha.text');
-      --ctp-subtext1: theme('colors.ctp.mocha.subtext1');
-      --ctp-subtext0: theme('colors.ctp.mocha.subtext0');
-      --ctp-overlay2: theme('colors.ctp.mocha.overlay2');
-      --ctp-overlay1: theme('colors.ctp.mocha.overlay1');
-      --ctp-overlay0: theme('colors.ctp.mocha.overlay0');
-      --ctp-surface2: theme('colors.ctp.mocha.surface2');
-      --ctp-surface1: theme('colors.ctp.mocha.surface1');
-      --ctp-surface0: theme('colors.ctp.mocha.surface0');
-      --ctp-base: theme('colors.ctp.mocha.base');
-      --ctp-mantle: theme('colors.ctp.mocha.mantle');
-      --ctp-crust: theme('colors.ctp.mocha.crust');
-    }
+    /* TODO: Remove when this is supported natively in `unocss-catppuccin` */
 
-    &[data-catppuccin-flavour='latte'] {
+    /* Latte */
+    &[data-catppuccin-flavour='🌻'] {
       --ctp-rosewater: theme('colors.ctp.latte.rosewater');
       --ctp-flamingo: theme('colors.ctp.latte.flamingo');
       --ctp-pink: theme('colors.ctp.latte.pink');
@@ -98,7 +70,8 @@ const { title, catppuccinFlavour = 'latte' } = Astro.props as {
       --ctp-crust: theme('colors.ctp.latte.crust');
     }
 
-    &[data-catppuccin-flavour='frappe'] {
+    /* Frappe */
+    &[data-catppuccin-flavour='🪴'] {
       --ctp-rosewater: theme('colors.ctp.frappe.rosewater');
       --ctp-flamingo: theme('colors.ctp.frappe.flamingo');
       --ctp-pink: theme('colors.ctp.frappe.pink');
@@ -127,7 +100,8 @@ const { title, catppuccinFlavour = 'latte' } = Astro.props as {
       --ctp-crust: theme('colors.ctp.frappe.crust');
     }
 
-    &[data-catppuccin-flavour='macchiato'] {
+    /* Macchiato */
+    &[data-catppuccin-flavour='🌺'] {
       --ctp-rosewater: theme('colors.ctp.macchiato.rosewater');
       --ctp-flamingo: theme('colors.ctp.macchiato.flamingo');
       --ctp-pink: theme('colors.ctp.macchiato.pink');
@@ -154,6 +128,36 @@ const { title, catppuccinFlavour = 'latte' } = Astro.props as {
       --ctp-base: theme('colors.ctp.macchiato.base');
       --ctp-mantle: theme('colors.ctp.macchiato.mantle');
       --ctp-crust: theme('colors.ctp.macchiato.crust');
+    }
+
+    /* Mocha */
+    &[data-catppuccin-flavour='🌿'] {
+      --ctp-rosewater: theme('colors.ctp.mocha.rosewater');
+      --ctp-flamingo: theme('colors.ctp.mocha.flamingo');
+      --ctp-pink: theme('colors.ctp.mocha.pink');
+      --ctp-mauve: theme('colors.ctp.mocha.mauve');
+      --ctp-red: theme('colors.ctp.mocha.red');
+      --ctp-maroon: theme('colors.ctp.mocha.maroon');
+      --ctp-peach: theme('colors.ctp.mocha.peach');
+      --ctp-yellow: theme('colors.ctp.mocha.yellow');
+      --ctp-green: theme('colors.ctp.mocha.green');
+      --ctp-teal: theme('colors.ctp.mocha.teal');
+      --ctp-sky: theme('colors.ctp.mocha.sky');
+      --ctp-sapphire: theme('colors.ctp.mocha.sapphire');
+      --ctp-blue: theme('colors.ctp.mocha.blue');
+      --ctp-lavender: theme('colors.ctp.mocha.lavender');
+      --ctp-text: theme('colors.ctp.mocha.text');
+      --ctp-subtext1: theme('colors.ctp.mocha.subtext1');
+      --ctp-subtext0: theme('colors.ctp.mocha.subtext0');
+      --ctp-overlay2: theme('colors.ctp.mocha.overlay2');
+      --ctp-overlay1: theme('colors.ctp.mocha.overlay1');
+      --ctp-overlay0: theme('colors.ctp.mocha.overlay0');
+      --ctp-surface2: theme('colors.ctp.mocha.surface2');
+      --ctp-surface1: theme('colors.ctp.mocha.surface1');
+      --ctp-surface0: theme('colors.ctp.mocha.surface0');
+      --ctp-base: theme('colors.ctp.mocha.base');
+      --ctp-mantle: theme('colors.ctp.mocha.mantle');
+      --ctp-crust: theme('colors.ctp.mocha.crust');
     }
   }
 </style>
