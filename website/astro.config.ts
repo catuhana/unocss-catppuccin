@@ -33,6 +33,7 @@ export default defineConfig({
 });
 
 function generateSafelist() {
+  // TODO: Use `catppuccin-colours/palette`
   const flavours = ['latte', 'frappe', 'macchiato', 'mocha'];
   const colours = [
     'rosewater',

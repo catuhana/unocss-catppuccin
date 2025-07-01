@@ -22,6 +22,7 @@ const {
 
     <meta name='keywords' content='UnoCSS, Catppuccin, Theme' />
     <meta name='description' content={description} />
+    <meta name='generator' content={Astro.generator} />
 
     <!-- OpenGraph -->
     <meta property='og:type' content='website' />
@@ -35,7 +36,11 @@ const {
       content='https://raw.githubusercontent.com/catuhana/unocss-catppuccin/refs/heads/main/assets/previews/preview.webp'
     />
 
-    <meta name='generator' content={Astro.generator} />
+    <link
+      rel='shortcut icon'
+      href='/unocss-catppuccin/icon.svg'
+      type='image/svg+xml'
+    />
   </head>
   <body>
     <slot />
