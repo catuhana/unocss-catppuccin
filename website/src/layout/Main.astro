@@ -20,11 +20,11 @@ const {
 
     <title>{title}</title>
 
-    <!-- Information -->
+    {/* Information */}
     <meta name='description' content={description} />
     <meta name='keywords' content='UnoCSS, Catppuccin, Theme' />
 
-    <!-- Meta -->
+    {/* Meta */}
     <meta name='theme-color' content='#ea76cb' />
     <meta
       name='theme-color'
@@ -34,7 +34,7 @@ const {
     <meta name='color-scheme' content='dark light' />
     <meta name='generator' content={Astro.generator} />
 
-    <!-- OpenGraph -->
+    {/* OpenGraph */}
     <meta property='og:title' content={title} />
     <meta property='og:site_name' content='Catppuccin' />
     <meta property='og:description' content={description} />
@@ -42,7 +42,7 @@ const {
     <meta property='og:type' content='website' />
     <meta property='og:image' content='/unocss-catppuccin/preview.webp' />
 
-    <!-- Twitter -->
+    {/* Twitter */}
     <meta property='twitter:title' content={title} />
     <meta property='twitter:description' content={description} />
     <meta property='twitter:image' content='/unocss-catppuccin/preview.webp' />
@@ -50,15 +50,17 @@ const {
     <meta property='twitter:card' content='summary_large_image' />
 
     <link
-      rel='shortcut icon'
+      rel='icon'
       href='/unocss-catppuccin/icons/icon-dark.svg'
       type='image/svg+xml'
+      sizes='any'
       media='(prefers-color-scheme: dark)'
     />
     <link
-      rel='shortcut icon'
+      rel='icon'
       href='/unocss-catppuccin/icons/icon-light.svg'
       type='image/svg+xml'
+      sizes='any'
       media='(prefers-color-scheme: light)'
     />
   </head>
@@ -69,11 +71,11 @@ const {
 
 <style is:global>
   :root {
-    &[data-theme='latte'] {
+    &[data-theme='🌻'] {
       color-scheme: light;
     }
 
-    &:not([data-theme='latte']) {
+    &:not([data-theme='🌻']) {
       color-scheme: dark;
     }
   }
