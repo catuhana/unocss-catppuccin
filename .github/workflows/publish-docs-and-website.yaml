@@ -62,4 +62,4 @@ jobs:
         id: deploy
         uses: actions/deploy-pages@v4
         with:
-          preview: ${{ github.event.workflow_run.event == 'CI' || github.event_name == 'workflow_dispatch' }}
+          preview: ${{ github.event.workflow_run.event == 'CI' }}
