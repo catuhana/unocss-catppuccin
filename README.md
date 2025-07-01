@@ -8,14 +8,11 @@
 
 <p align="center">
   <a href="https://github.com/catppuccin/unocss/stargazers">
-    <img src="https://img.shields.io/github/stars/catppuccin/unocss?colorA=363a4f&colorB=b7bdf8&style=for-the-badge" alt="Stars Count Badge" />
-  </a>
+    <img src="https://img.shields.io/github/stars/catppuccin/unocss?colorA=363a4f&colorB=b7bdf8&style=for-the-badge" alt="Stars Count Badge" /></a>
   <a href="https://github.com/catppuccin/unocss/issues">
-    <img src="https://img.shields.io/github/issues/catppuccin/unocss?colorA=363a4f&colorB=f5a97f&style=for-the-badge" alt="Issues Count Badge" />
-  </a>
+    <img src="https://img.shields.io/github/issues/catppuccin/unocss?colorA=363a4f&colorB=f5a97f&style=for-the-badge" alt="Issues Count Badge" /></a>
   <a href="https://github.com/catppuccin/unocss/contributors">
-    <img src="https://img.shields.io/github/contributors/catppuccin/unocss?colorA=363a4f&colorB=a6da95&style=for-the-badge" alt="Contributors Count Badge" />
-  </a>
+    <img src="https://img.shields.io/github/contributors/catppuccin/unocss?colorA=363a4f&colorB=a6da95&style=for-the-badge" alt="Contributors Count Badge" /></a>
 </p>
 
 <p align="center">
