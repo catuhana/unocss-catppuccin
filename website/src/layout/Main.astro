@@ -5,10 +5,10 @@ const {
   meta: {
     title = 'Catppuccin for UnoCSS',
     description = '🌸 Soothing pastel theme for UnoCSS!',
-  },
+  } = {},
   theme = '🌻',
 } = Astro.props as {
-  meta: { title?: string; description?: string };
+  meta?: { title?: string; description?: string };
   theme?: FlavourEmoji;
 };
 ---
