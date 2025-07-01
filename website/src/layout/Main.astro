@@ -1,18 +1,39 @@
 ---
 import type { FlavourEmoji } from '@catppuccin/unocss/palette';
 
-const { title, catppuccinFlavour = '🌻' } = Astro.props as {
-  title?: string;
-  catppuccinFlavour?: FlavourEmoji;
+const {
+  meta: {
+    title = 'Catppuccin for UnoCSS',
+    description = '🌸 Soothing pastel theme for UnoCSS!',
+  },
+  theme = '🌻',
+} = Astro.props as {
+  meta: { title?: string; description?: string };
+  theme?: FlavourEmoji;
 };
 ---
 
-<html lang='en' data-theme={catppuccinFlavour}>
+<html lang='en' data-theme={theme}>
   <head>
     <meta charset='utf-8' />
     <meta name='viewport' content='width=device-width' />
 
-    <title>{title ?? 'Catppuccin for UnoCSS'}</title>
+    <title>{title}</title>
+
+    <meta name='keywords' content='UnoCSS, Catppuccin, Theme' />
+    <meta name='description' content={description} />
+
+    <!-- OpenGraph -->
+    <meta property='og:type' content='website' />
+    <meta property='og:url' content={Astro.site} />
+    <meta property='og:title' content={title} />
+    <meta property='og:description' content={description} />
+    <!-- TODO: Maybe move `assets/` folder to `github-pages` artifact
+               and use image from there? -->
+    <meta
+      property='og:image'
+      content='https://raw.githubusercontent.com/catuhana/unocss-catppuccin/refs/heads/main/assets/previews/preview.webp'
+    />
 
     <meta name='generator' content={Astro.generator} />
   </head>
