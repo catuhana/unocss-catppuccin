@@ -32,7 +32,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.workflow_run.head_branch }}
+          ref: ${{ github.event.workflow_run.head_branch || github.ref }}
 
       - name: Set up GitHub Pages
         uses: actions/configure-pages@v5
@@ -70,4 +70,4 @@ jobs:
         id: deploy
         uses: actions/deploy-pages@v4
         with:
-          preview: ${{ github.event.workflow_run.event == 'CI' }}
+          preview: ${{ github.event.workflow_run.event == 'CI' || github.event_name == 'workflow_dispatch' }}
