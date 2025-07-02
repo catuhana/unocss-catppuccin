@@ -15,9 +15,7 @@ import {
     <div>
       <div>
         <h1 class='text-6xl leading-[1] font-extrabold pb-2'>Catppuccin</h1>
-        <span class='text-[--ctp-subtext1] text-md'
-          >🌸 Soothing pastel theme for UnoCSS!</span
-        >
+        <span>🌸 Soothing pastel theme for UnoCSS!</span>
         <ul>
           {
             [
@@ -30,7 +28,7 @@ import {
                 <a
                   href={href}
                   target='_blank'
-                  class='font-semibold text-[--ctp-blue]'
+                  class='font-semibold text-[--ctp-blue] transition-colors duration-300 ease'
                 >
                   {text}
                 </a>
@@ -48,7 +46,7 @@ import {
             FLAVOUR_NAMES.map(flavour => (
               <button
                 type='button'
-                class={`text-ctp-${flavour}-text bg-ctp-${flavour}-surface1 h-12 p-2 rounded-8 hover:bg-ctp-${flavour}-surface2 font-semibold cursor-pointer min-w-fit transition-all duration-300 ease hover:scale-y-120`}
+                class={`bg-[--ctp-surface1] hover:bg-[--ctp-surface2] h-12 p-2 rounded-8 font-semibold cursor-pointer min-w-fit hover:scale-y-120`}
                 style={`width: ${Math.random() * 128 + 48}px;`}
                 data-flavour={
                   Object.fromEntries(
@@ -72,7 +70,7 @@ import {
           {
             ACCENT_COLOUR_NAMES.map(colour => (
               <span
-                class={`bg-[--ctp-${colour}] rounded-full h-12 transition-all duration-300 ease hover:scale-y-120`}
+                class={`bg-[--ctp-${colour}] rounded-full h-12 hover:scale-y-120`}
                 style={`width: ${Math.random() * 128 + 48}px;`}
                 title={colour}
                 data-pill
@@ -88,7 +86,7 @@ import {
             NEUTRAL_COLOUR_NAMES.map(colour => {
               return (
                 <span
-                  class={`bg-[--ctp-${colour}] rounded-full h-12 transition-all duration-300 ease hover:scale-y-120`}
+                  class={`bg-[--ctp-${colour}] rounded-full h-12 hover:scale-y-120`}
                   style={`width: ${Math.random() * 128 + 48}px;`}
                   title={colour}
                   data-pill
@@ -104,11 +102,15 @@ import {
 
 <style>
   button[data-flavour]::before {
-    content: attr(data-flavour);
+    @apply content-[attr(data-flavour)];
   }
 
   li:not(:last-child)::after {
-    content: '•';
+    @apply content-['•'];
+  }
+
+  [data-pill] {
+    @apply transition-[transform,width,colors] duration-300 ease;
   }
 </style>
 

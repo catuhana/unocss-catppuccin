@@ -70,13 +70,17 @@ const {
 </html>
 
 <style is:global>
+  body {
+    @apply transition-colors duration-300 ease;
+  }
+
   :root {
     &[data-theme='🌻'] {
-      color-scheme: light;
+      @apply scheme-light;
     }
 
     &:not([data-theme='🌻']) {
-      color-scheme: dark;
+      @apply scheme-dark;
     }
   }
 
