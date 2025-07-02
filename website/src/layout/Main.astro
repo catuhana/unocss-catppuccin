@@ -64,16 +64,14 @@ const {
       media='(prefers-color-scheme: light)'
     />
   </head>
-  <body class='bg-[--ctp-base] text-[--ctp-text]'>
+  <body
+    class='bg-[--ctp-base] text-[--ctp-text] transition-colors duration-300 ease'
+  >
     <slot />
   </body>
 </html>
 
 <style is:global>
-  body {
-    @apply transition-colors duration-300 ease;
-  }
-
   :root {
     &[data-theme='🌻'] {
       @apply scheme-light;

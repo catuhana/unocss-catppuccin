@@ -6,7 +6,6 @@ import { presetWind4, transformerDirectives } from 'unocss';
 import presetCatppuccin from '@catppuccin/unocss';
 
 import {
-  FLAVOUR_NAMES,
   ACCENT_COLOUR_NAMES,
   NEUTRAL_COLOUR_NAMES,
 } from '@catppuccin/unocss/palette';
@@ -42,8 +41,5 @@ function generateSafelist() {
   return [
     ...ACCENT_COLOUR_NAMES.map(colour => `bg-[--ctp-${colour}]`),
     ...NEUTRAL_COLOUR_NAMES.map(colour => `bg-[--ctp-${colour}]`),
-    ...FLAVOUR_NAMES.map(flavour => `bg-ctp-${flavour}-surface1`),
-    ...FLAVOUR_NAMES.map(flavour => `hover:bg-ctp-${flavour}-surface2`),
-    ...FLAVOUR_NAMES.map(flavour => `text-ctp-${flavour}-text`),
   ];
 }
