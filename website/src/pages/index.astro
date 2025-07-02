@@ -110,7 +110,18 @@ import {
   }
 
   [data-pill] {
-    @apply transition-[transform,width,colors] duration-300 ease;
+    @apply transition-[transform,width,colors,outline-color] duration-300 ease;
+  }
+
+  button[data-flavour] {
+    @apply outline-2 outline-transparent outline-solid;
+  }
+
+  html[data-theme='🌻'] button[data-flavour='🌻'],
+  html[data-theme='🪴'] button[data-flavour='🪴'],
+  html[data-theme='🌺'] button[data-flavour='🌺'],
+  html[data-theme='🌿'] button[data-flavour='🌿'] {
+    @apply outline-2 outline-[--ctp-base] outline-solid;
   }
 </style>
 
