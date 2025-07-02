@@ -72,7 +72,7 @@ import {
           {
             ACCENT_COLOUR_NAMES.map(colour => (
               <span
-                class={`bg-[--ctp-${colour}] w-[attr(data-pill-length)] rounded-full h-12 transition-all duration-300 ease hover:scale-y-120`}
+                class={`bg-[--ctp-${colour}] rounded-full h-12 transition-all duration-300 ease hover:scale-y-120`}
                 style={`width: ${Math.random() * 128 + 48}px;`}
                 title={colour}
                 data-pill
@@ -88,7 +88,7 @@ import {
             NEUTRAL_COLOUR_NAMES.map(colour => {
               return (
                 <span
-                  class={`bg-[--ctp-${colour}] w-[attr(data-pill-length)] rounded-full h-12 transition-all duration-300 ease hover:scale-y-120`}
+                  class={`bg-[--ctp-${colour}] rounded-full h-12 transition-all duration-300 ease hover:scale-y-120`}
                   style={`width: ${Math.random() * 128 + 48}px;`}
                   title={colour}
                   data-pill
@@ -115,27 +115,39 @@ import {
 <script>
   import { DETERMINISTIC_PILL_LENGTH } from 'astro:env/client';
 
+  const pillElements = document.querySelectorAll<HTMLElement>('[data-pill]');
+
   Promise.all([pillLengthRandomiser(), themeSwitcher()]);
 
   async function pillLengthRandomiser() {
     if (DETERMINISTIC_PILL_LENGTH) return;
 
+    const pillWidths = Array.from(
+      { length: pillElements.length },
+      () => Math.floor(Math.random() * 128) + 48
+    );
+
     await new Promise(resolve => setTimeout(resolve, 100));
-    document.querySelectorAll<HTMLElement>('[data-pill]').forEach(pill => {
-      pill.style.width = `${Math.floor(Math.random() * 128) + 48}px`;
+
+    requestAnimationFrame(() => {
+      pillElements.forEach((pill, index) => {
+        pill.style.setProperty('width', `${pillWidths[index]}px`);
+      });
     });
   }
 
   async function themeSwitcher() {
-    document
-      .querySelectorAll<HTMLButtonElement>('button[data-flavour]')
-      .forEach(button => {
-        button.addEventListener('click', () => {
-          const flavour = button.getAttribute('data-flavour');
-          if (flavour) {
-            document.documentElement.setAttribute('data-theme', flavour);
-          }
-        });
-      });
+    document.addEventListener('click', event => {
+      if (!event.target || !(event.target instanceof HTMLElement)) return;
+
+      const flavourButton = event.target.closest<HTMLButtonElement>(
+        'button[data-flavour]'
+      );
+
+      if (flavourButton?.dataset['flavour']) {
+        document.documentElement.dataset['theme'] =
+          flavourButton.dataset['flavour'];
+      }
+    });
   }
 </script>
