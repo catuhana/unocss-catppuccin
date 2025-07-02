@@ -6,6 +6,7 @@ import {
   ACCENT_COLOUR_NAMES,
   NEUTRAL_COLOUR_NAMES,
   FLAVOUR_EMOJIS,
+  FLAVOUR_NAMES_PRETTY,
 } from '@catppuccin/unocss/palette';
 ---
 
@@ -43,7 +44,7 @@ import {
         <h2 class='text-3xl font-extrabold mb-6'>Flavours</h2>
         <div class='flex flex-wrap gap-2 items-end'>
           {
-            FLAVOUR_NAMES.map(flavour => (
+            FLAVOUR_NAMES.map((flavour, index) => (
               <button
                 type='button'
                 class={`bg-[--ctp-surface1] hover:bg-[--ctp-surface2] h-12 p-2 rounded-8 font-semibold cursor-pointer min-w-fit hover:scale-y-120`}
@@ -58,7 +59,7 @@ import {
                 }
                 data-pill
               >
-                {flavour.charAt(0).toUpperCase() + flavour.slice(1)}
+                {FLAVOUR_NAMES_PRETTY[index]}
               </button>
             ))
           }
