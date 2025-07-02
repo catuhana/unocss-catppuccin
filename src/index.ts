@@ -6,8 +6,6 @@ import type { UnoCSSCatppuccinOptions } from './types.ts';
 
 /**
  * Catppuccin preset for UnoCSS.
- *
- * @param options - Options of the preset.
  */
 export default ({ mode, ...rest }: UnoCSSCatppuccinOptions = {}) => {
   const preset: Preset = { name: 'unocss-catppuccin' };
