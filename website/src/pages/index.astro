@@ -18,6 +18,26 @@ import {
         <span class='text-[--ctp-subtext1] text-md'
           >🌸 Soothing pastel theme for UnoCSS!</span
         >
+        <ul>
+          {
+            [
+              ['Documentation', `${import.meta.env.BASE_URL}/docs`],
+              // TODO: Update link after moving to the Catppuccin
+              // organisation.
+              ['GitHub', 'https://github.com/catuhana/unocss-catppuccin'],
+            ].map(([text, href]) => (
+              <li class='inline'>
+                <a
+                  href={href}
+                  target='_blank'
+                  class='font-semibold text-[--ctp-blue]'
+                >
+                  {text}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
       </div>
     </div>
     <div class='mt-12 space-y-8'>
@@ -85,6 +105,10 @@ import {
 <style>
   button[data-flavour]::before {
     content: attr(data-flavour);
+  }
+
+  li:not(:last-child)::after {
+    content: '•';
   }
 </style>
 
