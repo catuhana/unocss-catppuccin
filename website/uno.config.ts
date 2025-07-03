@@ -1,4 +1,9 @@
-import { defineConfig, presetWind4, transformerDirectives } from 'unocss';
+import {
+  defineConfig,
+  presetWind4,
+  transformerDirectives,
+  transformerVariantGroup,
+} from 'unocss';
 
 import presetCatppuccin from '@catppuccin/unocss';
 
@@ -12,7 +17,7 @@ export default defineConfig({
     presetWind4({ preflights: { reset: true, theme: true } }),
     presetCatppuccin(),
   ],
-  transformers: [transformerDirectives()],
+  transformers: [transformerDirectives(), transformerVariantGroup()],
   safelist: generateSafelist(),
 });
 

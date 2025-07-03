@@ -11,10 +11,10 @@ import {
 ---
 
 <Main>
-  <div class='mx-4 my-4 lg:w-2/3 lg:mx-a lg:mt-16'>
+  <div class='mx-4 my-4 lg:(w-2/3 mx-a mt-16)'>
     <div>
       <div>
-        <h1 class='max-w-fit text-5xl lg:text-6xl font-extrabold pb-2'>
+        <h1 class='max-w-fit text-5xl font-extrabold pb-2 lg:text-6xl'>
           Catppuccin
         </h1>
         <ul>
@@ -47,7 +47,7 @@ import {
             FLAVOUR_NAMES.map((flavour, index) => (
               <button
                 type='button'
-                class='bg-[--ctp-surface1] hover:bg-[--ctp-surface2] h-12 p-2 rounded-8 font-semibold cursor-pointer min-w-fit hover:scale-y-120'
+                class='bg-[--ctp-surface1] h-12 p-2 rounded-8 font-semibold cursor-pointer min-w-fit hover:(bg-[--ctp-surface2] scale-y-120)'
                 style={`width: ${Math.random() * 128 + 48}px;`}
                 data-flavour={
                   Object.fromEntries(
@@ -125,14 +125,14 @@ import {
   }
 
   button[data-flavour] {
-    @apply outline-2 outline-transparent outline-solid;
+    @apply outline-(2 transparent solid);
   }
 
   html[data-theme='🌻'] button[data-flavour='🌻'],
   html[data-theme='🪴'] button[data-flavour='🪴'],
   html[data-theme='🌺'] button[data-flavour='🌺'],
   html[data-theme='🌿'] button[data-flavour='🌿'] {
-    @apply outline-2 outline-[--ctp-base] outline-solid;
+    @apply outline-(2 [--ctp-base] solid);
   }
 </style>
 
