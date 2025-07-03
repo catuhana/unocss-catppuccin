@@ -1,4 +1,4 @@
-import { defineConfig, envField } from 'astro/config';
+import { defineConfig } from 'astro/config';
 
 import UnoCSS from 'unocss/astro';
 
@@ -8,14 +8,4 @@ export default defineConfig({
   site: 'https://catuhana.github.io',
   base: '/unocss-catppuccin',
   integrations: [UnoCSS()],
-  env: {
-    schema: {
-      DETERMINISTIC_PILL_LENGTH: envField.boolean({
-        context: 'client',
-        access: 'public',
-        optional: true,
-        default: false,
-      }),
-    },
-  },
 });

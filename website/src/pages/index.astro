@@ -128,23 +128,21 @@ import {
     @apply outline-(2 transparent solid);
   }
 
-  html[data-theme='🌻'] button[data-flavour='🌻'],
-  html[data-theme='🪴'] button[data-flavour='🪴'],
-  html[data-theme='🌺'] button[data-flavour='🌺'],
-  html[data-theme='🌿'] button[data-flavour='🌿'] {
+  html[data-theme='🌻']:not([data-preview]) button[data-flavour='🌻'],
+  html[data-theme='🪴']:not([data-preview]) button[data-flavour='🪴'],
+  html[data-theme='🌺']:not([data-preview]) button[data-flavour='🌺'],
+  html[data-theme='🌿']:not([data-preview]) button[data-flavour='🌿'] {
     @apply outline-(2 [--ctp-base] solid);
   }
 </style>
 
 <script>
-  import { DETERMINISTIC_PILL_LENGTH } from 'astro:env/client';
-
   const pillElements = document.querySelectorAll<HTMLElement>('[data-pill]');
 
-  Promise.all([pillLengthRandomiser(), themeSwitcher()]);
+  Promise.all([setPreviewMode(), pillLengthRandomiser(), themeSwitcher()]);
 
   async function pillLengthRandomiser() {
-    if (DETERMINISTIC_PILL_LENGTH) return;
+    if (isInPreviewMode()) return;
 
     const pillWidths = Array.from(
       { length: pillElements.length },
@@ -173,5 +171,14 @@ import {
           flavourButton.dataset['flavour'];
       }
     });
+  }
+
+  async function setPreviewMode() {
+    if (!isInPreviewMode()) return;
+    document.documentElement.dataset['preview'] = '';
+  }
+
+  function isInPreviewMode() {
+    return location.search.includes('?preview');
   }
 </script>
