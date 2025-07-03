@@ -11,12 +11,12 @@ import {
 ---
 
 <Main>
-  <!--* Use `clamp()` sometime. -->
-  <div class='w-2/3 ml-6 my-4 lg:mx-a lg:mt-16'>
+  <div class='mx-4 my-4 lg:(w-2/3 mx-a mt-16)'>
     <div>
       <div>
-        <h1 class='text-6xl leading-[1] font-extrabold pb-2'>Catppuccin</h1>
-        <span>🌸 Soothing pastel theme for UnoCSS!</span>
+        <h1 class='max-w-fit text-5xl font-extrabold pb-2 lg:text-6xl'>
+          Catppuccin
+        </h1>
         <ul>
           {
             [
@@ -27,9 +27,9 @@ import {
             ].map(([text, href]) => (
               <li class='inline'>
                 <a
+                  class='font-semibold text-[--ctp-blue] transition-colors duration-300 ease'
                   href={href}
-                  target='_blank'
-                  class='font-semibold text-ctp-blue transition-colors duration-300 ease'
+                  target={text === 'Documentation' ? '_self' : '_blank'}
                 >
                   {text}
                 </a>
@@ -47,14 +47,14 @@ import {
             FLAVOUR_NAMES.map((flavour, index) => (
               <button
                 type='button'
-                class={`bg-ctp-surface1 hover:bg-ctp-surface2 h-12 p-2 rounded-8 font-semibold cursor-pointer min-w-fit hover:scale-y-120`}
+                class='bg-ctp-surface1 hover:bg-ctp-surface2 h-12 p-2 rounded-8 font-semibold cursor-pointer min-w-fit hover:scale-y-120'
                 style={`width: ${Math.random() * 128 + 48}px;`}
                 data-flavour={
                   Object.fromEntries(
                     FLAVOUR_NAMES.map((name, index) => [
                       name,
                       FLAVOUR_EMOJIS[index],
-                    ])
+                    ]),
                   )[flavour]
                 }
                 data-pill
@@ -71,9 +71,14 @@ import {
           {
             ACCENT_COLOUR_NAMES.map(colour => (
               <span
-                class={`bg-ctp-${colour} rounded-full h-12 hover:scale-y-120`}
-                style={`width: ${Math.random() * 128 + 48}px;`}
                 title={colour}
+                class:list={[
+                  `bg-ctp-${colour}`,
+                  'rounded-full',
+                  'h-12',
+                  'hover:scale-y-120',
+                ]}
+                style={`width: ${Math.random() * 128 + 48}px;`}
                 data-pill
               />
             ))
@@ -87,9 +92,14 @@ import {
             NEUTRAL_COLOUR_NAMES.map(colour => {
               return (
                 <span
-                  class={`bg-ctp-${colour} rounded-full h-12 hover:scale-y-120`}
-                  style={`width: ${Math.random() * 128 + 48}px;`}
                   title={colour}
+                  class:list={[
+                    `bg-ctp-${colour}`,
+                    'rounded-full',
+                    'h-12',
+                    'hover:scale-y-120',
+                  ]}
+                  style={`width: ${Math.random() * 128 + 48}px;`}
                   data-pill
                 />
               );
@@ -115,14 +125,14 @@ import {
   }
 
   button[data-flavour] {
-    @apply outline-2 outline-transparent outline-solid;
+    @apply outline-(2 transparent solid);
   }
 
   html[data-theme='🌻'] button[data-flavour='🌻'],
   html[data-theme='🪴'] button[data-flavour='🪴'],
   html[data-theme='🌺'] button[data-flavour='🌺'],
   html[data-theme='🌿'] button[data-flavour='🌿'] {
-    @apply outline-2 outline-ctp-base outline-solid;
+    @apply outline-(2 [--ctp-base] solid);
   }
 </style>
 
@@ -138,7 +148,7 @@ import {
 
     const pillWidths = Array.from(
       { length: pillElements.length },
-      () => Math.floor(Math.random() * 128) + 48
+      () => Math.floor(Math.random() * 128) + 48,
     );
 
     await new Promise(resolve => setTimeout(resolve, 100));
@@ -155,7 +165,7 @@ import {
       if (!event.target || !(event.target instanceof HTMLElement)) return;
 
       const flavourButton = event.target.closest<HTMLButtonElement>(
-        'button[data-flavour]'
+        'button[data-flavour]',
       );
 
       if (flavourButton?.dataset['flavour']) {

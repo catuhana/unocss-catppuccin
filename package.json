@@ -40,7 +40,7 @@
     "build:docs": "typedoc",
     "build:website": "pnpm --filter ./website build",
     "generate-palette": "whiskers templates/palette.ts.tera | prettier --parser typescript >src/palette.ts",
-    "check:lint": "eslint . --ext .ts",
+    "check:lint": "eslint .",
     "check:format": "prettier --check .",
     "prepack": "pnpm build"
   },
@@ -54,6 +54,7 @@
     "eslint": "^9.30.0",
     "pkgroll": "^2.13.1",
     "prettier": "^3.6.2",
+    "prettier-plugin-astro": "^0.14.1",
     "typedoc": "^0.28.6",
     "typedoc-material-theme": "^1.4.0",
     "typescript": "^5.8.3",
