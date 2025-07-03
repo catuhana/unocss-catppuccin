@@ -15,6 +15,12 @@
     <img src="https://img.shields.io/github/contributors/catppuccin/unocss?colorA=363a4f&colorB=a6da95&style=for-the-badge" alt="Contributors Count Badge" /></a>
 </p>
 
+> [!NOTE]
+> You're currently viewing the `main` branch, which has unreleased changes and unmatching npm package name
+> because of pending transfer of this repo to the Catppuccin organisation. If you want to see the latest
+> release, refer to [v2.0.1 tag](https://github.com/catuhana/unocss-catppuccin/tree/v2.0.1). Unfortunately
+> the same can't be done for the documentation, so please resort to [src/types.ts](https://github.com/catuhana/unocss-catppuccin/blob/v2.0.1/src/types.ts) in the meantime.
+
 <p align="center">
   <img src="./assets/previews/preview.webp" alt="Preview" />
 </p>
