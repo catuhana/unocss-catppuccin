@@ -29,7 +29,7 @@ import {
                 <a
                   href={href}
                   target='_blank'
-                  class='font-semibold text-[--ctp-blue] transition-colors duration-300 ease'
+                  class='font-semibold text-ctp-blue transition-colors duration-300 ease'
                 >
                   {text}
                 </a>
@@ -47,7 +47,7 @@ import {
             FLAVOUR_NAMES.map((flavour, index) => (
               <button
                 type='button'
-                class={`bg-[--ctp-surface1] hover:bg-[--ctp-surface2] h-12 p-2 rounded-8 font-semibold cursor-pointer min-w-fit hover:scale-y-120`}
+                class={`bg-ctp-surface1 hover:bg-ctp-surface2 h-12 p-2 rounded-8 font-semibold cursor-pointer min-w-fit hover:scale-y-120`}
                 style={`width: ${Math.random() * 128 + 48}px;`}
                 data-flavour={
                   Object.fromEntries(
@@ -71,7 +71,7 @@ import {
           {
             ACCENT_COLOUR_NAMES.map(colour => (
               <span
-                class={`bg-[--ctp-${colour}] rounded-full h-12 hover:scale-y-120`}
+                class={`bg-ctp-${colour} rounded-full h-12 hover:scale-y-120`}
                 style={`width: ${Math.random() * 128 + 48}px;`}
                 title={colour}
                 data-pill
@@ -87,7 +87,7 @@ import {
             NEUTRAL_COLOUR_NAMES.map(colour => {
               return (
                 <span
-                  class={`bg-[--ctp-${colour}] rounded-full h-12 hover:scale-y-120`}
+                  class={`bg-ctp-${colour} rounded-full h-12 hover:scale-y-120`}
                   style={`width: ${Math.random() * 128 + 48}px;`}
                   title={colour}
                   data-pill
@@ -122,7 +122,7 @@ import {
   html[data-theme='🪴'] button[data-flavour='🪴'],
   html[data-theme='🌺'] button[data-flavour='🌺'],
   html[data-theme='🌿'] button[data-flavour='🌿'] {
-    @apply outline-2 outline-[--ctp-base] outline-solid;
+    @apply outline-2 outline-ctp-base outline-solid;
   }
 </style>
 

@@ -1,4 +1,9 @@
-import { COLOURS, type FlavourPalette } from '../palette.ts';
+import {
+  ACCENT_COLOUR_NAMES,
+  COLOURS,
+  NEUTRAL_COLOUR_NAMES,
+  type FlavourPalette,
+} from '../palette.ts';
 
 import type { ExtendOptions, ThemeColoursObject } from './types.ts';
 
@@ -10,7 +15,12 @@ import type { ExtendOptions, ThemeColoursObject } from './types.ts';
  * to UnoCSS `extendTheme` option.
  */
 export const _extendTheme = (options: ExtendOptions = {}) => {
-  const { themeKey = 'colors', prefix = 'ctp', defaultFlavour } = options;
+  const {
+    themeKey = 'colors',
+    prefix = 'ctp',
+    defaultFlavour,
+    dynamicFlavour,
+  } = options;
 
   const addFlavourColours = (
     targetObj: ThemeColoursObject,
@@ -70,6 +80,12 @@ export const _extendTheme = (options: ExtendOptions = {}) => {
 
     if (defaultFlavour && defaultFlavour in COLOURS) {
       addFlavourColours(targetObject, COLOURS[defaultFlavour]);
+    } else if (dynamicFlavour) {
+      for (const colour of [...ACCENT_COLOUR_NAMES, ...NEUTRAL_COLOUR_NAMES]) {
+        if (!targetObject[colour]) targetObject[colour] = {};
+
+        targetObject[colour] = `var(--ctp-${colour})`;
+      }
     } else {
       for (const [flavourIdentifier, flavour] of Object.entries(COLOURS)) {
         addFlavourColours(targetObject, flavour, flavourIdentifier);

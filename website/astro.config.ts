@@ -19,7 +19,7 @@ export default defineConfig({
     UnoCSS({
       presets: [
         presetWind4({ preflights: { reset: true, theme: true } }),
-        presetCatppuccin(),
+        presetCatppuccin({ dynamicFlavour: '[data-theme]' }),
       ],
       transformers: [transformerDirectives()],
       safelist: generateSafelist(),
@@ -39,7 +39,7 @@ export default defineConfig({
 
 function generateSafelist() {
   return [
-    ...ACCENT_COLOUR_NAMES.map(colour => `bg-[--ctp-${colour}]`),
-    ...NEUTRAL_COLOUR_NAMES.map(colour => `bg-[--ctp-${colour}]`),
+    ...ACCENT_COLOUR_NAMES.map(colour => `bg-ctp-${colour}`),
+    ...NEUTRAL_COLOUR_NAMES.map(colour => `bg-ctp-${colour}`),
   ];
 }

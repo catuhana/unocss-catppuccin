@@ -1,5 +1,7 @@
 import type { FlavourName } from '../palette.ts';
 
+export type DynamicFlavourSelector = `[${string}]` | `.` | `#`;
+
 export interface ExtendOptions {
   /**
    * Which `theme` object key to add the colours to.
@@ -53,6 +55,8 @@ export interface ExtendOptions {
    * ```
    */
   defaultFlavour?: FlavourName;
+
+  dynamicFlavour?: DynamicFlavourSelector;
 }
 
 /**
