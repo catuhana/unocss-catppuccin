@@ -11,12 +11,12 @@ import {
 ---
 
 <Main>
-  <!--* Use `clamp()` sometime. -->
-  <div class='w-2/3 ml-6 my-4 lg:mx-a lg:mt-16'>
+  <div class='mx-4 my-4 lg:w-2/3 lg:mx-a lg:mt-16'>
     <div>
       <div>
-        <h1 class='text-6xl leading-[1] font-extrabold pb-2'>Catppuccin</h1>
-        <span>🌸 Soothing pastel theme for UnoCSS!</span>
+        <h1 class='max-w-fit text-5xl lg:text-6xl font-extrabold pb-2'>
+          Catppuccin
+        </h1>
         <ul>
           {
             [
@@ -28,7 +28,7 @@ import {
               <li class='inline'>
                 <a
                   href={href}
-                  target='_blank'
+                  target={text === 'Documentation' ? '_self' : '_blank'}
                   class='font-semibold text-[--ctp-blue] transition-colors duration-300 ease'
                 >
                   {text}
