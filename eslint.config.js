@@ -3,6 +3,8 @@ import { globalIgnores } from 'eslint/config';
 import { default as js } from '@eslint/js';
 import * as ts from 'typescript-eslint';
 
+import astro from 'eslint-plugin-astro';
+
 export default ts.config([
   globalIgnores(['**/dist', '**/docs', '**/.astro']),
   { name: 'JavaScript', files: ['**/*.{m,}js'], ...js.configs.recommended },
@@ -21,6 +23,17 @@ export default ts.config([
         projectService: true,
         tsconfigRootDir: import.meta.dirname,
       },
+    },
+  },
+  {
+    name: 'Astro',
+    //? Maybe enable a11y too?
+    extends: [astro.configs.recommended],
+    rules: {
+      'astro/prefer-class-list-directive': 'warn',
+      'astro/prefer-object-class-list': 'warn',
+      'astro/prefer-split-class-list': 'warn',
+      'astro/no-exports-from-components': 'warn',
     },
   },
 ]);
