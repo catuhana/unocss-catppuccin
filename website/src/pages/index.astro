@@ -54,7 +54,7 @@ import {
                     FLAVOUR_NAMES.map((name, index) => [
                       name,
                       FLAVOUR_EMOJIS[index],
-                    ])
+                    ]),
                   )[flavour]
                 }
                 data-pill
@@ -148,7 +148,7 @@ import {
 
     const pillWidths = Array.from(
       { length: pillElements.length },
-      () => Math.floor(Math.random() * 128) + 48
+      () => Math.floor(Math.random() * 128) + 48,
     );
 
     await new Promise(resolve => setTimeout(resolve, 100));
@@ -165,7 +165,7 @@ import {
       if (!event.target || !(event.target instanceof HTMLElement)) return;
 
       const flavourButton = event.target.closest<HTMLButtonElement>(
-        'button[data-flavour]'
+        'button[data-flavour]',
       );
 
       if (flavourButton?.dataset['flavour']) {
