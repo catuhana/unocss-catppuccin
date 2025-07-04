@@ -1,10 +1,8 @@
-/** @type {import('typedoc').TypeDocOptions} */
-export default {
+export default /** @type {Partial<import('typedoc').TypeDocOptions>} */ ({
   entryPoints: ['src'],
   entryPointStrategy: 'Expand',
   out: 'docs',
   cleanOutputDir: true,
   plugin: ['typedoc-material-theme'],
-  // @ts-expect-error Configuration for the theme above.
-  themeColor: '#b47aff',
-};
+  themeColor: '#f38ba8',
+});
