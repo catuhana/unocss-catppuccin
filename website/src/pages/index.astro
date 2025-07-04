@@ -124,8 +124,12 @@ import {
     @apply transition-[transform,width,background-color,outline-color] duration-300 ease;
   }
 
-  button[data-flavour]:not(:focus, :focus-visible) {
+  button[data-flavour] {
     @apply outline-(2 transparent solid);
+
+    &:focus-visible {
+      @apply outline-[--ctp-base];
+    }
   }
 
   html[data-theme='🌻']:not([data-preview]) button[data-flavour='🌻'],
