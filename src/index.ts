@@ -8,7 +8,7 @@ import type { UnoCSSCatppuccinOptions } from './types.ts';
  * Catppuccin preset for UnoCSS.
  */
 export default ({ mode, ...rest }: UnoCSSCatppuccinOptions = {}) => {
-  const preset: Preset = { name: 'unocss-catppuccin' };
+  const preset: Preset = { name: '@catppuccin/unocss' };
 
   switch (mode) {
     case 'extend':
@@ -29,6 +29,6 @@ class CatppuccinUnoCSSError extends Error {
   constructor(message: string) {
     super(message);
 
-    this.name = '[unocss-catppuccin] :: error :';
+    this.name = '[@catppuccin/unocss] :: error :';
   }
 }
