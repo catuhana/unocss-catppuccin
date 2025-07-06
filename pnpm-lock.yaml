@@ -31,10 +31,10 @@ importers:
         version: 0.14.1
       typedoc:
         specifier: ^0.28.6
-        version: 0.28.6(typescript@5.8.3)
+        version: 0.28.7(typescript@5.8.3)
       typedoc-material-theme:
         specifier: ^1.4.0
-        version: 1.4.0(typedoc@0.28.6(typescript@5.8.3))
+        version: 1.4.0(typedoc@0.28.7(typescript@5.8.3))
       typescript:
         specifier: ^5.8.3
         version: 5.8.3
@@ -97,8 +97,17 @@ packages:
     engines: {node: '>=6.0.0'}
     hasBin: true
 
+  '@babel/parser@7.28.0':
+    resolution: {integrity: sha512-jVZGvOxOuNSsuQuLRTh13nU0AogFlw32w/MT+LV6D3sP5WdbW61E77RnkbaO2dUvmPAYrBDJXGn5gGS6tH4j8g==}
+    engines: {node: '>=6.0.0'}
+    hasBin: true
+
   '@babel/types@7.27.7':
     resolution: {integrity: sha512-8OLQgDScAOHXnAz2cV+RfzzNMipuLVBz2biuAJFMV9bfkNf393je3VM8CLkjQodW5+iWsSJdSgSWT6rsZoXHPw==}
+    engines: {node: '>=6.9.0'}
+
+  '@babel/types@7.28.0':
+    resolution: {integrity: sha512-jYnje+JyZG5YThjHiF28oT4SIZLnYOcSBb6+SDaFIyzDVSkXQmQQYclJ2R+YxcdmK0AX6x1E5OQNtuh3jHDrUg==}
     engines: {node: '>=6.9.0'}
 
   '@capsizecss/unpack@2.4.0':
@@ -2183,8 +2192,8 @@ packages:
     peerDependencies:
       typedoc: ^0.25.13 || ^0.26.x || ^0.27.x || ^0.28.x
 
-  typedoc@0.28.6:
-    resolution: {integrity: sha512-2VvfK6z3yupcu75qZB00LGICg4qa0lw4yPBrFcnZgqIMwpLjLWopTqNeJ4SSS/s92myvWBECY5zcOSMqpvW3CA==}
+  typedoc@0.28.7:
+    resolution: {integrity: sha512-lpz0Oxl6aidFkmS90VQDQjk/Qf2iw0IUvFqirdONBdj7jPSN9mGXhy66BcGNDxx5ZMyKKiBVAREvPEzT6Uxipw==}
     engines: {node: '>= 18', pnpm: '>= 10'}
     hasBin: true
     peerDependencies:
@@ -2550,7 +2559,16 @@ snapshots:
     dependencies:
       '@babel/types': 7.27.7
 
+  '@babel/parser@7.28.0':
+    dependencies:
+      '@babel/types': 7.28.0
+
   '@babel/types@7.27.7':
+    dependencies:
+      '@babel/helper-string-parser': 7.27.1
+      '@babel/helper-validator-identifier': 7.27.1
+
+  '@babel/types@7.28.0':
     dependencies:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.27.1
@@ -3336,7 +3354,7 @@ snapshots:
 
   '@vue/compiler-core@3.5.17':
     dependencies:
-      '@babel/parser': 7.27.7
+      '@babel/parser': 7.28.0
       '@vue/shared': 3.5.17
       entities: 4.5.0
       estree-walker: 2.0.2
@@ -3349,7 +3367,7 @@ snapshots:
 
   '@vue/compiler-sfc@3.5.17':
     dependencies:
-      '@babel/parser': 7.27.7
+      '@babel/parser': 7.28.0
       '@vue/compiler-core': 3.5.17
       '@vue/compiler-dom': 3.5.17
       '@vue/compiler-ssr': 3.5.17
@@ -4994,12 +5012,12 @@ snapshots:
 
   type-fest@4.41.0: {}
 
-  typedoc-material-theme@1.4.0(typedoc@0.28.6(typescript@5.8.3)):
+  typedoc-material-theme@1.4.0(typedoc@0.28.7(typescript@5.8.3)):
     dependencies:
       '@material/material-color-utilities': 0.3.0
-      typedoc: 0.28.6(typescript@5.8.3)
+      typedoc: 0.28.7(typescript@5.8.3)
 
-  typedoc@0.28.6(typescript@5.8.3):
+  typedoc@0.28.7(typescript@5.8.3):
     dependencies:
       '@gerrit0/mini-shiki': 3.7.0
       lunr: 2.3.9
