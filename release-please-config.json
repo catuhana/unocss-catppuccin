@@ -1,4 +1,5 @@
 {
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
   "packages": {
     ".": {
       "package-name": "@catppuccin/unocss",
@@ -9,6 +10,5 @@
       "draft": false,
       "prerelease": false
     }
-  },
-  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json"
+  }
 }
