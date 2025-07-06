@@ -1,5 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "last-release-sha": "af45909b92ba6d2fa1d840ed56ff9ba758380908",
   "packages": {
     ".": {
       "package-name": "@catppuccin/unocss",
