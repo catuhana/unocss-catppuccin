@@ -40,25 +40,25 @@ const {
     <meta property='og:description' content={description} />
     <meta property='og:url' content={Astro.site} />
     <meta property='og:type' content='website' />
-    <meta property='og:image' content='/unocss-catppuccin/preview.webp' />
+    <meta property='og:image' content='/preview.webp' />
 
     {/* Twitter */}
     <meta property='twitter:title' content={title} />
     <meta property='twitter:description' content={description} />
-    <meta property='twitter:image' content='/unocss-catppuccin/preview.webp' />
+    <meta property='twitter:image' content='/preview.webp' />
     <meta name='twitter:image:alt' content='Preview of Catppuccin for UnoCSS' />
     <meta property='twitter:card' content='summary_large_image' />
 
     <link
       rel='icon'
-      href='/unocss-catppuccin/icons/icon-dark.svg'
+      href='/icons/icon-dark.svg'
       type='image/svg+xml'
       sizes='any'
       media='(prefers-color-scheme: dark)'
     />
     <link
       rel='icon'
-      href='/unocss-catppuccin/icons/icon-light.svg'
+      href='/icons/icon-light.svg'
       type='image/svg+xml'
       sizes='any'
       media='(prefers-color-scheme: light)'
@@ -83,7 +83,7 @@ const {
   }
 
   :root {
-    /* TODO: Remove when this is supported natively in `unocss-catppuccin` */
+    /* TODO: Remove when this is supported natively in `@catppuccin/unocss` */
     /* Latte */
     &[data-theme='🌻'] {
       --ctp-rosewater: theme('colors.ctp.latte.rosewater');
