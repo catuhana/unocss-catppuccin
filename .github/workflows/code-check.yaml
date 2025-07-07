@@ -9,7 +9,7 @@ on:
         type: string
       node-version:
         description: Node.js version
-        default: lts/*
+        default: latest
         type: string
 
 jobs:
@@ -37,9 +37,6 @@ jobs:
 
       - name: Build website
         run: pnpm build:website
-
-      # - name: Check formatting
-      #   run: pnpm check:format
 
       - name: Check linting
         run: pnpm check:lint
