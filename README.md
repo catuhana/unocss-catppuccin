@@ -77,7 +77,7 @@
 ## 🙋 FAQ
 
 - Q: Where can I find the documentation?\
-  A: Documentation can be found at <https://unocss.catppuccin.org/docs>
+  A: Documentation can be found at <https://unocss.catppuccin.com/docs>
 
 ## 💝 Thanks to
 
