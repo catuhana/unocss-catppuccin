@@ -6,18 +6,16 @@ import {
 } from 'unocss';
 
 import presetCatppuccin from '@catppuccin/unocss';
-
-import { ACCENT_COLOUR_NAMES, NEUTRAL_COLOUR_NAMES } from './src/constants.ts';
+import { flavorEntries } from '@catppuccin/palette';
 
 export default defineConfig({
   presets: [presetWind4({ preflights: { reset: true } }), presetCatppuccin()],
   transformers: [transformerDirectives(), transformerVariantGroup()],
-  safelist: generateSafelist(),
+  safelist: [...generateSafelist()],
 });
 
 function generateSafelist() {
-  return [
-    ...ACCENT_COLOUR_NAMES.map(colour => `bg-[--ctp-${colour}]`),
-    ...NEUTRAL_COLOUR_NAMES.map(colour => `bg-[--ctp-${colour}]`),
-  ];
+  return flavorEntries.flatMap(([, { colorEntries }]) =>
+    colorEntries.map(([colourName]) => `bg-[--ctp-${colourName}]`),
+  );
 }
