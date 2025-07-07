@@ -7,10 +7,7 @@ import {
 
 import presetCatppuccin from '@catppuccin/unocss';
 
-import {
-  ACCENT_COLOUR_NAMES,
-  NEUTRAL_COLOUR_NAMES,
-} from '@catppuccin/unocss/palette';
+import { ACCENT_COLOUR_NAMES, NEUTRAL_COLOUR_NAMES } from './src/constants.ts';
 
 export default defineConfig({
   presets: [presetWind4({ preflights: { reset: true } }), presetCatppuccin()],

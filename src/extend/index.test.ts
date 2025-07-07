@@ -1,20 +1,15 @@
 import { suite, test, type TestContext } from 'node:test';
+import { flavorEntries, flavors } from '@catppuccin/palette';
 
-import { _extendTheme } from './index.ts';
-import {
-  COLOURS,
-  FLAVOUR_NAMES,
-  ACCENT_COLOUR_NAMES,
-  NEUTRAL_COLOUR_NAMES,
-} from '../palette.ts';
-
-import type { ExtendOptions, ThemeColoursObject } from './types.ts';
-import type { FlavourName } from '../palette.ts';
+import { _extendTheme, type ThemeColoursObject } from './index.ts';
+import type { ExtendOptions } from './types.ts';
 
 await suite('_extendTheme', async () => {
+  const flavourNames = Object.keys(flavors) as (keyof typeof flavors)[];
+
   const themeKeyOptions = [undefined, 'colors', 'tones'] as const;
   const prefixOptions = [undefined, 'ctp', 'meow', false] as const;
-  const defaultFlavourOptions = [undefined, ...FLAVOUR_NAMES] as const;
+  const defaultFlavourOptions = [undefined, ...flavourNames] as const;
 
   await suite('option combinations', async () => {
     for (const themeKey of themeKeyOptions) {
@@ -59,7 +54,7 @@ await suite('_extendTheme', async () => {
   });
 
   await test('handles existing ctp key correctly', (test: TestContext) => {
-    const theme: { colors: { ctp: { custom: string; mocha?: string } } } = {
+    const theme: { colors: { ctp: { custom: string; mocha?: unknown } } } = {
       colors: { ctp: { custom: 'value' } },
     };
     _extendTheme({})(theme);
@@ -77,21 +72,21 @@ await suite('_extendTheme', async () => {
 
   await test("generated colours are accurate to Catppuccin's palette", (test: TestContext) => {
     const theme = {} as {
-      colors: { ctp: Record<string, string | Record<string, string>> };
+      colors: { ctp: Record<string, Record<string, string>> };
     };
     _extendTheme({})(theme);
 
-    for (const [flavourName, flavour] of Object.entries(COLOURS)) {
+    for (const [flavourName, flavour] of flavorEntries) {
       const themeFlavour = theme.colors.ctp[flavourName];
       test.assert.ok(
-        themeFlavour instanceof Object,
+        typeof themeFlavour === 'object',
         `'${flavourName}' should be an object`,
       );
 
-      for (const [colourName, colour] of Object.entries(flavour)) {
+      for (const [colourName, colourData] of Object.entries(flavour.colors)) {
         test.assert.equal(
           themeFlavour[colourName],
-          colour,
+          colourData.hex,
           `'${flavourName}.${colourName}' should have correct hex value`,
         );
       }
@@ -117,11 +112,11 @@ await suite('_extendTheme', async () => {
       if (defaultFlavour) {
         validateFlavourColours(
           prefixContainer,
-          COLOURS[defaultFlavour],
+          flavors[defaultFlavour],
           prefix === false,
-        );
+        )(test);
       } else {
-        for (const flavourName of FLAVOUR_NAMES) {
+        for (const [flavourName, flavour] of flavorEntries) {
           test.assert.ok(
             prefixContainer[flavourName],
             `Flavour '${flavourName}' should exist in theme`,
@@ -129,8 +124,9 @@ await suite('_extendTheme', async () => {
 
           validateFlavourStructure(
             prefixContainer[flavourName] as ThemeColoursObject,
+            flavour,
             flavourName,
-          );
+          )(test);
         }
       }
     };
@@ -138,26 +134,28 @@ await suite('_extendTheme', async () => {
 
   function validateFlavourStructure(
     flavourObj: ThemeColoursObject,
+    flavour: (typeof flavors)[keyof typeof flavors],
     flavourName: string,
   ) {
     return (test: TestContext) => {
       test.assert.ok(
-        flavourObj instanceof Object,
+        typeof flavourObj === 'object',
         `'${flavourName}' should be an object`,
       );
 
+      const expectedColourNames = Object.keys(flavour.colors).sort();
+      const actualColourNames = Object.keys(flavourObj).sort();
+
       test.assert.deepEqual(
-        Object.keys(flavourObj).sort(),
-        [...ACCENT_COLOUR_NAMES, ...NEUTRAL_COLOUR_NAMES].sort(),
+        actualColourNames,
+        expectedColourNames,
         `Colours in '${flavourName}' should match expected colour names`,
       );
 
-      for (const [colourName, colour] of Object.entries(
-        COLOURS[flavourName as FlavourName],
-      )) {
+      for (const [colourName, colourData] of Object.entries(flavour.colors)) {
         test.assert.equal(
           flavourObj[colourName],
-          colour,
+          colourData.hex,
           `'${flavourName}.${colourName}' should have correct hex value`,
         );
       }
@@ -166,11 +164,11 @@ await suite('_extendTheme', async () => {
 
   function validateFlavourColours(
     container: ThemeColoursObject,
-    flavourColours: ThemeColoursObject,
+    flavour: (typeof flavors)[keyof typeof flavors],
     checkFallback: boolean,
   ) {
     return (test: TestContext) => {
-      for (const colourName of Object.keys(flavourColours)) {
+      for (const [colourName, colourData] of Object.entries(flavour.colors)) {
         const colourValue =
           container[colourName]
           ?? (checkFallback
@@ -184,7 +182,7 @@ await suite('_extendTheme', async () => {
         if (container[colourName]) {
           test.assert.equal(
             container[colourName],
-            flavourColours[colourName],
+            colourData.hex,
             `Colour '${colourName}' should have correct hex value`,
           );
         } else if (
@@ -193,7 +191,7 @@ await suite('_extendTheme', async () => {
         ) {
           test.assert.equal(
             (container['ctp'] as ThemeColoursObject)[colourName],
-            flavourColours[colourName],
+            colourData.hex,
             `Fallback colour 'ctp.${colourName}' should have correct hex value`,
           );
         }

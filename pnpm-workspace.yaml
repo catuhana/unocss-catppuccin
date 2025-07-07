@@ -2,5 +2,6 @@ packages:
   - website
 
 onlyBuiltDependencies:
+  - '@parcel/watcher'
   - esbuild
   - sharp

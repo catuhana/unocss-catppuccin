@@ -24,12 +24,6 @@
       "types": {
         "import": "./dist/index.d.ts"
       }
-    },
-    "./palette": {
-      "import": "./dist/palette.js",
-      "types": {
-        "import": "./dist/palette.d.ts"
-      }
     }
   },
   "module": "./dist/index.js",
@@ -39,7 +33,6 @@
     "build": "pkgroll",
     "build:docs": "typedoc",
     "build:website": "pnpm --filter ./website build",
-    "generate-palette": "whiskers templates/palette.ts.tera | prettier --parser typescript >src/palette.ts",
     "check:lint": "eslint .",
     "check:format": "prettier --check .",
     "prepack": "pnpm build"
@@ -47,6 +40,9 @@
   "files": [
     "dist/"
   ],
+  "dependencies": {
+    "@catppuccin/palette": "2.0.0-beta.1"
+  },
   "devDependencies": {
     "@eslint/js": "^9.30.0",
     "@types/node": "^24.0.7",
