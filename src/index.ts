@@ -6,6 +6,25 @@ import type { UnoCSSCatppuccinOptions } from './types.ts';
 
 /**
  * Catppuccin preset for UnoCSS.
+ *
+ * @param options - Options for the preset
+ *
+ * @example
+ * ```ts
+ * import { presetWind4, defineConfig } from 'unocss';
+ * import presetCatppuccin from '@catppuccin/unocss';
+ *
+ * export default defineConfig({
+ *   presets: [
+ *     presetWind4(),
+ *     presetCatppuccin({
+ *       // options
+ *     })
+ *   ]
+ * });
+ * ```
+ *
+ * @see {@link https://unocss.catppuccin.com/docs} for documentation.
  */
 export default ({ mode, ...rest }: UnoCSSCatppuccinOptions = {}) => {
   const preset: Preset = { name: '@catppuccin/unocss' };

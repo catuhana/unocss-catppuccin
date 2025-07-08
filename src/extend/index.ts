@@ -4,18 +4,26 @@ import {
   type CatppuccinFlavor,
 } from '@catppuccin/palette';
 
+import type { ThemeExtender } from '@unocss/core';
+
 import type { ExtendOptions } from './types.ts';
 
 /**
- * Extend theme to UnoCSS by passing this to `extendTheme` function.
+ * Extend the `theme` object of UnoCSS by passing this
+ * function to its `extendTheme` option.
  *
- * @param options - Options for extending the theme.
- * @returns The main function that supposed to be passed
- * to UnoCSS `extendTheme` option.
+ * @param options - Options for the extender
  */
 export const _extendTheme = (options: ExtendOptions = {}) => {
   const { themeKey = 'colors', prefix = 'ctp', defaultFlavour } = options;
 
+  /**
+   * Adds Catppuccin colours to the target object.
+   *
+   * @param targetObj - Target theme object to extend
+   * @param flavour - The Catppuccin flavour object
+   * @param namespace - Optional namespace to nest colours under
+   */
   const addFlavourColours = (
     targetObj: ThemeColoursObject,
     flavour: CatppuccinFlavor,
@@ -56,8 +64,8 @@ export const _extendTheme = (options: ExtendOptions = {}) => {
     }
   };
 
-  return (_theme: object) => {
-    const theme = _theme as Record<string, ThemeColoursObject>;
+  return (baseTheme => {
+    const theme = baseTheme as Record<string, ThemeColoursObject>;
 
     if (!theme[themeKey]) theme[themeKey] = {};
 
@@ -76,10 +84,12 @@ export const _extendTheme = (options: ExtendOptions = {}) => {
         addFlavourColours(targetObject, flavour, flavourIdentifier);
       }
     }
-  };
+  }) satisfies ThemeExtender;
 };
 
 /**
+ * Nested object structure for theme colours.
+ *
  * @internal
  */
 export interface ThemeColoursObject {

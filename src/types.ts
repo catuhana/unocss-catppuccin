@@ -6,7 +6,14 @@ import type { ExtendOptions } from './extend/types';
  */
 export type Modes = 'extend';
 
-type ModeConfig<T extends Modes | undefined, U = never> =
+/**
+ * Options for a specific mode.
+ *
+ * @template T - The mode name or `undefined`
+ * @template U - Options object for the specified mode
+ * in `T`.
+ */
+type ModeOptions<T extends Modes | undefined, U = never> =
   T extends Modes ?
     {
       /**
@@ -17,7 +24,7 @@ type ModeConfig<T extends Modes | undefined, U = never> =
        * (e.g. [Wind4 Preset](https://unocss.dev/presets/wind4))
        * MUST be used to be able to use the colours.
        *
-       * @see {@link ModeConfig.mode}
+       * @see {@link Modes}
        *
        * @default 'extend'
        */
@@ -25,8 +32,16 @@ type ModeConfig<T extends Modes | undefined, U = never> =
     } & U
   : { mode?: undefined };
 
-type ModeOptions<T extends Modes | undefined> =
-  T extends 'extend' ? ModeConfig<T, ExtendOptions> : ModeConfig<T>;
+/**
+ * Resolved options type based on the mode.
+ *
+ * @template T - The mode name or `undefined`
+ */
+type ResolvedModeOptions<T extends Modes | undefined> =
+  T extends 'extend' ? ModeOptions<T, ExtendOptions> : ModeOptions<T>;
 
+/**
+ * Options for this preset.
+ */
 export type UnoCSSCatppuccinOptions = PresetOptions
-  & (ModeOptions<'extend'> | ModeOptions<undefined>);
+  & (ResolvedModeOptions<'extend'> | ResolvedModeOptions<undefined>);
