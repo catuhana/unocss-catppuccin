@@ -12,8 +12,10 @@ export type Modes = 'extend';
  * @template T - The mode name or `undefined`
  * @template U - Options object for the specified mode
  * in `T`.
+ *
+ * @internal
  */
-type ModeOptions<T extends Modes | undefined, U = never> =
+export type ModeOptions<T extends Modes | undefined, U = never> =
   T extends Modes ?
     {
       /**
@@ -36,8 +38,10 @@ type ModeOptions<T extends Modes | undefined, U = never> =
  * Resolved options type based on the mode.
  *
  * @template T - The mode name or `undefined`
+ *
+ * @internal
  */
-type ResolvedModeOptions<T extends Modes | undefined> =
+export type ResolvedModeOptions<T extends Modes | undefined> =
   T extends 'extend' ? ModeOptions<T, ExtendOptions> : ModeOptions<T>;
 
 /**
