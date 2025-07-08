@@ -1,6 +1,4 @@
 ---
-import type { FlavourEmoji } from '@catppuccin/unocss/palette';
-
 const {
   meta: {
     title = 'Catppuccin for UnoCSS',
@@ -9,7 +7,7 @@ const {
   theme = '🌻',
 } = Astro.props as {
   meta?: { title?: string; description?: string };
-  theme?: FlavourEmoji;
+  theme?: string;
 };
 ---
 

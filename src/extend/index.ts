@@ -1,6 +1,10 @@
-import { COLOURS, type FlavourPalette } from '../palette.ts';
+import {
+  flavorEntries,
+  flavors,
+  type CatppuccinFlavor,
+} from '@catppuccin/palette';
 
-import type { ExtendOptions, ThemeColoursObject } from './types.ts';
+import type { ExtendOptions } from './types.ts';
 
 /**
  * Extend theme to UnoCSS by passing this to `extendTheme` function.
@@ -14,43 +18,40 @@ export const _extendTheme = (options: ExtendOptions = {}) => {
 
   const addFlavourColours = (
     targetObj: ThemeColoursObject,
-    flavour: FlavourPalette,
+    flavour: CatppuccinFlavor,
     namespace?: string,
   ) => {
+    const colourEntries = Object.entries(flavour.colors);
+    let targetContainer: ThemeColoursObject;
+
     if (namespace) {
       if (
         targetObj[namespace] !== undefined
         && typeof targetObj[namespace] !== 'object'
       ) {
         if (!targetObj['ctp']) targetObj['ctp'] = {};
-
         const targetObjCtp = targetObj['ctp'] as ThemeColoursObject;
+
         if (!targetObjCtp[namespace]) targetObjCtp[namespace] = {};
-
-        Object.assign(targetObjCtp[namespace], flavour);
-
-        return;
-      }
-
-      if (!targetObj[namespace]) targetObj[namespace] = {};
-      Object.assign(targetObj[namespace], flavour);
-
-      return;
-    }
-
-    if (prefix) {
-      Object.assign(targetObj, flavour);
-
-      return;
-    }
-
-    if (!targetObj['ctp']) targetObj['ctp'] = {};
-    const targetObjCtp = targetObj['ctp'] as ThemeColoursObject;
-    for (const [colourId, colour] of Object.entries(flavour)) {
-      if (colourId in targetObj) {
-        targetObjCtp[colourId] = colour;
+        targetContainer = targetObjCtp[namespace] as ThemeColoursObject;
       } else {
-        targetObj[colourId] = colour;
+        if (!targetObj[namespace]) targetObj[namespace] = {};
+        targetContainer = targetObj[namespace];
+      }
+    } else if (prefix) {
+      targetContainer = targetObj;
+    } else {
+      targetContainer = targetObj;
+    }
+
+    for (const [colourName, colourData] of colourEntries) {
+      if (!prefix && colourName in targetObj) {
+        if (!targetObj['ctp']) targetObj['ctp'] = {};
+        const targetObjCtp = targetObj['ctp'] as ThemeColoursObject;
+
+        targetObjCtp[colourName] = colourData.hex;
+      } else {
+        targetContainer[colourName] = colourData.hex;
       }
     }
   };
@@ -68,12 +69,19 @@ export const _extendTheme = (options: ExtendOptions = {}) => {
       ] as ThemeColoursObject;
     }
 
-    if (defaultFlavour && defaultFlavour in COLOURS) {
-      addFlavourColours(targetObject, COLOURS[defaultFlavour]);
+    if (defaultFlavour && defaultFlavour in flavors) {
+      addFlavourColours(targetObject, flavors[defaultFlavour]);
     } else {
-      for (const [flavourIdentifier, flavour] of Object.entries(COLOURS)) {
+      for (const [flavourIdentifier, flavour] of flavorEntries) {
         addFlavourColours(targetObject, flavour, flavourIdentifier);
       }
     }
   };
 };
+
+/**
+ * @internal
+ */
+export interface ThemeColoursObject {
+  [key: string]: ThemeColoursObject | string;
+}

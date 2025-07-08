@@ -1,4 +1,4 @@
-import type { FlavourName } from '../palette.ts';
+import type { FlavorName } from '@catppuccin/palette';
 
 export interface ExtendOptions {
   /**
@@ -52,12 +52,5 @@ export interface ExtendOptions {
    * <p class='bg-ctp-red'>Hello world!</p>
    * ```
    */
-  defaultFlavour?: FlavourName;
-}
-
-/**
- * @internal
- */
-export interface ThemeColoursObject {
-  [key: string]: ThemeColoursObject | string;
+  defaultFlavour?: FlavorName;
 }

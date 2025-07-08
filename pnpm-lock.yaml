@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      '@catppuccin/palette':
+        specifier: 2.0.0-beta.1
+        version: 2.0.0-beta.1
     devDependencies:
       '@eslint/js':
         specifier: ^9.30.0
@@ -48,6 +52,9 @@ importers:
         specifier: ^5.10.1
         version: 5.11.0(@types/node@24.0.11)(jiti@2.4.2)(rollup@4.44.2)(sass@1.89.2)(typescript@5.8.3)(yaml@2.8.0)
     devDependencies:
+      '@catppuccin/palette':
+        specifier: 2.0.0-beta.1
+        version: 2.0.0-beta.1
       '@catppuccin/unocss':
         specifier: link:..
         version: link:..
@@ -103,6 +110,9 @@ packages:
 
   '@capsizecss/unpack@2.4.0':
     resolution: {integrity: sha512-GrSU71meACqcmIUxPYOJvGKF0yryjN/L1aCuE9DViCTJI7bfkjgYDPD1zbNDcINJwSSP6UaBZY9GAbYDO7re0Q==}
+
+  '@catppuccin/palette@2.0.0-beta.1':
+    resolution: {integrity: sha512-FhTfw1xtM/rOW+COq20J66Ik+YHiRg240A38e2bYOwh8MDh2yZ/8I3S0+dU1brvytEN4tWtZwe340WrsJb9I8g==}
 
   '@emnapi/runtime@1.4.3':
     resolution: {integrity: sha512-pBPWdu6MLKROBX05wSNKcNb++m5Er+KQ9QkB+WVM+pW2Kx9hoSrVTnu3BdkI5eBLZoKu/J6mW/B6i6bJB2ytXQ==}
@@ -2562,6 +2572,8 @@ snapshots:
       fontkit: 2.0.4
     transitivePeerDependencies:
       - encoding
+
+  '@catppuccin/palette@2.0.0-beta.1': {}
 
   '@emnapi/runtime@1.4.3':
     dependencies:

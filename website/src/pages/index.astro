@@ -1,13 +1,39 @@
 ---
 import Main from '../layout/Main.astro';
 
-import {
-  FLAVOUR_NAMES,
-  ACCENT_COLOUR_NAMES,
-  NEUTRAL_COLOUR_NAMES,
-  FLAVOUR_EMOJIS,
-  FLAVOUR_NAMES_PRETTY,
-} from '@catppuccin/unocss/palette';
+import { flavorEntries } from '@catppuccin/palette';
+
+const {
+  flavourNames,
+  flavourEmojis,
+  flavourPrettyNames,
+  accentColourNames,
+  neutralColourNames,
+} = flavorEntries.reduce(
+  (acc, [flavourId, flavour], index) => {
+    acc.flavourNames.push(flavourId);
+    acc.flavourEmojis.push(flavour.emoji);
+    acc.flavourPrettyNames.push(flavour.name);
+
+    if (index === 0) {
+      flavour.colorEntries.forEach(([colourId, colourData]) => {
+        (colourData.accent ?
+          acc.accentColourNames
+        : acc.neutralColourNames
+        ).push(colourId);
+      });
+    }
+
+    return acc;
+  },
+  {
+    flavourNames: [] as string[],
+    flavourEmojis: [] as string[],
+    flavourPrettyNames: [] as string[],
+    accentColourNames: [] as string[],
+    neutralColourNames: [] as string[],
+  },
+);
 ---
 
 <Main>
@@ -42,22 +68,22 @@ import {
         <h2 class='text-3xl font-extrabold mb-6'>Flavours</h2>
         <div class='flex flex-wrap gap-2 items-end'>
           {
-            FLAVOUR_NAMES.map((flavour, index) => (
+            flavourNames.map((flavour, index) => (
               <button
                 type='button'
                 class='bg-[--ctp-surface1] h-12 p-2 rounded-8 font-semibold cursor-pointer min-w-fit hover:(bg-[--ctp-surface2] scale-y-120)'
                 style={`width: ${Math.random() * 128 + 48}px;`}
                 data-flavour={
                   Object.fromEntries(
-                    FLAVOUR_NAMES.map((name, index) => [
+                    flavourNames.map((name, index) => [
                       name,
-                      FLAVOUR_EMOJIS[index],
+                      flavourEmojis[index],
                     ]),
                   )[flavour]
                 }
                 data-pill
               >
-                {FLAVOUR_NAMES_PRETTY[index]}
+                {flavourPrettyNames[index]}
               </button>
             ))
           }
@@ -67,7 +93,7 @@ import {
         <h2 class='text-3xl font-extrabold mb-6'>Accent Colours</h2>
         <div class='flex flex-wrap gap-2 items-end'>
           {
-            ACCENT_COLOUR_NAMES.map(colour => (
+            accentColourNames.map(colour => (
               <span
                 title={colour}
                 class:list={[
@@ -87,7 +113,7 @@ import {
         <h2 class='text-3xl font-extrabold mb-6'>Neutral Colours</h2>
         <div class='flex flex-wrap gap-2 items-end'>
           {
-            NEUTRAL_COLOUR_NAMES.map(colour => {
+            neutralColourNames.map(colour => {
               return (
                 <span
                   title={colour}
@@ -141,10 +167,10 @@ import {
 <script>
   const pillElements = document.querySelectorAll<HTMLElement>('[data-pill]');
 
-  Promise.all([setPreviewMode(), pillLengthRandomiser(), themeSwitcher()]);
+  Promise.all([enablePreviewMode(), pillLengthRandomiser(), themeSwitcher()]);
 
   async function pillLengthRandomiser() {
-    if (isInPreviewMode()) return;
+    if (isPreviewModeRequested()) return;
 
     const pillWidths = Array.from(
       { length: pillElements.length },
@@ -175,12 +201,12 @@ import {
     });
   }
 
-  async function setPreviewMode() {
-    if (!isInPreviewMode()) return;
+  async function enablePreviewMode() {
+    if (!isPreviewModeRequested()) return;
     document.documentElement.dataset['preview'] = '';
   }
 
-  function isInPreviewMode() {
+  function isPreviewModeRequested() {
     return location.search.includes('?preview');
   }
 </script>
