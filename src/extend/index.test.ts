@@ -1,5 +1,9 @@
 import { suite, test, type TestContext } from 'node:test';
-import { flavorEntries, flavors } from '@catppuccin/palette';
+import {
+  flavorEntries,
+  flavors,
+  type CatppuccinFlavor,
+} from '@catppuccin/palette';
 
 import { _extendTheme, type ThemeColoursObject } from './index.ts';
 import type { ExtendOptions } from './types.ts';
@@ -134,7 +138,7 @@ await suite('_extendTheme', async () => {
 
   function validateFlavourStructure(
     flavourObj: ThemeColoursObject,
-    flavour: (typeof flavors)[keyof typeof flavors],
+    flavour: CatppuccinFlavor,
     flavourName: string,
   ) {
     return (test: TestContext) => {
@@ -164,7 +168,7 @@ await suite('_extendTheme', async () => {
 
   function validateFlavourColours(
     container: ThemeColoursObject,
-    flavour: (typeof flavors)[keyof typeof flavors],
+    flavour: CatppuccinFlavor,
     checkFallback: boolean,
   ) {
     return (test: TestContext) => {

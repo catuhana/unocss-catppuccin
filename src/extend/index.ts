@@ -1,4 +1,8 @@
-import { flavorEntries, flavors } from '@catppuccin/palette';
+import {
+  flavorEntries,
+  flavors,
+  type CatppuccinFlavor,
+} from '@catppuccin/palette';
 
 import type { ExtendOptions } from './types.ts';
 
@@ -14,7 +18,7 @@ export const _extendTheme = (options: ExtendOptions = {}) => {
 
   const addFlavourColours = (
     targetObj: ThemeColoursObject,
-    flavour: (typeof flavors)[keyof typeof flavors],
+    flavour: CatppuccinFlavor,
     namespace?: string,
   ) => {
     const colourEntries = Object.entries(flavour.colors);
