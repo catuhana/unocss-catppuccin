@@ -21,7 +21,7 @@ export const _extendTheme = (options: ExtendOptions = {}) => {
    * Adds Catppuccin colours to the target object.
    *
    * @param targetObj - Target theme object to extend
-   * @param flavour - The Catppuccin flavour object.
+   * @param flavour - The Catppuccin flavour object
    * @param namespace - Optional namespace to nest colours under
    */
   const addFlavourColours = (
