@@ -15,7 +15,7 @@ export default defineConfig({
 });
 
 function generateSafelist() {
-  return flavorEntries.flatMap(([, { colorEntries }]) =>
-    colorEntries.map(([colourName]) => `bg-[--ctp-${colourName}]`),
-  );
+  return flavorEntries
+    .flatMap(([, { colorEntries }]) => colorEntries)
+    .map(([colourName]) => `bg-[--ctp-${colourName}]`);
 }
