@@ -4,23 +4,31 @@ export interface ExtendOptions {
   /**
    * Which `theme` object key to add the colours to.
    *
+   * Some presets may use different keys to put things
+   * under, such as `colours` or `shades`. Defaults
+   * to what `presetWind4` uses.
+   *
    * @default 'colors'
    */
   themeKey?: string;
 
   /**
-   * Prefix to use for Catppuccin colours.
+   * Prefix for using Catppuccin colours.
    *
    * When set to `false`, the prefix is removed and
-   * colours are added directly to the theme. If a
-   * Catppuccin colour conflicts with another preset's
-   * colour, the Catppuccin colour will be prefixed with
-   * `ctp`.
+   * colours are added directly. If a Catppuccin colour
+   * conflicts with another preset's colour, former will
+   * be prefixed under `ctp` instead of overriding.
    *
    * @example
    * ```html
+   * <!-- Default prefix is `'ctp'`: -->
    * <p class='text-ctp-mocha-red'>Hello world!</p>
-   * <p class='border-ctp-latte-base'>Hello world!</p>
+   * <!-- If it's set to `false`: -->
+   * <p class='text-mocha-red'>Hello world!</p>
+   * <!-- If `mocha` is included in another preset,
+   *      Catppuccin colour will be prefixed. -->
+   * <p class='text-ctp-mocha-red'>Hello world!</p>
    * ```
    *
    * @default 'ctp'
@@ -28,28 +36,16 @@ export interface ExtendOptions {
   prefix?: string | false;
 
   /**
-   * Default flavour to use colours directly from.
+   * Default flavour to use colours from.
    *
-   * When specified, colours from this flavour are added
-   * directly without the flavour name.
-   *
-   * If {@link prefix} is set to `false` with the combination
-   * of this option, and if a Catppuccin colour conflicts with
-   * another preset's colour, the Catppuccin colour will be
-   * prefixed with `ctp`.
-   *
-   * @example
    * ```html
-   * <!-- Default prefix is `ctp` -->
-   * <p class='text-ctp-flamingo'>Hello world!</p>
-   * <!-- Let's make it `meow` -->
-   * <p class='text-meow-flamingo'>Hello world!</p>
-   *
-   * <!-- Let's make it `false` -->
-   * <!-- If they conflict, this will use current preset's colour! -->
-   * <p class='bg-red'>Hello world!</p>
-   * <!-- To use Catppuccin's colour instead, add the `ctp` prefix  -->
-   * <p class='bg-ctp-red'>Hello world!</p>
+   * <!-- If `defaultFlavour` is set to 'latte': -->
+   * <p class='text-ctp-rosewater'>Hello world!</p>
+   * <!-- If `prefix` option is false too: -->
+   * <p class='text-rosewater'>Hello world!</p>
+   * <!-- If `red` is included in another preset,
+   *      it will be prefixed, as explained in `prefix`. -->
+   * <p class='text-ctp-red'>Hello world!</p>
    * ```
    */
   defaultFlavour?: FlavorName;
