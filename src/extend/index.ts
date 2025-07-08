@@ -4,8 +4,9 @@ import {
   type CatppuccinFlavor,
 } from '@catppuccin/palette';
 
-import type { ExtendOptions } from './types.ts';
 import type { ThemeExtender } from '@unocss/core';
+
+import type { ExtendOptions } from './types.ts';
 
 /**
  * Extend the `theme` object of UnoCSS by passing this
