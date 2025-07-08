@@ -3,6 +3,7 @@ export default /** @type {Partial<import('typedoc').TypeDocOptions>} */ ({
   entryPointStrategy: 'Expand',
   out: 'docs',
   cleanOutputDir: true,
+  favicon: 'assets/icons/icon-dark.svg',
   plugin: ['typedoc-material-theme'],
   themeColor: '#f38ba8',
 });
