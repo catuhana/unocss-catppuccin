@@ -9,7 +9,6 @@
   },
   "devDependencies": {
     "@catppuccin/palette": "2.0.0-beta.1",
-    "@catppuccin/unocss": "link:..",
     "unocss": "^66.3.2"
   },
   "packageManager": "pnpm@10.12.4"

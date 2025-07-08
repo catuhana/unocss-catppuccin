@@ -1,1 +1,4 @@
-{ "extends": ["../tsconfig.json", "astro/tsconfigs/strict"] }
+{
+  "extends": ["../tsconfig.json", "astro/tsconfigs/strict"],
+  "compilerOptions": { "paths": { "@catppuccin/unocss/*": ["../src/*"] } }
+}
