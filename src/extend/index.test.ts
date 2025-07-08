@@ -3,13 +3,14 @@ import {
   flavorEntries,
   flavors,
   type CatppuccinFlavor,
+  type FlavorName,
 } from '@catppuccin/palette';
 
 import { _extendTheme, type ThemeColoursObject } from './index.ts';
 import type { ExtendOptions } from './types.ts';
 
 await suite('_extendTheme', async () => {
-  const flavourNames = Object.keys(flavors) as (keyof typeof flavors)[];
+  const flavourNames = Object.keys(flavors) as FlavorName[];
 
   const themeKeyOptions = [undefined, 'colors', 'tones'] as const;
   const prefixOptions = [undefined, 'ctp', 'meow', false] as const;
