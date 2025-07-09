@@ -11,5 +11,5 @@
     "@catppuccin/palette": "2.0.0-beta.1",
     "unocss": "^66.3.2"
   },
-  "packageManager": "pnpm@10.12.4"
+  "packageManager": "pnpm@10.13.0"
 }
