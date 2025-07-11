@@ -1,3 +1,4 @@
 docs/
 
+.release-please-manifest.json
 pnpm-lock.yaml

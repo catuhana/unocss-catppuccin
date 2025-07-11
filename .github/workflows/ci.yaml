@@ -7,16 +7,14 @@ on:
       - .github/workflows/ci.yaml
       - src/**
       - website/**
-      - tests/**
-      - package.json
+      - '**/package.json'
       - pnpm-lock.yaml
   pull_request:
     paths:
       - .github/workflows/ci.yaml
       - src/**
       - website/**
-      - tests/**
-      - package.json
+      - '**/package.json'
       - pnpm-lock.yaml
   workflow_dispatch:
     inputs:
