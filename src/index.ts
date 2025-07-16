@@ -11,6 +11,7 @@ import type { UnoCSSCatppuccinOptions } from './types.ts';
  *
  * @example
  * ```ts
+ * // uno.config.ts
  * import { presetWind4, defineConfig } from 'unocss';
  * import presetCatppuccin from '@catppuccin/unocss';
  *
