@@ -54,21 +54,16 @@
 
    ```ts
    // uno.config.ts
-   import { defineConfig } from 'unocss';
-
-   import presetWind4 from '@unocss/preset-wind4';
+   import { presetWind4, defineConfig } from 'unocss';
    import presetCatppuccin from '@catppuccin/unocss';
-
+  
    export default defineConfig({
      presets: [
-       /*
-         A preset with CSS utilities must be used for this preset
-         to extend its colours in `extend` mode option, which is
-         the default.
-       */
        presetWind4(),
-       presetCatppuccin(/* options */),
-     ],
+       presetCatppuccin({
+         // options
+       })
+     ]
    });
    ```
 
