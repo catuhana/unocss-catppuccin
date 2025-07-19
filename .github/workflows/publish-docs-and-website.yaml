@@ -2,8 +2,11 @@ name: Publish Documentation and Website
 
 on:
   workflow_run:
-    workflows: [CI, Release]
-    types: [completed]
+    workflows:
+      - CI
+      - Release Please
+    types:
+      - completed
 
 permissions:
   contents: read
